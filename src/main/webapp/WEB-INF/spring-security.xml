@@ -23,6 +23,7 @@
         
         <intercept-url pattern="/logged/admin/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/test" access="hasRole('ROLE_ADMIN')" />
         
         <intercept-url pattern="/logged/lekar/**" access="hasRole('ROLE_LEKAR')" />

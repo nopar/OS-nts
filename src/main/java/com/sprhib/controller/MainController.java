@@ -91,9 +91,7 @@ public class MainController {
             //
             UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().
                     getAuthentication().getPrincipal();
-            System.out.println(userDetails.getPassword());
             System.out.println(userDetails.getUsername());
-            System.out.println(userDetails.isEnabled());
             
 
 		
