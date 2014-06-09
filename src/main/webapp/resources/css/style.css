@@ -1,0 +1,21 @@
+#test {
+    font-family: Arial, Helvetica, sans-serif;
+        
+}
+
+p {    
+    color: #aaaaaa;
+}
+
+.message{
+   color:green;
+}
+
+
+.red{
+	color:red;	
+}
+
+h1{
+	color:#D20005;
+}

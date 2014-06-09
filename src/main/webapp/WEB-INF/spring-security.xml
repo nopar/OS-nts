@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans" 
+             xmlns:p="http://www.springframework.org/schema/p"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+             xmlns:context="http://www.springframework.org/schema/context"
+             xmlns:tx="http://www.springframework.org/schema/tx"
+             xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+        
+        
+        <!-- enable use-expressions -->
+    <http auto-config="true" use-expressions="true">
+        
+        <intercept-url pattern="/" access="permitAll" />
+        <intercept-url pattern="/info/**" access="permitAll" />
+        <intercept-url pattern="favicon.ico" access="permitAll" />
+        
+        <intercept-url pattern="/logged/profil" access="isAuthenticated()" />
+        
+        <intercept-url pattern="/logged/admin/**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/test" access="hasRole('ROLE_ADMIN')" />
+        
+        <intercept-url pattern="/logged/lekar/**" access="hasRole('ROLE_LEKAR')" />
+        
+        
+        <intercept-url pattern="/logged/darca/**" access="hasRole('ROLE_DARCA')" />
+        
+        
+
+        <!-- access denied page -->
+            <access-denied-handler error-page="/403" />
+                
+<!--		<form-login login-page="/login" default-target-url="/logged/index"
+			authentication-failure-url="/loginfailed" />
+                
+		<logout logout-success-url="/logout" />-->
+                
+                <form-login 
+		    login-page="/login" 
+		    default-target-url="/logged/" 
+			authentication-failure-url="/login?error" 
+			username-parameter="username"
+			password-parameter="password"/>
+                        <!--login-processing-url="/pripomienkovac"-->
+                        <!--always-use-default-target="true"--> 
+
+                
+		<!--<logout logout-success-url="/login?logout"  />-->
+                <logout logout-success-url="/?logout"  />
+
+                                
+                <!-- enable csrf protection -->
+		<csrf/>
+	</http>
+        
+
+
+	<authentication-manager>
+		<authentication-provider>
+			<jdbc-user-service data-source-ref="dataSource"
+				
+                                           users-by-username-query="
+        select nick, password, enabled
+        from POUZIVATELIA where nick = ?" 
+				
+                                           authorities-by-username-query="
+        select us.nick, ur.autorita, zo.id_group, zo.id_user
+        from POUZIVATELIA us, SKUPINY ur, ZOZNAM_POUZIVATEL_SKUPINA zo
+        where us.id_user = zo.id_user and ur.id_group = zo.id_group and us.nick =?"
+        
+                        />
+		</authentication-provider>
+	</authentication-manager>
+
+<!--       users-by-username-query="
+                                    select nick, password, enabled, email
+                                    from POUZIVATELIA where (nick OR email) = ?" 
+				
+				authorities-by-username-query="
+                                    select us.nick, ur.autorita
+                                    from POUZIVATELIA us, SKUPINY ur  
+                                    where us.id_user = ur.id_group and us.nick =?"
+
+users-by-username-query="
+        select nick, password, enabled
+        from POUZIVATELIA where nick = ?" 
+				
+        authorities-by-username-query="
+        select us.nick, ur.autorita 
+        from POUZIVATELIA us, SKUPINY ur   
+        where us.id_user = ur.id_group and us.nick =?"
+                                    -->
+</beans:beans>

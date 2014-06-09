@@ -1,0 +1,453 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dataroot>
+	<poi>
+		<poiId>101</poiId>
+		<poiTitle>NTS Bratislava - Kramáre</poiTitle>
+		<latitude>48.16722222222222</latitude>
+		<longitude>17.09111111111111</longitude>
+		<poiDescription>
+		Adresa:	
+			Limbová 3, 
+			833 14 Bratislava,
+			kramarents@ntssr.sk
+			+421 2 5910 3026</poiDescription>
+	</poi>
+	<poi>
+		<poiId>102</poiId>
+		<poiTitle>NTS Bratislava - Ružinov</poiTitle>
+		<latitude>48.155277777777776</latitude>
+		<longitude>17.151666666666667</longitude>
+		<poiDescription>
+		Adresa:
+			Ružinovská 6, 821 02 Bratislava,
+			ruzinovnts@ntssr.sk,
+			+421 2 5910 3060</poiDescription>
+	</poi>
+	<poi>
+		<poiId>103</poiId>
+		<poiTitle>NTS Banská Bystrica</poiTitle>
+		<latitude>48.74444444444445</latitude>
+		<longitude>19.11611111111111</longitude>
+		<poiDescription>
+		Adresa:
+			Námestie Ludvíka Svobodu 1 975 17,
+			banskabystricants@ntssr.sk,
+			+421 48 4134 514</poiDescription>
+	</poi>
+	<poi>
+		<poiId>104</poiId>
+		<poiTitle>NTS Košice</poiTitle>
+		<latitude>48.721944444444446</latitude>
+		<longitude>21.237222222222222</longitude>
+		<poiDescription>
+		Adresa:
+			Trieda SNP 1, 040 11 Košice,
+			kosicents@ntssr.sk,
+			+421 55 640 4146</poiDescription>
+	</poi>
+	<poi>
+		<poiId>105</poiId>
+		<poiTitle>NTS Martin</poiTitle>
+		<latitude>49.0575</latitude>
+		<longitude>18.918055555555554</longitude>
+		<poiDescription>
+		Adresa:
+			Priehradka 18A, 036 04 Martin,
+			martinnts@ntssr.sk,
+			+421 43 3240 840</poiDescription>
+	</poi>
+	<poi>
+		<poiId>106</poiId>
+		<poiTitle>NTS Nitra</poiTitle>
+		<latitude>48.30083333333334</latitude>
+		<longitude>18.085</longitude>
+		<poiDescription>
+		Adresa:
+			Špitálska 6, 950 01 Nitra,
+			nitrants@ntssr.sk,
+			+421 37 6545 517</poiDescription>
+	</poi>
+	<poi>
+		<poiId>106</poiId>
+		<poiTitle>NTS Nové Zámky</poiTitle>
+		<latitude>47.98888888888889</latitude>
+		<longitude>18.15277777777778</longitude>
+		<poiDescription>
+		Adresa:
+			Slovenská 11/A, 940 34 Nové Zámky,
+			novezamkynts@ntssr.sk,
+			+421 35 6912 634</poiDescription>
+	</poi>
+	<poi>
+		<poiId>107</poiId>
+		<poiTitle>NTS Poprad</poiTitle>
+		<latitude>49.051944444444445</latitude>
+		<longitude>20.30388888888889</longitude>
+		<poiDescription>
+		Adresa:
+			Banícka 803/28, 058 45 Poprad,
+			popradnts@ntssr.sk,
+			+421 52 7125 700</poiDescription>
+	</poi>
+	<poi>
+		<poiId>108</poiId>
+		<poiTitle>NTS Prešov</poiTitle>
+		<latitude>48.99777777777778</latitude>
+		<longitude>21.253888888888888</longitude>
+		<poiDescription>
+		Adresa:
+			Jána Hollého 14, 081 01 Prešov,
+			presovnts@ntssr.sk,
+			+421 51 7011 655</poiDescription>
+	</poi>
+	<poi>
+		<poiId>109</poiId>
+		<poiTitle>NTS Trenčín</poiTitle>
+		<latitude>48.88388888888889</latitude>
+		<longitude>18.02888888888889</longitude>
+		<poiDescription>
+		Adresa:
+			Legionárska 28, 911 71 Trenčín,
+			trencinnts@ntssr.sk,
+			+421 32 6521 612</poiDescription>
+	</poi>
+	<poi>
+		<poiId>110</poiId>
+		<poiTitle>NTS Trnava</poiTitle>
+		<latitude>48.367777777777775</latitude>
+		<longitude>17.590555555555554</longitude>
+		<poiDescription>
+		Adresa:
+			Andreja Žarnova 11, 917 02 Trnava,
+			trnavants@ntssr.sk,
+			+421 33 5938 743</poiDescription>
+	</poi>
+	<poi>
+		<poiId>111</poiId>
+		<poiTitle>NTS Žilina</poiTitle>
+		<latitude>49.2175</latitude>
+		<longitude>18.748333333333335</longitude>
+		<poiDescription>
+		Adresa:
+			Vojtecha Spanyola 43, 010 01 Žilina,
+			zilinants@ntssr.sk,
+			+421 41 5110 412</poiDescription>
+	</poi>
+	<poi>
+		<poiId>112</poiId>
+		<poiTitle>HTO Bardejov</poiTitle>
+		<latitude>49.288299</latitude>
+		<longitude>21.272192</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>113</poiId>
+		<poiTitle>HTO Stará Ľubovňa</poiTitle>
+		<latitude>49.299046</latitude>
+		<longitude>20.687857</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>114</poiId>
+		<poiTitle>HTO Brezno</poiTitle>
+		<latitude>48.809464</latitude>
+		<longitude>19.623814</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>115</poiId>
+		<poiTitle>HTO Čadca</poiTitle>
+		<latitude>49.439585</latitude>
+		<longitude>18.773897</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>116</poiId>
+		<poiTitle>HTO Dolný Kubín</poiTitle>
+		<latitude>49.214682</latitude>
+		<longitude>19.303021</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>117</poiId>
+		<poiTitle>HTO Dunajská streda</poiTitle>
+		<latitude>47.999241</latitude>
+		<longitude>17.609797</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>118</poiId>
+		<poiTitle>HTO Galanta</poiTitle>
+		<latitude>48.19596</latitude>
+		<longitude>17.72084</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>119</poiId>
+		<poiTitle>HTO Humenné</poiTitle>
+		<latitude>48.934158</latitude>
+		<longitude>21.899035</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>120</poiId>
+		<poiTitle>HTO Ilava</poiTitle>
+		<latitude>48.99572</latitude>
+		<longitude>18.231082</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>121</poiId>
+		<poiTitle>HTO Komárno</poiTitle>
+		<latitude>47.764376</latitude>
+		<longitude>18.126851</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>122</poiId>
+		<poiTitle>HTO Košice</poiTitle>
+		<latitude>48.64248</latitude>
+		<longitude>21.170483</longitude>
+		<poiDescription>
+		Adresa:
+			Trieda SNP 1, 040 11 Košice,
+			kosicents@ntssr.sk,
+			+421 55 640 4146</poiDescription>
+	</poi>
+	<poi>
+		<poiId>123</poiId>
+		<poiTitle>HTO Levice</poiTitle>
+		<latitude>48.2229</latitude>
+		<longitude>18.614917</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>124</poiId>
+		<poiTitle>HTO Levoča</poiTitle>
+		<latitude>49.024109</latitude>
+		<longitude>20.593421</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>125</poiId>
+		<poiTitle>HTO Liptovský Mikuláš</poiTitle>
+		<latitude>49.08719</latitude>
+		<longitude>19.604888</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>126</poiId>
+		<poiTitle>HTO Lučenec</poiTitle>
+		<latitude>48.32925</latitude>
+		<longitude>19.659884</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>127</poiId>
+		<poiTitle>HTO Michalovce</poiTitle>
+		<latitude>48.75268</latitude>
+		<longitude>21.91545</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>128</poiId>
+		<poiTitle>HTO Myjava</poiTitle>
+		<latitude>48.763261</latitude>
+		<longitude>17.560937</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>129</poiId>
+		<poiTitle>HTO Partizánske</poiTitle>
+		<latitude>48.634327</latitude>
+		<longitude>18.403902</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>130</poiId>
+		<poiTitle>HTO Piešťany</poiTitle>
+		<latitude>48.574847</latitude>
+		<longitude>17.813473</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>131</poiId>
+		<poiTitle>HTO Považská Bystrica</poiTitle>
+		<latitude>49.106509</latitude>
+		<longitude>18.459735</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>132</poiId>
+		<poiTitle>HTO Bojnice</poiTitle>
+		<latitude>48.785308</latitude>
+		<longitude>18.589296</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>133</poiId>
+		<poiTitle>HTO Rimavská Sobota</poiTitle>
+		<latitude>48.383618</latitude>
+		<longitude>20.02578</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>134</poiId>
+		<poiTitle>HTO Rožňava</poiTitle>
+		<latitude>48.665047</latitude>
+		<longitude>20.533919</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>135</poiId>
+		<poiTitle>HTO Ružomberok</poiTitle>
+		<latitude>49.074751</latitude>
+		<longitude>19.311347</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>136</poiId>
+		<poiTitle>HTO Skalica</poiTitle>
+		<latitude>48.844751</latitude>
+		<longitude>17.227335</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>137</poiId>
+		<poiTitle>HTO Spišská Nová Ves</poiTitle>
+		<latitude>48.956608</latitude>
+		<longitude>20.567372</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>138</poiId>
+		<poiTitle>HTO Svidník</poiTitle>
+		<latitude>49.313415</latitude>
+		<longitude>21.569767</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>139</poiId>
+		<poiTitle>HTO Topoľčany</poiTitle>
+		<latitude>48.551785</latitude>
+		<longitude>18.168404</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>140</poiId>
+		<poiTitle>HTO Trebišov</poiTitle>
+		<latitude>48.619378</latitude>
+		<longitude>21.71598</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>141</poiId>
+		<poiTitle>HTO Trstená</poiTitle>
+		<latitude>49.358354</latitude>
+		<longitude>19.601691</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>142</poiId>
+		<poiTitle>HTO Vranov nad Topľou</poiTitle>
+		<latitude>48.872577</latitude>
+		<longitude>21.707675</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>143</poiId>
+		<poiTitle>HTO Zlaté Moravce</poiTitle>
+		<latitude>48.384915</latitude>
+		<longitude>18.399417</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>144</poiId>
+		<poiTitle>HTO Zvolen</poiTitle>
+		<latitude>48.579688</latitude>
+		<longitude>19.131746</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>145</poiId>
+		<poiTitle>HTO Žiar nad Hronom</poiTitle>
+		<latitude>48.591143</latitude>
+		<longitude>18.843205</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+	<poi>
+		<poiId>146</poiId>
+		<poiTitle>Revúca</poiTitle>
+		<latitude>48.691555</latitude>
+		<longitude>20.119014</longitude>
+		<poiDescription>
+		Nie je k dispozícii popis.
+			www.google.sk</poiDescription>
+	</poi>
+</dataroot>
