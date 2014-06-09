@@ -34,7 +34,7 @@ public class OdberService implements EntityOdberService<Odber> {
 		return odberDAO.getEntites();
 	}
         
-        public Integer getKonkretny(int id) {
+        public Integer getKonkretny(String id) {
 		return odberDAO.getOdbery(id);
 	}
 

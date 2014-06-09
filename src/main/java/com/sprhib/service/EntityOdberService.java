@@ -9,7 +9,7 @@ public interface EntityOdberService<T> {
 	public T getEntity(int id);
 	public void deleteEntity(int id);
 	public List<T> getEntites();
-       public Integer getKonkretny(int id);
+       public Integer getKonkretny(String nick);
 //        public List getListJSON();
 
 }

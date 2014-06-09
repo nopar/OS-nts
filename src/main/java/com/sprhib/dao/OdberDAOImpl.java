@@ -1,13 +1,13 @@
 package com.sprhib.dao;
 
+import com.sprhib.model.Odber;
+import com.sprhib.model.Pouzivatelia;
 import java.util.List;
-
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import com.sprhib.model.Odber;
 
 @Repository
 public class OdberDAOImpl implements OdberDAO {
@@ -52,10 +52,24 @@ public class OdberDAOImpl implements OdberDAO {
 	}
         
        @SuppressWarnings("unchecked")
-    public Integer getOdbery(int id) {
-
+    public Integer getOdbery(String logNick) {
+        //String HladanyNick = "darca";
         
-        long cisloFromQuery = (long) getCurrentSession().createQuery("select count(*) from Odber where id_darca = '"+id+"'").uniqueResult();
+        
+        Session session = getCurrentSession();
+           
+           //mkyong
+           Query query = session.createQuery("from Pouzivatelia where nick = :xx ");
+           query.setParameter("xx", logNick);
+           List list = query.list();
+//           System.out.println("xx hladam darcu :" + list);
+//           System.out.println("xx jeho ID: " + list.get(0));
+           
+           Pouzivatelia pouzivatel = (Pouzivatelia) list.get(0);
+           //System.out.println("pouzuvatel :" + pouzivatel.getIdUser());
+           
+        
+        long cisloFromQuery = (long) getCurrentSession().createQuery("select count(*) from Odber where id_darca = '"+pouzivatel.getIdUser()+"'").uniqueResult();
         Integer pocet = (int) (long) cisloFromQuery;
 
         return pocet;

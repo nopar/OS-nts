@@ -64,9 +64,8 @@ public class MainController {
 	}
         
           ///pocitadlo
-        @RequestMapping(value = "/logged/profil/odber/pocitadlo/{id}", method = RequestMethod.GET)
-	public ModelAndView pocitadloOdberovPage(
-                @PathVariable Integer id ) {
+        @RequestMapping(value = "/logged/profil/odber/pocitadlo", method = RequestMethod.GET)
+	public ModelAndView pocitadloOdberovPage() {
             
             ModelAndView model = new ModelAndView();  
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -78,41 +77,38 @@ public class MainController {
 			
 		}
 //            User user = SecurityContextHolder.getContext().getAuthentication().;
+               UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().
+                    getAuthentication().getPrincipal();
+            //System.out.println(userDetails.getUsername());
+               String logNickSend = userDetails.getUsername();
             
-            if (id != null) {
-                Integer pocet = odberService.getKonkretny(id);
-                System.out.println("pocet :" + pocet);
+           
+                Integer pocet = odberService.getKonkretny(logNickSend);
+                //System.out.println("pocet :" + pocet);
                 model.addObject("pocet", pocet);
                 
                // Integer pocetNovy = pouzivateliaService.getKonkretny(id);
                // System.out.println("pocetNovy :" + pocetNovy);
-            }
             
-            //
-            UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().
-                    getAuthentication().getPrincipal();
-            System.out.println(userDetails.getUsername());
             
-
-		
 		model.setViewName("darca/pocitadlo_odberov");
 		return model;
 	}
         
 
         //rst pocitadlo odberov
-        @RequestMapping(value = "/rest/poc/{id}", method = RequestMethod.GET)
+        @RequestMapping(value = "/rest/poc/{nick}", method = RequestMethod.GET)
         @ResponseBody
 	public Integer restPocitadloOdberovPage(
-                @PathVariable Integer id ) {
+                @PathVariable String nick ) {
             
             ModelAndView model = new ModelAndView();  
            
             
-            if (id != null) {
-                Integer pocet = odberService.getKonkretny(id);
+            if (nick != null) {
+                Integer pocet = odberService.getKonkretny(nick);
                 System.out.println("pocet :" + pocet);
-                return odberService.getKonkretny(id);
+                return pocet;
               
             }
             else{

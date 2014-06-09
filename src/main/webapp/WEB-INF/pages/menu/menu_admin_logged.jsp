@@ -122,7 +122,7 @@
                         <ul class="subs">
                             <li><a href="${pageContext.request.contextPath}/logged/profil">Svoj profil</a></li>
                             <li><a href="${pageContext.request.contextPath}/logged/profil/odber/historia">Históoria odberov</a></li>
-                            <li><a href="${pageContext.request.contextPath}/logged/profil/odber/pocitadlo/2">Počítadlo odberov</a></li>
+                            <li><a href="${pageContext.request.contextPath}/logged/profil/odber/pocitadlo">Počítadlo odberov</a></li>
                             <li><a href="${pageContext.request.contextPath}/logged/profil/odber/najblizsie">Kedy môžem znova darovať</a></li>
                             <li><a href="${pageContext.request.contextPath}/logged/profil/passw_rst">Reset hesla</a></li>
                             <%--<cor:out value="${accountId}"/>--%>

@@ -117,7 +117,7 @@
                     <button onclick="location.href='${pageContext.request.contextPath}/rest/getStaty'">
                         JSON- zoznam statov
                     </button><br/>
-                    <button onclick="location.href='${pageContext.request.contextPath}/rest/poc/1'">
+                    <button onclick="location.href='${pageContext.request.contextPath}/rest/poc/nopar'">
                         pocitadlo odberov
                     </button><br/>
                 </p>
