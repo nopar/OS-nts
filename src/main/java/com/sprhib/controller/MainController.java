@@ -1,7 +1,7 @@
 package com.sprhib.controller;
 
 import com.sprhib.model.Odber;
-import com.sprhib.service.EntityService;
+import com.sprhib.service.EntityOdberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -19,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class MainController {
     
     @Autowired
-    private EntityService<Odber> odberService;
+    private EntityOdberService<Odber> odberService;
 
 //        domovska stranka pre neprihlaseneho
 	@RequestMapping(value = { "/", "/welcome**", "" }, method = RequestMethod.GET)
@@ -80,9 +80,9 @@ public class MainController {
 //            User user = SecurityContextHolder.getContext().getAuthentication().;
             
             if (id != null) {
-               // Integer pocet = odberService.getKonkretny(id);
-               // System.out.println("pocet :" + pocet);
-               // model.addObject("pocet", pocet);
+                Integer pocet = odberService.getKonkretny(id);
+                System.out.println("pocet :" + pocet);
+                model.addObject("pocet", pocet);
                 
                // Integer pocetNovy = pouzivateliaService.getKonkretny(id);
                // System.out.println("pocetNovy :" + pocetNovy);
@@ -112,10 +112,10 @@ public class MainController {
            
             
             if (id != null) {
-              //  Integer pocet = odberService.getKonkretny(id);
-               // System.out.println("pocet :" + pocet);
-               // return odberService.getKonkretny(id);
-                return 99;
+                Integer pocet = odberService.getKonkretny(id);
+                System.out.println("pocet :" + pocet);
+                return odberService.getKonkretny(id);
+              
             }
             else{
                 return 0;                

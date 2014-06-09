@@ -52,10 +52,10 @@ public class OdberDAOImpl implements OdberDAO {
 	}
         
        @SuppressWarnings("unchecked")
-    public Integer getOdbery() {
+    public Integer getOdbery(int id) {
 
         
-        long cisloFromQuery = (long) getCurrentSession().createQuery("select count(*) from Odber where id_darca = '2'").uniqueResult();
+        long cisloFromQuery = (long) getCurrentSession().createQuery("select count(*) from Odber where id_darca = '"+id+"'").uniqueResult();
         Integer pocet = (int) (long) cisloFromQuery;
 
         return pocet;

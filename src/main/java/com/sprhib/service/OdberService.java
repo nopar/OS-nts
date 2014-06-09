@@ -1,17 +1,15 @@
 package com.sprhib.service;
 
+import com.sprhib.dao.OdberDAOImpl;
+import com.sprhib.model.Odber;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.sprhib.dao.OdberDAOImpl;
-import com.sprhib.model.Odber;
-
 @Service
 @Transactional
-public class OdberService implements EntityService<Odber> {
+public class OdberService implements EntityOdberService<Odber> {
 	
 	@Autowired
 	private OdberDAOImpl odberDAO;
@@ -36,8 +34,8 @@ public class OdberService implements EntityService<Odber> {
 		return odberDAO.getEntites();
 	}
         
-        public Integer getKonkretny() {
-		return odberDAO.getOdbery();
+        public Integer getKonkretny(int id) {
+		return odberDAO.getOdbery(id);
 	}
 
   
