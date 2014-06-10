@@ -92,7 +92,7 @@
         <div class="container">
             <h1>Pridaj štát</h1>
 
-            <form:form method="POST" commandName="stat" action="${pageContext.request.contextPath}/admin/stat/add.html">
+            <form:form method="POST" commandName="stat" action="${pageContext.request.contextPath}/logged/admin/stat/add.html">
                 <table>
                     <tbody>
                         <tr>
@@ -112,7 +112,7 @@
             </form:form>
 
             <p>
-                <button onclick="location.href = '${pageContext.request.contextPath}/index.html'">
+                <button onclick="location.href = '${pageContext.request.contextPath}/'">
                     Domov
                 </button>
 

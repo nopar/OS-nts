@@ -97,7 +97,7 @@
 
                 <p>${message}</p>
 
-            <form:form method="POST" commandName="stat" action="${pageContext.request.contextPath}/admin/stat/edit/${stat.idStat}.html">
+            <form:form method="POST" commandName="stat" action="${pageContext.request.contextPath}/logged/admin/stat/edit/${stat.idStat}.html">
                 <table>
                     <tbody>
                         <tr>
@@ -122,7 +122,7 @@
             </form:form>
 
             <p>
-                <button onclick="location.href = '${pageContext.request.contextPath}/index.html'">
+                <button onclick="location.href = '${pageContext.request.contextPath}/'">
                     Domov
                 </button>
 

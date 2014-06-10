@@ -122,77 +122,29 @@
                     </button><br/>
                 </p>
 
-                        
-                        
-        <cor:choose>
-            <cor:when test="${pageContext.request.isUserInRole('ROLE_ADMIN')}">
-                <h1>admin 2</h1>
-            </cor:when>
-            <cor:otherwise>
-                <h1>ne-admin 2</h1>
-            </cor:otherwise>
-        </cor:choose>         
-                            
-        <cor:choose>
-            <cor:when test="${pageContext.request.isUserInRole('ROLE_LEKAR')}">
-                <h1>lekar</h1>
-            </cor:when>
-            <cor:otherwise>
-                <h1>ne-lekar</h1>
-            </cor:otherwise>
-        </cor:choose>
-        
-
-        <cor:choose>
-            <cor:when test="${pageContext.request.isUserInRole('ROLE_DARCA')}">
-                <h1>darca 2</h1>
-            </cor:when>
-            <cor:otherwise>
-                <h1>ne-darca 2</h1>
-            </cor:otherwise>
-        </cor:choose>
-                   
 
 
         <sec:authorize ifAnyGranted="ROLE_ADMIN">
-             <h1>ano som admin__</h1>
+            <h1>Áno som ROLA: ADMIN</h1>
         </sec:authorize>
         <sec:authorize ifNotGranted="ROLE_ADMIN">
-            <h1>nie nie som admin__</h1>
+            <h2>Nie nie som ROLA: ADMIN</h2>
         </sec:authorize>
-
 
         <sec:authorize ifAnyGranted="ROLE_LEKAR">
-            <h1>ano som lekar__</h1>
+            <h1>Áno som ROLA: LEKAR</h1>
         </sec:authorize>
         <sec:authorize ifNotGranted="ROLE_LEKAR">
-            <h1>nie nie som lekar__</h1>
+            <h2>Nie nie som ROLA: LEKAR</h2>
         </sec:authorize>
 
         <sec:authorize ifAnyGranted="ROLE_DARCA">
-            <h1>ano som darca__</h1>
+            <h1>Áno som ROLA: DARCA</h1>
         </sec:authorize>
         <sec:authorize ifNotGranted="ROLE_DARCA">
-            <h1>nie nie som darca__</h1>
+            <h2>Nie nie som ROLA: DARCA</h2>
         </sec:authorize>
 
-            
-            <sec:authorize access="hasRole('ROLE_ADMIN')">
-                <p>si Admin</p>
-            </sec:authorize>
-
-            <sec:authorize access="hasRole('ROLE_LEKAR')">
-                <p>si Lekar</p>
-            </sec:authorize>
-                
-                <sec:authorize access="hasRole('ROLE_DARCA')">
-                <p>si Darca</p>
-            </sec:authorize>
-
-
-
-                
-    
                 
                 
             </center>

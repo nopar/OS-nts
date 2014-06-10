@@ -97,7 +97,7 @@
                     
         <h1>Zoznam štátov</h1>
         
-        <button onclick="location.href = '${pageContext.request.contextPath}/admin/stat/add.html'">
+        <button onclick="location.href = '${pageContext.request.contextPath}/logged/admin/stat/add.html'">
             Pridať štát
         </button>
 
@@ -123,13 +123,13 @@
                                src="${pageContext.request.contextPath}/resources/img/edit.png"
                                alt="Edituj štát"
                                class="crud_icon"
-                               onclick="location.href = '${pageContext.request.contextPath}/admin/stat/edit/${statik.idStat}.html'"/>
+                               onclick="location.href = '${pageContext.request.contextPath}/logged/admin/stat/edit/${statik.idStat}.html'"/>
 
                         <input type="image"
                                src="${pageContext.request.contextPath}/resources/img/delete.png"
                                alt="Zmaž štát"
                                class="crud_icon"
-                               onclick="location.href ='${pageContext.request.contextPath}/stat/delete/${statik.idStat}.html'"/>
+                               onclick="location.href ='${pageContext.request.contextPath}/logged/admin/stat/delete/${statik.idStat}.html'"/>
                     </div>
                 </td>
             </tr>
@@ -139,7 +139,7 @@
     </cor:if>
 
         <p>
-            <button onclick="location.href = '${pageContext.request.contextPath}/index.html'">
+            <button onclick="location.href = '${pageContext.request.contextPath}/'">
                 Domov
             </button>
 

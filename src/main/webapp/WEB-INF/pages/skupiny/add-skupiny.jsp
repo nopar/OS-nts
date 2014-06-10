@@ -14,7 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link href="${pageContext.request.contextPath}/resources/css/layout.css" rel="stylesheet" type="text/css"/>
 
-<cor:choose>
+        <cor:choose>
             <cor:when test="${not empty pageContext.request.userPrincipal}">
                 <!--JE LOGNUTY-->
                 <cor:choose>
@@ -55,49 +55,49 @@
     <body>
         <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
-<cor:choose>
-                <cor:when test="${not empty pageContext.request.userPrincipal}">
-                    <!--JE LOGNUTY-->
-                    <cor:choose>
-                        <cor:when test="${pageContext.request.isUserInRole('ROLE_ADMIN')}">
-                            <!--je-->
-                            <jsp:include flush="true" page="/WEB-INF/pages/menu/menu_admin_logged.jsp"></jsp:include> 
-                        </cor:when>
-                        <cor:otherwise>
-                        </cor:otherwise>
-                    </cor:choose>         
+        <cor:choose>
+            <cor:when test="${not empty pageContext.request.userPrincipal}">
+                <!--JE LOGNUTY-->
+                <cor:choose>
+                    <cor:when test="${pageContext.request.isUserInRole('ROLE_ADMIN')}">
+                        <!--je-->
+                        <jsp:include flush="true" page="/WEB-INF/pages/menu/menu_admin_logged.jsp"></jsp:include> 
+                    </cor:when>
+                    <cor:otherwise>
+                    </cor:otherwise>
+                </cor:choose>         
 
-                    <cor:choose>
-                        <cor:when test="${pageContext.request.isUserInRole('ROLE_LEKAR')}">
-                            <!--je-->
-                            <jsp:include flush="true" page="/WEB-INF/pages/menu/menu_lekar_logged.jsp"></jsp:include> 
-                        </cor:when>
-                        <cor:otherwise>
-                        </cor:otherwise>
-                    </cor:choose>
+                <cor:choose>
+                    <cor:when test="${pageContext.request.isUserInRole('ROLE_LEKAR')}">
+                        <!--je-->
+                        <jsp:include flush="true" page="/WEB-INF/pages/menu/menu_lekar_logged.jsp"></jsp:include> 
+                    </cor:when>
+                    <cor:otherwise>
+                    </cor:otherwise>
+                </cor:choose>
 
 
-                    <cor:choose>
-                        <cor:when test="${pageContext.request.isUserInRole('ROLE_DARCA')}">
-                            <!--je-->
-                            <jsp:include flush="true" page="/WEB-INF/pages/menu/menu_darca_logged.jsp"></jsp:include> 
-                        </cor:when>
-                        <cor:otherwise>
-                        </cor:otherwise>
-                    </cor:choose>
+                <cor:choose>
+                    <cor:when test="${pageContext.request.isUserInRole('ROLE_DARCA')}">
+                        <!--je-->
+                        <jsp:include flush="true" page="/WEB-INF/pages/menu/menu_darca_logged.jsp"></jsp:include> 
+                    </cor:when>
+                    <cor:otherwise>
+                    </cor:otherwise>
+                </cor:choose>
 
-                </cor:when>
-                <cor:otherwise>
-                    <!--ANNONYMOUS-->
-                    <jsp:include flush="true" page="/WEB-INF/pages/menu/menu_non_logged.jsp"></jsp:include> 
-                </cor:otherwise>
-            </cor:choose>
-        
-                
-            <div class="container">
-                <h1>Pridaj skupinu</h1>
+            </cor:when>
+            <cor:otherwise>
+                <!--ANNONYMOUS-->
+                <jsp:include flush="true" page="/WEB-INF/pages/menu/menu_non_logged.jsp"></jsp:include> 
+            </cor:otherwise>
+        </cor:choose>
 
-            <form:form method="POST" commandName="skupiny" action="${pageContext.request.contextPath}/admin/skupiny/add.html">
+
+        <div class="container">
+            <h1>Pridaj skupinu</h1>
+
+            <form:form method="POST" commandName="skupiny" action="${pageContext.request.contextPath}/logged/admin/skupiny/add.html">
                 <table>
                     <tbody>
                         <tr>
@@ -117,15 +117,15 @@
             </form:form>
 
             <p>
-                <button onclick="location.href = '${pageContext.request.contextPath}/index.html'">
+                <button onclick="location.href = '${pageContext.request.contextPath}/'">
                     Domov
                 </button>
 
                 <INPUT Type="button" VALUE="Naspäť" onClick="history.go(-1);
-                    return true;"></INPUT>
+                        return true;"></INPUT>
             </p>
-                    
-                    
+
+
         </div>
     </body>
 </html>

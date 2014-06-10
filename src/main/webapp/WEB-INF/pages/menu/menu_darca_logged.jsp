@@ -128,7 +128,6 @@
                 
         <cor:if  test="${!empty message}">                
         <h3>Message : ${message}</h3>
-	<h3>Username : ${username}</h3>	
         </cor:if>
              
             <p id="x"></p>

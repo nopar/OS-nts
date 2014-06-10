@@ -106,7 +106,7 @@
             <h1>Skupiny</h1>
            
 
-            <button onclick="location.href = '${pageContext.request.contextPath}/admin/skupiny/add.html'">
+            <button onclick="location.href = '${pageContext.request.contextPath}/logged/admin/skupiny/add.html'">
                 Pridať skupinu
             </button></br></br>
 
@@ -132,14 +132,14 @@
                                                src="${pageContext.request.contextPath}/resources/img/edit.png"
                                                alt="Edituj skupinu"
                                                class="crud_icon"
-                                               onclick="location.href = '${pageContext.request.contextPath}/admin/skupiny/edit/${skupina.idGroup}.html'">
+                                               onclick="location.href = '${pageContext.request.contextPath}/logged/admin/skupiny/edit/${skupina.idGroup}.html'">
 
 
                                             <input type="image"
                                                    src="${pageContext.request.contextPath}/resources/img/delete.png"
                                                    alt="Zmaž skupinu"
                                                    class="crud_icon"
-                                                   onclick="location.href ='${pageContext.request.contextPath}/admin/skupiny/delete/${skupina.idGroup}.html'">
+                                                   onclick="location.href ='${pageContext.request.contextPath}/logged/admin/skupiny/delete/${skupina.idGroup}.html'">
                                                 </div>
 
                                                 </td>

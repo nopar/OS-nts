@@ -97,7 +97,9 @@
 
                 <p>${message}</p>
 
-            <form:form method="POST" commandName="skupiny" action="${pageContext.request.contextPath}/skupiny/edit/${stat.idStat}.html">
+            <%--<form:form method="POST" commandName="skupiny" action="${pageContext.request.contextPath}/logged/admin/skupiny/list.html">--%>
+            <form:form method="POST" commandName="skupiny" action="${pageContext.request.contextPath}/logged/admin/skupiny/edit/${skupiny.idGroup}">
+
                 <table>
                     <tbody>
                         <tr>

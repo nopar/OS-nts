@@ -72,19 +72,19 @@
                 <li><a class="hsubs"
                        id="2"
                        onclick="posun(2)"
-                       href="${pageContext.request.contextPath}/admin/skupiny/list.html">Skupiny</a>
+                       href="${pageContext.request.contextPath}/logged/admin/skupiny/list.html">Skupiny</a>
                     <ul class="subs">
-                        <li><a href="${pageContext.request.contextPath}/admin/skupiny/add.html">Pridať skupinu</a></li>
-                        <li><a href="${pageContext.request.contextPath}/admin/skupiny/list.html">Zoznam skupín</a></li>
+                        <li><a href="${pageContext.request.contextPath}/logged/admin/skupiny/add.html">Pridať skupinu</a></li>
+                        <li><a href="${pageContext.request.contextPath}/logged/admin/skupiny/list.html">Zoznam skupín</a></li>
                     </ul>
                 </li>
                 <li><a class="hsubs" 
                        id="3"
                        onclick="posun(3)"
-                       href="${pageContext.request.contextPath}/admin/stat/list.html">Štáty</a>
+                       href="${pageContext.request.contextPath}/logged/admin/stat/list.html">Štáty</a>
                     <ul class="subs">
-                        <li><a href="${pageContext.request.contextPath}/admin/stat/add.html">Pridať štát</a></li>
-                        <li><a href="${pageContext.request.contextPath}/admin/stat/list.html">Zoznam štátov</a></li>
+                        <li><a href="${pageContext.request.contextPath}/logged/admin/stat/add.html">Pridať štát</a></li>
+                        <li><a href="${pageContext.request.contextPath}/logged/admin/stat/list.html">Zoznam štátov</a></li>
                     </ul>
                 </li>
                 
@@ -145,7 +145,6 @@
                 
         <cor:if  test="${!empty message}">                
         <h3>Message : ${message}</h3>
-	<h3>Username : ${username}</h3>	
         </cor:if>
              
             <p id="x"></p>
