@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -66,76 +67,56 @@ public class RestController {
 	@RequestMapping(value = "/getMojeOdbery/{nick}",method = RequestMethod.GET)
         @ResponseBody
         public String getMojeOdbery(
-        @PathVariable String nick ){
-     
-            List<String> foo = new ArrayList();
+        @PathVariable String nick ) throws JSONException{
+
             Integer userID = odberService.getUserIDfromNick(nick);
             List<Odber> mojeOdbery = odberService.getMojeOdberyHistory(userID);
-        
-         String output = "";
-         int times = 0;
-        int size = mojeOdbery.size();
-        output = "[";
-        for(Odber i : mojeOdbery){
-            output += "{";
-                output += "\"";
-                    output += "datum";
-                output += "\"";
-                        output += ":";
-                output += "\"";
-                    output += i.getDatum().toString(); 
-                output += "\"";
-                
-            output += ",";
+            StringBuilder output = new StringBuilder();
+            int times = 0;
+            int size = mojeOdbery.size();
             
-                output += "\"";
-                    output += "objem";
-                output += "\"";
-                        output += ":";
-                output += "\"";
-                    output += i.getObjem().toString(); 
-                output += "\"";
-                
-            output += ",";
-            
-                output += "\"";
-                    output += "poznamka";
-                output += "\"";
-                        output += ":";
-                output += "\"";
-                    output += i.getPoznamka(); 
-                output += "\"";
-            output += "}";
-            
-            
-            if(size-1 != times){
-                output += ",";
-            }
-        times++;
-        }
-        output += "]";
-        
-            System.out.println("JSON MOJ :" + output);
-        
-//            JSONObject responseDetailsJson = new JSONObject();
-//            JSONArray jsonArray = new JSONArray();
-            
-         
-            
-//             // create a new Gson instance
-//            Gson gson = new Gson();
-//            // convert your list to json
-//            String jsonCartList = gson.toJson(mojeOdbery);
-//            // print your generated json
-//            System.out.println("jsonCartList: " + jsonCartList);
-//          
-     
 
-         //  System.out.println("json moj :" + foo);
-     //   String json = new Gson().toJson(foo);
-            
-       
-        
-            return output;
-        }
+            output.append("[");
+            for(Odber i : mojeOdbery){
+                output.append("{");
+                    output.append("\"");
+                        output.append("datum");
+                    output.append("\"");
+                            output.append(":");                        
+                    output.append("\"");
+                        output.append(i.getDatum().toString());
+                    output.append("\"");
+
+                output.append(",");
+
+                    output.append("\"");
+                        output.append("objem");
+                    output.append("\"");
+                            output.append(":");
+                    output.append("\"");
+                        output.append(i.getObjem().toString());
+                    output.append("\"");
+
+                output.append(",");
+
+                    output.append("\"");
+                        output.append("poznamka");
+                    output.append("\"");
+                            output.append(":");
+                    output.append("\"");
+                        output.append(i.getPoznamka());
+                    output.append("\"");
+                output.append("}");
+
+
+                if(size-1 != times){
+                    output.append(",");
+                }
+            times++;
+            }
+            output.append("]");
+
+            System.out.println("JSON MOJ :" + output);
+                return output.toString();
+            }
 }
