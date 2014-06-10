@@ -73,35 +73,45 @@ public class RestController {
             List<Odber> mojeOdbery = odberService.getMojeOdberyHistory(userID);
         
          String output = "";
+         int times = 0;
         int size = mojeOdbery.size();
         output = "[";
         for(Odber i : mojeOdbery){
             output += "{";
                 output += "\"";
-                    output += "datum";                
+                    output += "datum";
+                output += "\"";
                         output += ":";
+                output += "\"";
                     output += i.getDatum().toString(); 
                 output += "\"";
                 
             output += ",";
             
                 output += "\"";
-                    output += "objem";                
+                    output += "objem";
+                output += "\"";
                         output += ":";
+                output += "\"";
                     output += i.getObjem().toString(); 
                 output += "\"";
                 
             output += ",";
             
                 output += "\"";
-                    output += "poznamka";                
+                    output += "poznamka";
+                output += "\"";
                         output += ":";
+                output += "\"";
                     output += i.getPoznamka(); 
                 output += "\"";
             output += "}";
             
-            //System.out.println("i :" + i.getDatum() + " " + i.getObjem());
-            // output = i.getDatum() + " " + i.getObjem();        
+            
+            if(size-1 != times){
+                output += ",";
+            }
+        times++;
         }
         output += "]";
         
