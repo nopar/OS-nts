@@ -68,6 +68,7 @@ public class MainController {
 	public ModelAndView pocitadloOdberovPage() {
             
             ModelAndView model = new ModelAndView();  
+            
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
 			UserDetails userDetail = (UserDetails) auth.getPrincipal();

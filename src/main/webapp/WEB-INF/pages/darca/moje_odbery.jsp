@@ -106,7 +106,19 @@
         <div class="container">
 
             <h1>Moje odbery</h1>
-
+            
+            <!--este neprerobene-->
+            <cor:if  test="${!empty pocet}">     
+                <cor:choose>
+                    <cor:when test="${not empty pageContext.request.userPrincipal}">
+                        <!--je-->
+                        <h2 style="color: red">${username}, počet tvojých odberov je: ${pocet}</h2>
+                    </cor:when>
+                    <cor:otherwise>
+                        <h2 style="color: red">Počet tvojých odberov je: ${pocet}</h2>
+                    </cor:otherwise>
+                </cor:choose>   
+            </cor:if>   
 
 
 

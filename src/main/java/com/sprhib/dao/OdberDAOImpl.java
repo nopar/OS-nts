@@ -11,69 +11,76 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class OdberDAOImpl implements OdberDAO {
-	
-	@Autowired
-	private SessionFactory sessionFactory;
-	
-	private Session getCurrentSession() {
-		return sessionFactory.getCurrentSession();
-	}
 
-	public void addEntity(Odber odber) {
-		getCurrentSession().save(odber);
-	}
+    @Autowired
+    private SessionFactory sessionFactory;
 
-	public void updateEntity(Odber odber) {
-		Odber odberToUpdate = getEntity(odber.getIdOdber());
-                
-		odberToUpdate.setDatum(odber.getDatum());
-                odberToUpdate.setObjem(odber.getObjem());
-                odberToUpdate.setPoznamka(odber.getPoznamka());
-                odberToUpdate.setIdDarca(odber.getIdDarca());
-                odberToUpdate.setIdLekar(odber.getIdLekar());
-                
-		getCurrentSession().update(odberToUpdate);		
-	}
+    private Session getCurrentSession() {
+        return sessionFactory.getCurrentSession();
+    }
 
-	public Odber getEntity(int id) {
-		Odber odber = (Odber) getCurrentSession().get(Odber.class, id);
-		return odber;
-	}
+    public void addEntity(Odber odber) {
+        getCurrentSession().save(odber);
+    }
 
-	public void deleteEntity(int id) {
-		Odber odber = getEntity(id);
-		if (odber != null)
-			getCurrentSession().delete(odber);
-	}
+    public void updateEntity(Odber odber) {
+        Odber odberToUpdate = getEntity(odber.getIdOdber());
 
-	@SuppressWarnings("unchecked")
-	public List<Odber> getEntites() {
-		return getCurrentSession().createQuery("from Odber").list();
-	}
-        
-       @SuppressWarnings("unchecked")
-    public Integer getOdbery(String logNick) {
-        //String HladanyNick = "darca";
-        
-        
+        odberToUpdate.setDatum(odber.getDatum());
+        odberToUpdate.setObjem(odber.getObjem());
+        odberToUpdate.setPoznamka(odber.getPoznamka());
+        odberToUpdate.setIdDarca(odber.getIdDarca());
+        odberToUpdate.setIdLekar(odber.getIdLekar());
+
+        getCurrentSession().update(odberToUpdate);
+    }
+
+    public Odber getEntity(int id) {
+        Odber odber = (Odber) getCurrentSession().get(Odber.class, id);
+        return odber;
+    }
+
+    public void deleteEntity(int id) {
+        Odber odber = getEntity(id);
+        if (odber != null) {
+            getCurrentSession().delete(odber);
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Odber> getEntites() {
+        return getCurrentSession().createQuery("from Odber").list();
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+    public Integer getUserIDfromNick(String logNick) {
         Session session = getCurrentSession();
-           
-           //mkyong
-           Query query = session.createQuery("from Pouzivatelia where nick = :xx ");
-           query.setParameter("xx", logNick);
-           List list = query.list();
+        
+        //mkyong
+        Query query = session.createQuery("from Pouzivatelia where nick = :xx ");
+        query.setParameter("xx", logNick);
+        List list = query.list();
 //           System.out.println("xx hladam darcu :" + list);
 //           System.out.println("xx jeho ID: " + list.get(0));
-           
-           Pouzivatelia pouzivatel = (Pouzivatelia) list.get(0);
-           //System.out.println("pouzuvatel :" + pouzivatel.getIdUser());
-           
+        Pouzivatelia pouzivatel = (Pouzivatelia) list.get(0);
+        System.out.println("toto idem vratit: " + pouzivatel.getIdUser());
         
-        long cisloFromQuery = (long) getCurrentSession().createQuery("select count(*) from Odber where id_darca = '"+pouzivatel.getIdUser()+"'").uniqueResult();
+        return pouzivatel.getIdUser();
+    }
+    
+    
+
+    @SuppressWarnings("unchecked")
+    public Integer getOdbery(String logNick) {
+        
+        Integer UseroveID = getUserIDfromNick(logNick);       
+
+        long cisloFromQuery = (long) getCurrentSession().createQuery("select count(*) from Odber where id_darca = '" + UseroveID + "'").uniqueResult();
         Integer pocet = (int) (long) cisloFromQuery;
 
         return pocet;
-                //select count(*) from ODBER where id_darca = '2';
+        //select count(*) from ODBER where id_darca = '2';
 
     }
 
