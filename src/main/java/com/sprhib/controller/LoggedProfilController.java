@@ -2,7 +2,9 @@ package com.sprhib.controller;
 
 
 import com.sprhib.model.Odber;
+import com.sprhib.model.Stat;
 import com.sprhib.service.EntityOdberService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -38,7 +40,7 @@ public class LoggedProfilController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (!(auth instanceof AnonymousAuthenticationToken)) {
             UserDetails userDetail = (UserDetails) auth.getPrincipal();
-            System.out.println(userDetail);
+//            System.out.println(userDetail);
             model.addObject("username", userDetail.getUsername());
         }
 
@@ -47,9 +49,11 @@ public class LoggedProfilController {
 
         String logNickSend = userDetails.getUsername();
         Integer userID = odberService.getUserIDfromNick(logNickSend);
-        
-        
+       
+        List<Odber> mojeOdbery = odberService.getMojeOdberyHistory(userID);
 
+         
+        model.addObject("mojeOdbery", mojeOdbery);
         model.setViewName("darca/moje_odbery");
 
         return model;

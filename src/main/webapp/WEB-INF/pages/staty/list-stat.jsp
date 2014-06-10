@@ -111,11 +111,11 @@
             <th width="10%"></th>
         </tr>
     </thead>
-    <tbody>
+    <tbody align="center">
         <cor:forEach var="statik" items="${stats}">
             <tr>
                 <td>${statik.idStat}</td>
-                <td>${statik.stat}</td>
+                <td style="padding-left: 10px;" align="left">${statik.stat}</td>
                 <td>${statik.skratka}</td>
                 <td>
                     <div id="crud_icon_block">

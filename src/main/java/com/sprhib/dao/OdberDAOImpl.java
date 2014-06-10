@@ -3,6 +3,7 @@ package com.sprhib.dao;
 import com.sprhib.model.Odber;
 import com.sprhib.model.Pouzivatelia;
 import java.util.List;
+import java.util.Map;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -47,11 +48,6 @@ public class OdberDAOImpl implements OdberDAO {
         }
     }
 
-    @SuppressWarnings("unchecked")
-    public List<Odber> getEntites() {
-        return getCurrentSession().createQuery("from Odber").list();
-    }
-    
     
     @SuppressWarnings("unchecked")
     public Integer getUserIDfromNick(String logNick) {
@@ -64,7 +60,7 @@ public class OdberDAOImpl implements OdberDAO {
 //           System.out.println("xx hladam darcu :" + list);
 //           System.out.println("xx jeho ID: " + list.get(0));
         Pouzivatelia pouzivatel = (Pouzivatelia) list.get(0);
-        System.out.println("toto idem vratit: " + pouzivatel.getIdUser());
+//        System.out.println("toto idem vratit: " + pouzivatel.getIdUser());
         
         return pouzivatel.getIdUser();
     }
@@ -82,6 +78,25 @@ public class OdberDAOImpl implements OdberDAO {
         return pocet;
         //select count(*) from ODBER where id_darca = '2';
 
+    }
+    
+    @SuppressWarnings("unchecked")
+    public List<Odber> getEntites() {
+        return getCurrentSession().createQuery("from Odber").list();
+    }
+    
+    @SuppressWarnings("unchecked")
+    public List<Odber> getOdberHistory(Integer nickID) {
+        
+        Session session = getCurrentSession();
+        
+        Query query = session.createQuery("from Odber where id_darca = :xx ");
+        query.setParameter("xx", nickID);
+        List list = query.list();
+ 
+        String sqlo = "from Odber where id_darca = '" + nickID + "'";
+//        return getCurrentSession().createQuery(sqlo).list();
+        return list;
     }
 
 }

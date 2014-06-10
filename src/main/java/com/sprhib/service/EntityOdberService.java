@@ -11,7 +11,7 @@ public interface EntityOdberService<T> {
 	public List<T> getEntites();
        public Integer getKonkretny(String hladanyNick);
        public Integer getUserIDfromNick(String logNick);
-       //public List<T> getMojeOdbery();
+       public List<T> getMojeOdberyHistory(int nickID);
 //        public List getListJSON();
 
 }

@@ -42,5 +42,9 @@ public class OdberService implements EntityOdberService<Odber> {
     public Integer getUserIDfromNick(String logNick) {
         return odberDAO.getUserIDfromNick(logNick);
     }
+    
+    public List<Odber> getMojeOdberyHistory(int nickID){
+        return odberDAO.getOdberHistory(nickID);
+    }
 
 }

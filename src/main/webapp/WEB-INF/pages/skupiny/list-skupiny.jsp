@@ -120,11 +120,11 @@
                             <th width="10%"></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody align="center">
                         <cor:forEach var="skupina" items="${skupiny}">
                             <tr>
                                 <td>${skupina.idGroup}</td>
-                                <td>${skupina.autorita}</td>
+                                <td style="padding-left: 10px;" align="left">${skupina.autorita}</td>
                                 <td>${skupina.specialne}</td>
                                 <td>
                                     <div id="crud_icon_block">

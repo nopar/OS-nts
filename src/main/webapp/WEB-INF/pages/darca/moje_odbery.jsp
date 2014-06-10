@@ -119,6 +119,29 @@
                     </cor:otherwise>
                 </cor:choose>   
             </cor:if>   
+                        
+    <cor:if  test="${!empty mojeOdbery}">
+        <table border="1px" cellpadding="0" cellspacing="0" >
+            <thead>
+                <tr>
+                    <th width="10%">ID</th>
+                    <th width="15%">DATUM</th>
+                    <th width="10%">OBJEM</th>
+                    <th width="10%">POZNAMKA</th>
+                </tr>
+            </thead>
+            <tbody align="center">
+                <cor:forEach var="odber" items="${mojeOdbery}">
+                    <tr>
+                        <td>${odber.idOdber}</td>
+                        <td>${odber.datum}</td>
+                        <td>${odber.objem}</td>
+                        <td>${odber.poznamka}</td>
+                    </tr>
+                </cor:forEach>
+            </tbody>
+        </table>
+    </cor:if>
 
 
 

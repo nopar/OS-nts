@@ -97,27 +97,7 @@ public class MainController {
 	}
         
 
-        //rst pocitadlo odberov
-        @RequestMapping(value = "/rest/poc/{nick}", method = RequestMethod.GET)
-        @ResponseBody
-	public Integer restPocitadloOdberovPage(
-                @PathVariable String nick ) {
-            
-            ModelAndView model = new ModelAndView();  
-           
-            
-            if (nick != null) {
-                Integer pocet = odberService.getKonkretny(nick);
-                System.out.println("pocet :" + pocet);
-                return pocet;
-              
-            }
-            else{
-                return 0;                
-            }
-		
-		
-	}
+        
         
         
 //        toto tu je iba na ukazku aby som najjednoduchsie demonstroval sec
