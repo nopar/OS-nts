@@ -155,7 +155,34 @@
                             <h1></h1>
                         </cor:otherwise>
                 </cor:choose>
+                
+                            
+                            
+                            
+                            
+             
+                 <p>
+                    <button onclick="location.href='${pageContext.request.contextPath}/rest/getStaty'">
+                        JSON- zoznam statov
+                    </button><br/><br/><br/>
+                    
+                    <span>za poslednou lomkou sa pre test moze zmenit nick napr. na: </span><br/>
+                    <span>nopar / darca / lekar / sestra</span><br/>
+                    <button onclick="location.href='${pageContext.request.contextPath}/rest/poc/nopar'">
+                        JSON - pocitadlo odberov usera
+                    </button><br/><br/>
+                    
+                    <span>Tu tiez tie nicky</span><br/>
+                    <button onclick="location.href='${pageContext.request.contextPath}/rest/getMojeOdbery/nopar'">
+                        JSON historia mojych odberov
+                    </button><br/>
+                </p>
+                            
+                            
+                            
             </center>
+           
+           
            
           
            
