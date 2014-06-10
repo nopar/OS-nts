@@ -95,6 +95,9 @@
                     </ul>
                 </li>
 
+                <li><a href="${pageContext.request.contextPath}/info/kalendar-akcii">Kalendár akcií</a></li>
+
+
                 <li><a href="#">Informácie</a>
                     <ul class="subs">
                         <li><a href="${pageContext.request.contextPath}/info/priprava">Príprava na darovanie krvi</a></li>

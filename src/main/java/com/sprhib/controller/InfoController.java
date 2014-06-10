@@ -20,6 +20,16 @@ public class InfoController {
         return model;
 
     }
+    
+    @RequestMapping(value = "/kalendar-akcii", method = RequestMethod.GET)
+    public ModelAndView kalendarAkciiPage() {
+
+        ModelAndView model = new ModelAndView();
+        model.setViewName("default/kalendar_akcii");
+
+        return model;
+
+    }
 
     @RequestMapping(value = "/pred-darovanim", method = RequestMethod.GET)
     public ModelAndView predDarovanimPage() {
