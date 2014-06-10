@@ -104,7 +104,9 @@ public class RestController {
                     output.append("\"");
                             output.append(":");
                     output.append("\"");
-                        output.append(i.getPoznamka());
+                        if(i.getPoznamka() != null){
+                            output.append(i.getPoznamka());
+                        }else output.append("");
                     output.append("\"");
                 output.append("}");
 
