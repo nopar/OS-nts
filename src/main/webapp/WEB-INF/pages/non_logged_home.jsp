@@ -17,7 +17,7 @@
 
         <link rel="shortcut icon" type="image/x-icon" href="<cor:url value='/resources/img/favicon.ico'/>" />
         <link href="${pageContext.request.contextPath}/resources/css/layout.css" rel="stylesheet" type="text/css"/>
-        
+
         <cor:choose>
             <cor:when test="${not empty pageContext.request.userPrincipal}">
                 <!--JE LOGNUTY-->
@@ -57,41 +57,41 @@
         </cor:choose>
 
         <script src="${pageContext.request.contextPath}/resources/js/geoLocation.js" type="text/javascript"></script> 
-        
+
         <style>
-.error {
-        padding: 15px;
-        margin-bottom: 20px;
-        border: 1px solid transparent;
-        border-radius: 4px;
-        color: #a94442;
-        background-color: #f2dede;
-        border-color: #ebccd1;
-}
+            .error {
+                padding: 15px;
+                margin-bottom: 20px;
+                border: 1px solid transparent;
+                border-radius: 4px;
+                color: #a94442;
+                background-color: #f2dede;
+                border-color: #ebccd1;
+            }
 
-.msg {
-        padding: 15px;
-        margin-bottom: 20px;
-        border: 1px solid transparent;
-        border-radius: 4px;
-        color: #31708f;
-        background-color: #d9edf7;
-        border-color: #bce8f1;
-}
+            .msg {
+                padding: 15px;
+                margin-bottom: 20px;
+                border: 1px solid transparent;
+                border-radius: 4px;
+                color: #31708f;
+                background-color: #d9edf7;
+                border-color: #bce8f1;
+            }
 
-#login-box {
-        width: 300px;
-        padding: 20px;
-        margin: 100px auto;
-        background: #fff;
-        -webkit-border-radius: 2px;
-        -moz-border-radius: 2px;
-        border: 1px solid #000;
-        
-        background-image: url('resources/img/bg_shadow.png'), url('resources/img/bg_pattern.png');
-    background-repeat: repeat-x, repeat;
-    background-position: top center, top center;
-}
+            #login-box {
+                width: 300px;
+                padding: 20px;
+                margin: 100px auto;
+                background: #fff;
+                -webkit-border-radius: 2px;
+                -moz-border-radius: 2px;
+                border: 1px solid #000;
+
+                background-image: url('resources/img/bg_shadow.png'), url('resources/img/bg_pattern.png');
+                background-repeat: repeat-x, repeat;
+                background-position: top center, top center;
+            }
 
 
         </style>
@@ -99,102 +99,119 @@
 
     <body onload='document.loginForm.username.focus();'>
         <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
-        
-            <cor:choose>
-                <cor:when test="${not empty pageContext.request.userPrincipal}">
-                    <!--NIEKTO JE LOGNUTY-->
-                    <cor:choose>
-                        <cor:when test="${pageContext.request.isUserInRole('ROLE_ADMIN')}">
-                            <!--je-->
-                            <jsp:include flush="true" page="/WEB-INF/pages/menu/menu_admin_logged.jsp"></jsp:include> 
-                        </cor:when>
-                        <cor:otherwise>
-                        </cor:otherwise>
-                    </cor:choose>         
 
-                    <cor:choose>
-                        <cor:when test="${pageContext.request.isUserInRole('ROLE_LEKAR')}">
-                            <!--je-->
-                            <jsp:include flush="true" page="/WEB-INF/pages/menu/menu_lekar_logged.jsp"></jsp:include> 
-                        </cor:when>
-                        <cor:otherwise>
-                        </cor:otherwise>
-                    </cor:choose>
+        <cor:choose>
+            <cor:when test="${not empty pageContext.request.userPrincipal}">
+                <!--NIEKTO JE LOGNUTY-->
+                <cor:choose>
+                    <cor:when test="${pageContext.request.isUserInRole('ROLE_ADMIN')}">
+                        <!--je-->
+                        <jsp:include flush="true" page="/WEB-INF/pages/menu/menu_admin_logged.jsp"></jsp:include> 
+                    </cor:when>
+                    <cor:otherwise>
+                    </cor:otherwise>
+                </cor:choose>         
 
-
-                    <cor:choose>
-                        <cor:when test="${pageContext.request.isUserInRole('ROLE_DARCA')}">
-                            <!--je-->
-                            <jsp:include flush="true" page="/WEB-INF/pages/menu/menu_darca_logged.jsp"></jsp:include> 
-                        </cor:when>
-                        <cor:otherwise>
-                        </cor:otherwise>
-                    </cor:choose>
-
-                </cor:when>
-                <cor:otherwise>
-                    <!--ANNONYMOUS-->
-                    <jsp:include flush="true" page="/WEB-INF/pages/menu/menu_non_logged.jsp"></jsp:include> 
-                </cor:otherwise>
-            </cor:choose> 
+                <cor:choose>
+                    <cor:when test="${pageContext.request.isUserInRole('ROLE_LEKAR')}">
+                        <!--je-->
+                        <jsp:include flush="true" page="/WEB-INF/pages/menu/menu_lekar_logged.jsp"></jsp:include> 
+                    </cor:when>
+                    <cor:otherwise>
+                    </cor:otherwise>
+                </cor:choose>
 
 
+                <cor:choose>
+                    <cor:when test="${pageContext.request.isUserInRole('ROLE_DARCA')}">
+                        <!--je-->
+                        <jsp:include flush="true" page="/WEB-INF/pages/menu/menu_darca_logged.jsp"></jsp:include> 
+                    </cor:when>
+                    <cor:otherwise>
+                    </cor:otherwise>
+                </cor:choose>
 
-           
-        
-        
-       <div class="container"> 
-        
+            </cor:when>
+            <cor:otherwise>
+                <!--ANNONYMOUS-->
+                <jsp:include flush="true" page="/WEB-INF/pages/menu/menu_non_logged.jsp"></jsp:include> 
+            </cor:otherwise>
+        </cor:choose> 
+
+
+
+
+
+
+        <div class="container"> 
+
             <center>
-                                
+
                 <cor:choose>
                     <cor:when test="${pageContext.request.userPrincipal.name == null}">
                         <h1>Prosím prihláste sa.</h1>
                     </cor:when>
-                        <cor:otherwise>
-                            <h1></h1>
-                        </cor:otherwise>
+                    <cor:otherwise>
+                        <h1></h1>
+                    </cor:otherwise>
                 </cor:choose>
-                
-                            
-                            
-                            
-                            
-             
-                 <p>
-                    <button onclick="location.href='${pageContext.request.contextPath}/rest/getStaty'">
-                        JSON- zoznam statov
-                    </button><br/><br/><br/>
-                    
-                    <span>za poslednou lomkou sa pre test moze zmenit nick napr. na: </span><br/>
-                    <span>nopar / darca / lekar / sestra</span><br/>
-                    <button onclick="location.href='${pageContext.request.contextPath}/rest/poc/nopar'">
-                        JSON - pocitadlo odberov usera
-                    </button><br/><br/>
-                    
-                    <span>Tu tiez tie nicky</span><br/>
-                    <button onclick="location.href='${pageContext.request.contextPath}/rest/getMojeOdbery/nopar'">
-                        JSON historia mojych odberov
-                    </button><br/>
-                    
-                    <span></span><br/>
-                    <button onclick="location.href='${pageContext.request.contextPath}/rest/kalendar'">
-                        JSON Kalendar akcii od dnes++
-                    </button><br/>
-                </p>
-                            
-                            
-                            
-            </center>
-           
-           
-           
-          
-           
+            
+                <p>
+                    <table border="1px" cellpadding="0" cellspacing="0" >
+                        <thead>
+                            <tr>
+                                REST EXAMPLE
+                            </tr>
+                        </thead>
+                        <tbody align="left">                
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <button style="width: 100%" onclick="location.href = '${pageContext.request.contextPath}/rest/getStaty'">
+                                        JSON- zoznam statov
+                                    </button>
+                                </td>
+                            </tr>
 
-        <p id="x"></p> 
-        <div id="mapholder"></div>
-        
+                            <tr>
+                                <td>za poslednou lomkou sa pre test moze zmenit nick napr. na: <br/>nopar / darca / lekar / sestra</td>
+                                <td>
+                                    <button style="width: 100%" onclick="location.href = '${pageContext.request.contextPath}/rest/poc/nopar'">
+                                        JSON - pocitadlo odberov usera
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Tu tiez tie nicky</td>
+                                <td>
+                                    <button style="width: 100%" onclick="location.href = '${pageContext.request.contextPath}/rest/getMojeOdbery/nopar'">
+                                        JSON historia mojych odberov
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <button style="width: 100%" onclick="location.href = '${pageContext.request.contextPath}/rest/kalendar'">
+                                        JSON Kalendar akcii od dnes++
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </p>
+            </center>
+
+
+
+
+
+
+            <p id="x"></p> 
+            <div id="mapholder"></div>
+
         </div>
     </body>
 </html>

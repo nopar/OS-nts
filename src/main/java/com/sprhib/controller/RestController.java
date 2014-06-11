@@ -6,9 +6,7 @@ import com.sprhib.model.VyjazdovyOdber;
 import com.sprhib.service.EntityOdberService;
 import com.sprhib.service.EntityService;
 import com.sprhib.service.EntityVyjazdovyOdberService;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 import org.json.JSONException;
@@ -147,19 +145,15 @@ public class RestController {
 
         
             System.out.println("Size of buffer: " + output.length());
-            byte[] src = output.toString().getBytes("UTF-8");
             StringBuilder res;
             
             long startTime = System.currentTimeMillis();
-           // res = testStringConvert(src);
             System.out.println("Conversion using String time (msec): " + (System.currentTimeMillis() - startTime));
             if (!output.toString().equals(output.toString())) {
                 System.err.println("Conversion error");
             }
         
-        System.out.println("Hello: " + output.toString());
-        
-           // System.out.println("JSON KALENDAT MOJ :" + );
+            System.out.println("JSON KALENDAT MOJ :" + output.toString());
                 return output.toString();
             }
         

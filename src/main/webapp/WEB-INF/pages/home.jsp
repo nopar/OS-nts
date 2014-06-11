@@ -110,52 +110,82 @@
                             
                 
         
-            <h1>Home page</h1>
+        <h1>Home page</h1>
 
-            <center>
-                <p>
-                    <button onclick="location.href='${pageContext.request.contextPath}/rest/getStaty'">
-                        JSON- zoznam statov
-                    </button><br/>
-                    
-                    <span>za poslednou lomkou sa pre test moze zmenit nick napr. na: </span><br/>
-                    <span>nopar / darca / lekar / sestra</span><br/>
-                    <button onclick="location.href='${pageContext.request.contextPath}/rest/poc/nopar'">
-                        JSON - pocitadlo odberov usera
-                    </button><br/><br/>
-                    
-                    <span>Tu tiez tie nicky</span><br/>
-                    <button onclick="location.href='${pageContext.request.contextPath}/rest/getMojeOdbery/nopar'">
-                        JSON historia mojych odberov
-                    </button><br/>
-                </p>
+        <center>
+            <p>
+                <table border="1px" cellpadding="0" cellspacing="0" >
+                    <thead>
+                        <tr>
+                            REST EXAMPLE
+                        </tr>
+                    </thead>
+                    <tbody align="left">                
+                        <tr>
+                            <td></td>
+                            <td>
+                                <button style="width: 100%" onclick="location.href = '${pageContext.request.contextPath}/rest/getStaty'">
+                                    JSON- zoznam statov
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>za poslednou lomkou sa pre test moze zmenit nick napr. na: <br/>nopar / darca / lekar / sestra</td>
+                            <td>
+                                <button style="width: 100%" onclick="location.href = '${pageContext.request.contextPath}/rest/poc/nopar'">
+                                    JSON - pocitadlo odberov usera
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Tu tiez tie nicky</td>
+                            <td>
+                                <button style="width: 100%" onclick="location.href = '${pageContext.request.contextPath}/rest/getMojeOdbery/nopar'">
+                                    JSON historia mojych odberov
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td>
+                                <button style="width: 100%" onclick="location.href = '${pageContext.request.contextPath}/rest/kalendar'">
+                                    JSON Kalendar akcii od dnes++
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </p>
 
 
 
-        <sec:authorize ifAnyGranted="ROLE_ADMIN">
-            <h1>Áno som ROLA: ADMIN</h1>
-        </sec:authorize>
-        <sec:authorize ifNotGranted="ROLE_ADMIN">
-            <h2>Nie nie som ROLA: ADMIN</h2>
-        </sec:authorize>
+    <sec:authorize ifAnyGranted="ROLE_ADMIN">
+        <h1>Áno som ROLA: ADMIN</h1>
+    </sec:authorize>
+    <sec:authorize ifNotGranted="ROLE_ADMIN">
+        <h2>Nie nie som ROLA: ADMIN</h2>
+    </sec:authorize>
 
-        <sec:authorize ifAnyGranted="ROLE_LEKAR">
-            <h1>Áno som ROLA: LEKAR</h1>
-        </sec:authorize>
-        <sec:authorize ifNotGranted="ROLE_LEKAR">
-            <h2>Nie nie som ROLA: LEKAR</h2>
-        </sec:authorize>
+    <sec:authorize ifAnyGranted="ROLE_LEKAR">
+        <h1>Áno som ROLA: LEKAR</h1>
+    </sec:authorize>
+    <sec:authorize ifNotGranted="ROLE_LEKAR">
+        <h2>Nie nie som ROLA: LEKAR</h2>
+    </sec:authorize>
 
-        <sec:authorize ifAnyGranted="ROLE_DARCA">
-            <h1>Áno som ROLA: DARCA</h1>
-        </sec:authorize>
-        <sec:authorize ifNotGranted="ROLE_DARCA">
-            <h2>Nie nie som ROLA: DARCA</h2>
-        </sec:authorize>
+    <sec:authorize ifAnyGranted="ROLE_DARCA">
+        <h1>Áno som ROLA: DARCA</h1>
+    </sec:authorize>
+    <sec:authorize ifNotGranted="ROLE_DARCA">
+        <h2>Nie nie som ROLA: DARCA</h2>
+    </sec:authorize>
 
-                
-                
-            </center>
+
+
+        </center>
 
             <p id="x"></p>
                 
