@@ -8,6 +8,8 @@
 <%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="cor" %>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
 <%@page session="true"%>
 
 <!DOCTYPE html>
@@ -18,6 +20,12 @@
 
         <link rel="icon" href="${pageContext.request.contextPath}/resources/favicon.ico"/>
         <link href="${pageContext.request.contextPath}/resources/css/layout.css" rel="stylesheet" type="text/css"/>
+        
+        <style>
+            th{
+                color: #00B4FF;
+            }
+        </style>
 
         <cor:choose>
             <cor:when test="${not empty pageContext.request.userPrincipal}">
@@ -106,102 +114,113 @@
         <div class="container">
 
             <h1>Môj profil</h1>
+            <div id="tmp"></div>
+            
+
+
             <cor:set var="count" value="${0}"/>
             
             <script>
                 function zmena(cislo){
                     
-                    if(cislo == 1) {
-                        if( document.getElementById("odber").checked ==  "checked"){
-                            document.getElementById("odber_txt").innerHTML = "+";
+                    if(cislo == 1){
+                        if(document.getElementById("mojeOdbery_txt").value == "true"){
+                            document.getElementById("mojeOdbery_txt").value = "false";
                         }else{
-                             document.getElementById("odber_txt").innerHTML = "-";
+                            document.getElementById("mojeOdbery_txt").value = "true";
                         }
                     }
                     
-                    if(cislo == 2) {document.getElementById("vyjazd").src = "bg/girl.png";}
-                    if(cislo == 3) {document.getElementById("urgent").src = "bg/boy.png";}
-                    if(cislo == 4) {document.getElementById("kraj").src = "bg/girl.png";}
-                    
-                    if(document.getElementById("ober_butt").checked){
-                      element.setAttribute('name', 'zapnuté');
-                    }else{
-                        element.setAttribute('name', 'vypnuté');
+                    if(cislo == 2){
+                        if(document.getElementById("vyjazdoveOdbery_txt").value == "true"){
+                            document.getElementById("vyjazdoveOdbery_txt").value = "false";
+                        }else{
+                            document.getElementById("vyjazdoveOdbery_txt").value = "true";
+                        }
                     }
-                }
-                
-                
+                    
+                    if(cislo == 3){
+                        if(document.getElementById("urgentnePripady_txt").value == "true"){
+                            document.getElementById("urgentnePripady_txt").value = "false";
+                        }else{
+                            document.getElementById("urgentnePripady_txt").value = "true";
+                        }
+                    }
+                    
+                    if(cislo == 4){
+                        if(document.getElementById("kraj_txt").value == "true"){
+                            document.getElementById("kraj_txt").value = "false";
+                        }else{
+                            document.getElementById("kraj_txt").value = "true";
+                        }
+                    }
+                }                
+                //idNastavenia object
             </script>
             
             
-            
-            <cor:if  test="${!empty list}">
-                <table border="1px" cellpadding="0" cellspacing="0" >
+            <cor:if  test="${!empty object}">
+            <form:form method="POST" commandName="object" action="${pageContext.request.contextPath}/logged/profil/${object.idNastavenie}">
+                <table  border="1px" cellpadding="0" cellspacing="0" >
                     <thead>
                         <tr>
                             <th width="50%">NASTAVENIE</th>
                             <th width="20%">ZAPNUTE / VYPNUTE</th>
-                          
+
                         </tr>
                     </thead>
                     <tbody align="center">
-                       
-                                <tr>
-                                    <td style="padding-left: 15px;" align="left">Kedy môžem darovať:</td>
-                                    <td>
-                                        <input type="checkbox" name="odber" value="${odber}" 
-                                               <cor:if  test="${odber == 'zapnuté'}">checked="checked"</cor:if>
-                                               <cor:if  test="${odber == 'vypnuté'}"></cor:if>
-                                               >
-                                        <p id="odber_txt"></p>
-                                    </td>
-                                </tr>
-
-                                
-                                <tr>
-                                    <td style="padding-left: 15px;" align="left">Výjazdové odbery:</td>
-                                    <td>
-                                    <input type="checkbox" name="vyjazd" value="${vyjazd}" 
-                                           <cor:if  test="${vyjazd == 'zapnuté'}">checked="checked"</cor:if>
-                                               <cor:if  test="${vyjazd == 'vypnuté'}"></cor:if>
-                                               >
-                                    </td>
-                                </tr>
-
-                                
-                                <tr>
-                                    <td style="padding-left: 15px;" align="left">Urgentné prípady:</td>
-                                    <td>
-                                        <input type="checkbox" name="urgent" value="${urgent}" 
-                                               <cor:if  test="${urgent == 'zapnuté'}">checked="checked"</cor:if>
-                                               <cor:if  test="${urgent == 'vypnuté'}"></cor:if>
-                                               >
-                                    </td>
-                                    
-                                </tr>
-
-                                
-                                <tr>
-                                    <td style="padding-left: 15px;" align="left">Len z môjho kraja:</td>
-                                    <td>
-                                        <input type="checkbox" name="kraj" value="${kraj}" 
-                                               <cor:if  test="${kraj == 'zapnuté'}">checked="checked"</cor:if>
-                                               <cor:if  test="${kraj == 'vypnuté'}"></cor:if>
-                                               >
-                                    
-                                    </td>
-                                    
-                                </tr>
+                        <tr>
                             
+                            <td><form:input type="hidden" path="idNastavenie" /></td>
+                        </tr>
+
+                        <tr>
+                            <td style="padding-left: 15px;" align="left">Kedy môžem darovať:</td>
+                            <td><form:input type="hidden" path="mojeOdbery" id="mojeOdbery_txt"/>
+                                <input type="checkbox" name="odber" value="${object.mojeOdbery}" onchange="zmena('1')"
+                                   <cor:if  test="${object.mojeOdbery == 'true'}">checked="checked"</cor:if>
+                                   <cor:if  test="${object.mojeOdbery == 'false'}"></cor:if>
+                                       >
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 15px;" align="left">Výjazdové odbery:</td>
+                            <td><form:input type="hidden" path="vyjazdoveOdbery" id="vyjazdoveOdbery_txt"/>
+                            <input type="checkbox" name="odber" value="${object.vyjazdoveOdbery}"  onchange="zmena('2')"
+                                   <cor:if  test="${object.vyjazdoveOdbery == 'true'}">checked="checked"</cor:if>
+                                   <cor:if  test="${object.vyjazdoveOdbery == 'false'}"></cor:if>
+                                       >
+                        </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 15px;" align="left">Urgentné prípady:</td>
+                            <td><form:input type="hidden" path="urgentnePripady" id="urgentnePripady_txt"/>
+                            <input type="checkbox" name="odber" value="${object.urgentnePripady}"  onchange="zmena('3')"
+                                   <cor:if  test="${object.urgentnePripady == 'true'}">checked="checked"</cor:if>
+                                   <cor:if  test="${object.urgentnePripady == 'false'}"></cor:if>
+                                       >
+                        </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 15px;" align="left">Len z môjho kraja:</td>
+                            <td><form:input type="hidden" path="kraj" id="kraj_txt"/>
+                            <input type="checkbox" name="kraj" value="${object.kraj}"  onchange="zmena('4')"
+                                   <cor:if  test="${object.kraj == 'true'}">checked="checked"</cor:if>
+                                   <cor:if  test="${object.kraj == 'false'}"></cor:if>
+                                       >
+                        </td>
+                        </tr>
+                        <tr>
+                            <td><input type="submit" value="Nastav" /></td>
+                            <td></td>
+                        </tr>
                     </tbody>
                 </table>
+            </form:form>
             </cor:if>
             
             
-
-
-
-
             <p id="x"></p>                
             <br>
             <div id="mapholder"></div>

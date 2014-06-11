@@ -1,22 +1,22 @@
 package com.sprhib.controller;
 
 
-import com.sprhib.model.Kraj;
 import com.sprhib.model.Nastavenie;
 import com.sprhib.model.Odber;
 import com.sprhib.model.Pouzivatelia;
-import com.sprhib.model.VyjazdovyOdber;
+import com.sprhib.service.EntityNastavenieService;
 import com.sprhib.service.EntityOdberService;
 import com.sprhib.service.EntityService;
-import com.sprhib.service.EntityNastavenieService;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -54,6 +54,7 @@ public class LoggedProfilController {
 
         String logNickSend = userDetails.getUsername();
         Integer userID = odberService.getUserIDfromNick(logNickSend);
+        
         List<String> menakrajov = new ArrayList<String>();
         List<String> list = new ArrayList<String>();
   
@@ -63,6 +64,10 @@ public class LoggedProfilController {
         for(Pouzivatelia s : mojeNastavenie){
                 idNastavenia = s.getIdNastavenie().getIdNastavenie();
             }
+        model.addObject("idNastavenia", idNastavenia);
+        
+        Nastavenie object = nastavenieService.getEntity(idNastavenia);
+        model.addObject("object", object);
         
         List<Nastavenie> konkretneNastavenie = nastavenieService.getMojeSetings(idNastavenia);
         for (Nastavenie s : konkretneNastavenie) {
@@ -114,6 +119,23 @@ public class LoggedProfilController {
         model.addObject("list", list); 
         
         //<---
+        model.setViewName("default/profil");
+        return model;
+    }
+    
+    @RequestMapping(value = { "/{id}", "{id}" }, method = RequestMethod.POST)
+    public ModelAndView profilAddingPage(
+            @ModelAttribute Nastavenie object,
+            @PathVariable Integer id) {
+        
+        ModelAndView model = new ModelAndView();
+        
+        nastavenieService.updateEntity(object);
+        List<Nastavenie> stats = nastavenieService.getEntites();
+        
+        model.addObject("message", "Nastavenia zmenené!"); 
+        
+      
         model.setViewName("default/profil");
         return model;
     }
