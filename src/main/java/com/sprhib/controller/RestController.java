@@ -1,23 +1,14 @@
 package com.sprhib.controller;
 
-import com.google.gson.Gson;
 import com.sprhib.model.Odber;
 import com.sprhib.model.Stat;
+import com.sprhib.model.VyjazdovyOdber;
 import com.sprhib.service.EntityOdberService;
 import com.sprhib.service.EntityService;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,6 +25,8 @@ public class RestController {
         
         @Autowired
 	private EntityOdberService<Odber> odberService;
+        
+        
                    
 	
 	@RequestMapping(value = "/getStaty",method = RequestMethod.GET)
@@ -60,6 +53,7 @@ public class RestController {
             else{
                 return 0;                
             }
+          
 	}
 
            

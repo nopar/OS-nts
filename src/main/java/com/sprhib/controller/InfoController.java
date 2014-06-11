@@ -1,6 +1,10 @@
 package com.sprhib.controller;
 
 
+import com.sprhib.model.VyjazdovyOdber;
+import com.sprhib.service.EntityService;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,6 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping(value = "/info")
 public class InfoController {
+    
+    @Autowired
+    private EntityService<VyjazdovyOdber> vyjazdovyOdberService;
 
     @RequestMapping(value = "/priprava", method = RequestMethod.GET)
     public ModelAndView pripravaPage() {
@@ -23,10 +30,17 @@ public class InfoController {
     
     @RequestMapping(value = "/kalendar-akcii", method = RequestMethod.GET)
     public ModelAndView kalendarAkciiPage() {
-
         ModelAndView model = new ModelAndView();
+        
+         List<VyjazdovyOdber> akcie = vyjazdovyOdberService.getEntites();
+            for(VyjazdovyOdber i : akcie){
+                System.out.println("kalendar akcii name :" + i.getNazov());
+                
+                
+                model.addObject("akcie", akcie);
+            }
+        
         model.setViewName("default/kalendar_akcii");
-
         return model;
 
     }
