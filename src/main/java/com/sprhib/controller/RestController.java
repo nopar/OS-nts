@@ -28,21 +28,9 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value="/rest")
 public class RestController {
     
-//     @Autowired
-//    private SessionFactory sessionFactory;
-//
-//    private Session getCurrentSession() {
-//        return sessionFactory.getCurrentSession();
-//    }
-	
+
     @Autowired
     private EntityService<Stat> statService;
-    
-    @Autowired
-    private EntityService<Mesto> mestoService;
-    
-    @Autowired
-    private EntityService<Kraj> krajService;
 
     @Autowired
     private EntityOdberService<Odber> odberService;
@@ -59,20 +47,10 @@ public class RestController {
             int times = 0;
             int size = akcie.size();
             
-            // Session session = getCurrentSession();
-        
-       
- 
-        //return list;
             
-            
-
             output.append("[");
             for(VyjazdovyOdber i : akcie){
                 Kraj krajID = i.getIdKraj();
-                
-
-              //  System.out.println("kraj id :" + krajID.getKraj());
                 
                 output.append("{");
                     //NAZOV
