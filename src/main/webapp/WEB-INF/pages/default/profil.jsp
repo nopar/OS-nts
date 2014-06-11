@@ -106,7 +106,32 @@
         <div class="container">
 
             <h1>Môj profil</h1>
+            <cor:set var="count" value="${0}"/>
             
+            <script>
+                function zmena(cislo){
+                    
+                    if(cislo == 1) {
+                        if( document.getElementById("odber").checked ==  "checked"){
+                            document.getElementById("odber_txt").innerHTML = "+";
+                        }else{
+                             document.getElementById("odber_txt").innerHTML = "-";
+                        }
+                    }
+                    
+                    if(cislo == 2) {document.getElementById("vyjazd").src = "bg/girl.png";}
+                    if(cislo == 3) {document.getElementById("urgent").src = "bg/boy.png";}
+                    if(cislo == 4) {document.getElementById("kraj").src = "bg/girl.png";}
+                    
+                    if(document.getElementById("ober_butt").checked){
+                      element.setAttribute('name', 'zapnuté');
+                    }else{
+                        element.setAttribute('name', 'vypnuté');
+                    }
+                }
+                
+                
+            </script>
             
             
             
@@ -120,28 +145,54 @@
                         </tr>
                     </thead>
                     <tbody align="center">
-                        <cor:forEach items="${list}" varStatus="i">
-                            <cor:set var="li" value="${list[i.index]}"/>
-                            <tr>
-                                <td style="padding-left: 15px;" align="left">Kedy môžem darovať:</td>
-                                <td>${li}</td>
-                            </tr>
+                       
+                                <tr>
+                                    <td style="padding-left: 15px;" align="left">Kedy môžem darovať:</td>
+                                    <td>
+                                        <input type="checkbox" name="odber" value="${odber}" 
+                                               <cor:if  test="${odber == 'zapnuté'}">checked="checked"</cor:if>
+                                               <cor:if  test="${odber == 'vypnuté'}"></cor:if>
+                                               >
+                                        <p id="odber_txt"></p>
+                                    </td>
+                                </tr>
+
+                                
+                                <tr>
+                                    <td style="padding-left: 15px;" align="left">Výjazdové odbery:</td>
+                                    <td>
+                                    <input type="checkbox" name="vyjazd" value="${vyjazd}" 
+                                           <cor:if  test="${vyjazd == 'zapnuté'}">checked="checked"</cor:if>
+                                               <cor:if  test="${vyjazd == 'vypnuté'}"></cor:if>
+                                               >
+                                    </td>
+                                </tr>
+
+                                
+                                <tr>
+                                    <td style="padding-left: 15px;" align="left">Urgentné prípady:</td>
+                                    <td>
+                                        <input type="checkbox" name="urgent" value="${urgent}" 
+                                               <cor:if  test="${urgent == 'zapnuté'}">checked="checked"</cor:if>
+                                               <cor:if  test="${urgent == 'vypnuté'}"></cor:if>
+                                               >
+                                    </td>
+                                    
+                                </tr>
+
+                                
+                                <tr>
+                                    <td style="padding-left: 15px;" align="left">Len z môjho kraja:</td>
+                                    <td>
+                                        <input type="checkbox" name="kraj" value="${kraj}" 
+                                               <cor:if  test="${kraj == 'zapnuté'}">checked="checked"</cor:if>
+                                               <cor:if  test="${kraj == 'vypnuté'}"></cor:if>
+                                               >
+                                    
+                                    </td>
+                                    
+                                </tr>
                             
-                            <tr>
-                                <td style="padding-left: 15px;" align="left">Výjazdové odbery:</td>
-                                <td>${li}</td>
-                            </tr>
-                            
-                            <tr>
-                                <td style="padding-left: 15px;" align="left">Urgentné prípady:</td>
-                                <td>${li}</td>
-                            </tr>
-                            
-                            <tr>
-                                <td style="padding-left: 15px;" align="left">Len z môjho kraja:</td>
-                                <td>${li}</td>
-                            </tr>
-                        </cor:forEach>  
                     </tbody>
                 </table>
             </cor:if>

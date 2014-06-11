@@ -54,7 +54,6 @@ public class LoggedProfilController {
 
         String logNickSend = userDetails.getUsername();
         Integer userID = odberService.getUserIDfromNick(logNickSend);
-        //String kraj_s, odber_s, urgent_s, vyjazd_s = "";
         List<String> menakrajov = new ArrayList<String>();
         List<String> list = new ArrayList<String>();
   
@@ -71,27 +70,39 @@ public class LoggedProfilController {
 
             if (s.getMojeOdbery() == true) {
                 menakrajov.add("zapnuté");
+                model.addObject("odber", "zapnuté");
             } else {
                 menakrajov.add("vypnuté");
+                model.addObject("odber", "vypnuté");
             }
+            
             
             if (s.getVyjazdoveOdbery() == true) {
                 menakrajov.add("zapnuté");
+                model.addObject("vyjazd", "zapnuté");
             } else {
                 menakrajov.add("vypnuté");
+                model.addObject("vyjazd", "vypnuté");
             }
-
+            
+        
             if (s.getUrgentnePripady() == true) {
                 menakrajov.add("zapnuté");
+                model.addObject("urgent", "zapnuté");
             } else {
                 menakrajov.add("vypnuté");
+                model.addObject("urgent", "vypnuté");
             }
-
+            
+            
            if (s.getKraj() == true) {
                 menakrajov.add("zapnuté");
+                model.addObject("kraj", "zapnuté");
             } else {
                 menakrajov.add("vypnuté");
+                model.addObject("kraj", "vypnuté");
             }
+           
         }
         
       
@@ -100,50 +111,9 @@ public class LoggedProfilController {
                 list.add(s);
                 System.out.println("PATO :: :" + s.toString());
             }
-        
+        model.addObject("list", list); 
         
         //<---
-        
-        //List<Pouzivatelia> pouzivatel = pouzivateliaService.get
-        /*
-        if (mojeNastavenie.getKraj() == true) {
-            menakrajov.add("zapnuté");
-        } else {
-            menakrajov.add("vypnuté");
-        }
-
-        if (mojeNastavenie.getMojeOdbery() == true) {
-            menakrajov.add("zapnuté");
-        } else {
-            menakrajov.add("vypnuté");
-        }
-
-        if (mojeNastavenie.getUrgentnePripady() == true) {
-            menakrajov.add("zapnuté");
-        } else {
-            menakrajov.add("vypnuté");
-        }
-
-        if (mojeNastavenie.getVyjazdoveOdbery() == true) {
-            menakrajov.add("zapnuté");
-        } else {
-            menakrajov.add("vypnuté");
-        }
-
-
-            System.out.println("- :" + mojeNastavenie.getKraj());
-            System.out.println("- :" + mojeNastavenie.getMojeOdbery());
-            System.out.println("- :" + mojeNastavenie.getUrgentnePripady());
-            System.out.println("- :" + mojeNastavenie.getVyjazdoveOdbery());
-        
-            
-            for(String s : menakrajov){
-                list.add(s);
-                System.out.println("s :" + s.toString());
-            }
-        */
-        
-        model.addObject("list", list); 
         model.setViewName("default/profil");
         return model;
     }
