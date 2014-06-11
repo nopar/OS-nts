@@ -5,6 +5,11 @@ import com.sprhib.model.Stat;
 import com.sprhib.model.VyjazdovyOdber;
 import com.sprhib.service.EntityOdberService;
 import com.sprhib.service.EntityService;
+import com.sprhib.service.EntityVyjazdovyOdberService;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +25,143 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value="/rest")
 public class RestController {
 	
-	@Autowired
-	private EntityService<Stat> statService;
+    @Autowired
+    private EntityService<Stat> statService;
+
+    @Autowired
+    private EntityOdberService<Odber> odberService;
+
+    @Autowired
+    private EntityVyjazdovyOdberService<VyjazdovyOdber> vyjazdovyOdberService;
+
+        @RequestMapping(value = "/kalendar",method = RequestMethod.GET)
+        @ResponseBody
+        public String getRestkalendarAkcii() throws JSONException, UnsupportedEncodingException, IOException{
+
+            List<VyjazdovyOdber> akcie = vyjazdovyOdberService.getVyjazdyOdDnes();
+            StringBuilder output = new StringBuilder();
+            int times = 0;
+            int size = akcie.size();
+            
+
+            output.append("[");
+            for(VyjazdovyOdber i : akcie){
+                output.append("{");
+                    //NAZOV
+                    output.append("\"");
+                        output.append("nazov");
+                    output.append("\"");
+                            output.append(":");                        
+                    output.append("\"");
+                        if(i.getNazov() != null){
+                            output.append(i.getNazov());
+                        }else output.append("");
+                    output.append("\"");
+
+                output.append(",");
+
+                    //DATUM
+                    output.append("\"");
+                        output.append("objem");
+                    output.append("\"");
+                            output.append(":");
+                    output.append("\"");
+                        if(i.getDatum().toString()!= null){
+                            output.append(i.getDatum().toString());
+                        }else output.append("");
+                    output.append("\"");
+
+                output.append(",");
+
+                    //ADRESA
+                    output.append("\"");
+                        output.append("poznamka");
+                    output.append("\"");
+                            output.append(":");
+                    output.append("\"");
+                        if(i.getAdresa()!= null){
+                            output.append(i.getAdresa());
+                        }else output.append("");
+                    output.append("\"");
+                    
+                output.append(",");
+                
+                    //ZACIATOK
+                    output.append("\"");
+                        output.append("datum");
+                    output.append("\"");
+                            output.append(":");                        
+                    output.append("\"");
+                        if(i.getCasZaciatku().toString()!= null){
+                            output.append(i.getCasZaciatku().toString());
+                        }else output.append("");
+                    output.append("\"");
+
+                output.append(",");
+
+                    //KONIEC
+                    output.append("\"");
+                        output.append("datum");
+                    output.append("\"");
+                            output.append(":");                        
+                    output.append("\"");
+                        if(i.getCasKonca().toString()!= null){
+                            output.append(i.getCasKonca().toString());
+                        }else output.append("");
+                    output.append("\"");
+
+                output.append(",");
+
+                    //POPIS
+                    output.append("\"");
+                        output.append("datum");
+                    output.append("\"");
+                            output.append(":");                        
+                    output.append("\"");
+                        if(i.getBlizsiPopis()!= null){
+                            output.append(i.getBlizsiPopis());
+                        }else output.append("");
+                    output.append("\"");
+
+                output.append(",");
+
+                    //KRAJ
+                    output.append("\"");
+                        output.append("datum");
+                    output.append("\"");
+                            output.append(":");                        
+                    output.append("\"");
+                        if(i.getIdKraj().toString()!= null){
+                            output.append(i.getIdKraj().toString());
+                        }else output.append("");
+                    output.append("\"");
+               
+                output.append("}");
+
+                if(size-1 != times){
+                    output.append(",");
+                }
+            times++;
+            }
+            output.append("]");
+
         
-        @Autowired
-	private EntityOdberService<Odber> odberService;
+            System.out.println("Size of buffer: " + output.length());
+            byte[] src = output.toString().getBytes("UTF-8");
+            StringBuilder res;
+            
+            long startTime = System.currentTimeMillis();
+           // res = testStringConvert(src);
+            System.out.println("Conversion using String time (msec): " + (System.currentTimeMillis() - startTime));
+            if (!output.toString().equals(output.toString())) {
+                System.err.println("Conversion error");
+            }
+        
+        System.out.println("Hello: " + output.toString());
+        
+           // System.out.println("JSON KALENDAT MOJ :" + );
+                return output.toString();
+            }
         
         
                    

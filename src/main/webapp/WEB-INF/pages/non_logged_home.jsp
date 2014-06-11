@@ -176,6 +176,11 @@
                     <button onclick="location.href='${pageContext.request.contextPath}/rest/getMojeOdbery/nopar'">
                         JSON historia mojych odberov
                     </button><br/>
+                    
+                    <span></span><br/>
+                    <button onclick="location.href='${pageContext.request.contextPath}/rest/kalendar'">
+                        JSON Kalendar akcii od dnes++
+                    </button><br/>
                 </p>
                             
                             
