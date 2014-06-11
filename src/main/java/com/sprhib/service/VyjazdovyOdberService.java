@@ -11,7 +11,7 @@ import com.sprhib.model.VyjazdovyOdber;
 
 @Service
 @Transactional
-public class VyjazdovyOdberService implements EntityService<VyjazdovyOdber> {
+public class VyjazdovyOdberService implements EntityVyjazdovyOdberService<VyjazdovyOdber> {
 	
 	@Autowired
 	private VyjazdovyOdberDAO vyjazdovyOdberDAO;
@@ -39,6 +39,11 @@ public class VyjazdovyOdberService implements EntityService<VyjazdovyOdber> {
     @Override
     public Integer getKonkretny() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<VyjazdovyOdber> getVyjazdyOdDnes() {
+        return vyjazdovyOdberDAO.getVyjazdyOdDnes();
     }
 
 }

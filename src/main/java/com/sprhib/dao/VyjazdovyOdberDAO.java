@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.sprhib.model.VyjazdovyOdber;
 
 @Repository
-public class VyjazdovyOdberDAO implements EntityDAO<VyjazdovyOdber> {
+public class VyjazdovyOdberDAO implements EntityVyjazdovyOdberDAO<VyjazdovyOdber> {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
