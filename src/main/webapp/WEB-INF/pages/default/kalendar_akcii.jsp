@@ -8,6 +8,7 @@
 <%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="cor" %>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@page session="true"%>
 
 <!DOCTYPE html>
@@ -107,6 +108,7 @@
 
             <h1>Kalendár Akcií</h1>
             
+            <cor:set var="li" value="${list}" /> 
             
             <cor:if  test="${!empty akcie}">
                 <table border="1px" cellpadding="0" cellspacing="0" >
@@ -122,24 +124,23 @@
                         </tr>
                     </thead>
                     <tbody align="center">
-                        <cor:forEach var="akcia" items="${akcie}">
+                        <cor:forEach items="${akcie}" varStatus="i">
+                            <cor:set var="akcia" value="${akcie[i.index]}"/>
                             <tr>
                                 <td>${akcia.nazov}</td>
                                 <td>${akcia.datum}</td>
                                 <td>${akcia.adresa}</td>
                                 <td>${akcia.casZaciatku}</td>
                                 <td>${akcia.casKonca}</td>
-                                <td>${akcia.blizsiPopis}</td>
-                                <td>${akcia.idKraj}</td>
+                                <td>${akcia.blizsiPopis}</td>                                
+                                <td>${li[i.index]}</td>
                             </tr>
-                        </cor:forEach>
+                        </cor:forEach>  
                     </tbody>
                 </table>
             </cor:if>
-
-
-
-
+            
+            
             <p id="x"></p>                
             <br>
             <div id="mapholder"></div>

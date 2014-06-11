@@ -1,8 +1,11 @@
 package com.sprhib.controller;
 
 
+import com.sprhib.model.Kraj;
 import com.sprhib.model.VyjazdovyOdber;
 import com.sprhib.service.EntityVyjazdovyOdberService;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,13 +35,23 @@ public class InfoController {
     public ModelAndView kalendarAkciiPage() {
         ModelAndView model = new ModelAndView();
         
-         List<VyjazdovyOdber> akcie = vyjazdovyOdberService.getVyjazdyOdDnes();
+        List<VyjazdovyOdber> akcie = vyjazdovyOdberService.getVyjazdyOdDnes();
+       List<String> menakrajov = new ArrayList<String>();
+       List<String> list = new ArrayList<String>();
+        
             for(VyjazdovyOdber i : akcie){
-                System.out.println("kalendar akcii name :" + i.getNazov());
-                
-                
-                model.addObject("akcie", akcie);
+                Kraj krajID = i.getIdKraj();
+                menakrajov.add(krajID.getKraj());
             }
+          
+            System.out.println("menakrajov" + menakrajov);
+            for(String s : menakrajov){
+                list.add(s);
+                System.out.println("s :" + s.toString());
+            }
+                      
+            model.addObject("list", list);
+            model.addObject("akcie", akcie);
         
         model.setViewName("default/kalendar_akcii");
         return model;
