@@ -2,9 +2,11 @@ package com.sprhib.controller;
 
 import com.sprhib.model.Kraj;
 import com.sprhib.model.Mesto;
+import com.sprhib.model.Nastavenie;
 import com.sprhib.model.Odber;
 import com.sprhib.model.Stat;
 import com.sprhib.model.VyjazdovyOdber;
+import com.sprhib.service.EntityNastavenieService;
 import com.sprhib.service.EntityOdberService;
 import com.sprhib.service.EntityService;
 import com.sprhib.service.EntityVyjazdovyOdberService;
@@ -37,7 +39,24 @@ public class RestController {
 
     @Autowired
     private EntityVyjazdovyOdberService<VyjazdovyOdber> vyjazdovyOdberService;
-
+    
+    @Autowired
+    private EntityNastavenieService<Nastavenie> nastavenieService;
+//profil
+    
+    @RequestMapping(value = "/nastavenie/{nick}", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Nastavenie> getMojeNastavenie(
+            @PathVariable String nick ) {
+        Integer userID = odberService.getUserIDfromNick(nick);
+        
+        
+        System.out.println("userid" + userID);
+        return nastavenieService.getMojeSetings(userID);
+    }
+    
+    
+    
         @RequestMapping(value = "/kalendar",method = RequestMethod.GET)
         @ResponseBody
         public String getRestkalendarAkcii() throws JSONException, UnsupportedEncodingException, IOException{

@@ -49,7 +49,8 @@ public class NastavenieDAO implements EntityNastavenieDAO<Nastavenie> {
     public List<Nastavenie> getEntites() {
         return getCurrentSession().createQuery("from Nastavenie").list();
     }
-
+    
+    
     
     @SuppressWarnings("unchecked")
     public List<Pouzivatelia> getPouzivatelaList(Integer nickID) {
@@ -71,10 +72,20 @@ public class NastavenieDAO implements EntityNastavenieDAO<Nastavenie> {
         query.setParameter("xx", fkNastavenieID);
         List list = query.list();
         
-         
-         
+        return list;
+    }
+    
+    
+     @SuppressWarnings("unchecked")
+    public List<Nastavenie> getEntitaList(Integer id) {
+        
+        Session session = getCurrentSession();
+        
+       // getUserIDfromNick()
 
-
+        Query query = session.createQuery("from Nastavenie where id_nastavenie = :xx ");
+        query.setParameter("xx", id);
+        List list = query.list();
         return list;
     }
 
