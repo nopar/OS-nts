@@ -54,5 +54,10 @@ public class VyjazdovyOdberDAO implements EntityDAO<VyjazdovyOdber> {
 	public List<VyjazdovyOdber> getEntites() {
 		return getCurrentSession().createQuery("from VyjazdovyOdber").list();
 	}
+        
+        @SuppressWarnings("unchecked")
+	public List<VyjazdovyOdber> getVyjazdyOdDnes() {
+		return getCurrentSession().createQuery("from VyjazdovyOdber where datum >= current_date() order by datum asc").list();
+	}
 
 }
