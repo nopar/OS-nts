@@ -1,5 +1,7 @@
 package com.sprhib.controller;
 
+import com.sprhib.model.Kraj;
+import com.sprhib.model.Mesto;
 import com.sprhib.model.Odber;
 import com.sprhib.model.Stat;
 import com.sprhib.model.VyjazdovyOdber;
@@ -9,6 +11,9 @@ import com.sprhib.service.EntityVyjazdovyOdberService;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,9 +27,22 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping(value="/rest")
 public class RestController {
+    
+//     @Autowired
+//    private SessionFactory sessionFactory;
+//
+//    private Session getCurrentSession() {
+//        return sessionFactory.getCurrentSession();
+//    }
 	
     @Autowired
     private EntityService<Stat> statService;
+    
+    @Autowired
+    private EntityService<Mesto> mestoService;
+    
+    @Autowired
+    private EntityService<Kraj> krajService;
 
     @Autowired
     private EntityOdberService<Odber> odberService;
@@ -41,9 +59,21 @@ public class RestController {
             int times = 0;
             int size = akcie.size();
             
+            // Session session = getCurrentSession();
+        
+       
+ 
+        //return list;
+            
+            
 
             output.append("[");
             for(VyjazdovyOdber i : akcie){
+                Kraj krajID = i.getIdKraj();
+                
+
+              //  System.out.println("kraj id :" + krajID.getKraj());
+                
                 output.append("{");
                     //NAZOV
                     output.append("\"");
@@ -129,8 +159,8 @@ public class RestController {
                     output.append("\"");
                             output.append(":");                        
                     output.append("\"");
-                        if(i.getIdKraj().toString()!= null){
-                            output.append(i.getIdKraj().toString());
+                        if(krajID.getKraj() != null){
+                            output.append(krajID.getKraj());
                         }else output.append("");
                     output.append("\"");
                
@@ -140,6 +170,7 @@ public class RestController {
                     output.append(",");
                 }
             times++;
+                        
             }
             output.append("]");
 
