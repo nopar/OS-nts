@@ -106,6 +106,47 @@
         <div class="container">
 
             <h1>Môj profil</h1>
+            
+            
+            
+            
+            <cor:if  test="${!empty list}">
+                <table border="1px" cellpadding="0" cellspacing="0" >
+                    <thead>
+                        <tr>
+                            <th width="50%">NASTAVENIE</th>
+                            <th width="20%">ZAPNUTE / VYPNUTE</th>
+                          
+                        </tr>
+                    </thead>
+                    <tbody align="center">
+                        <cor:forEach items="${list}" varStatus="i">
+                            <cor:set var="li" value="${list[i.index]}"/>
+                            <tr>
+                                <td style="padding-left: 15px;" align="left">Kedy môžem darovať:</td>
+                                <td>${li}</td>
+                            </tr>
+                            
+                            <tr>
+                                <td style="padding-left: 15px;" align="left">Výjazdové odbery:</td>
+                                <td>${li}</td>
+                            </tr>
+                            
+                            <tr>
+                                <td style="padding-left: 15px;" align="left">Urgentné prípady:</td>
+                                <td>${li}</td>
+                            </tr>
+                            
+                            <tr>
+                                <td style="padding-left: 15px;" align="left">Len z môjho kraja:</td>
+                                <td>${li}</td>
+                            </tr>
+                        </cor:forEach>  
+                    </tbody>
+                </table>
+            </cor:if>
+            
+            
 
 
 

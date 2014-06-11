@@ -1,17 +1,16 @@
 package com.sprhib.service;
 
+import com.sprhib.dao.NastavenieDAO;
+import com.sprhib.model.Nastavenie;
+import com.sprhib.model.Pouzivatelia;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.sprhib.dao.NastavenieDAO;
-import com.sprhib.model.Nastavenie;
-
 @Service
 @Transactional
-public class NastavenieService implements EntityService<Nastavenie> {
+public class NastavenieService implements EntityNastavenieService<Nastavenie> {
 	
 	@Autowired
 	private NastavenieDAO nastavenieDAO;
@@ -36,9 +35,18 @@ public class NastavenieService implements EntityService<Nastavenie> {
 		return nastavenieDAO.getEntites();
 	}
 
-    @Override
     public Integer getKonkretny() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public List<Pouzivatelia> getPouzivatelaList(Integer nickID) {
+        return nastavenieDAO.getPouzivatelaList(nickID);
+
+    }
+
+    
+    public List<Nastavenie> getMojeSetings(Integer nickID) {
+        return nastavenieDAO.getMojeSetings(nickID);
     }
 
 }
