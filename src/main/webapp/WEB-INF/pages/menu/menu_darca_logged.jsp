@@ -71,15 +71,7 @@
                 </li>
               
               
-                
-                <li><a href="#">Odbery</a>
-                    <ul class="subs">
-                        <li><a href="#">Počítadlo odberov</a></li>
-                        <li><a href="#">História odberov</a>
-                        <li><a href="#">Poznámky lekára</a></li>
-                        <li><a href="#">Kedy môžem znova darovať</a></li>
-                    </ul>
-                </li>
+              
                 
                 <li><a href="${pageContext.request.contextPath}/info/kalendar-akcii">Kalendár akcií</a></li>
 
@@ -111,6 +103,7 @@
                             <li><a href="${pageContext.request.contextPath}/logged/profil/odber/historia">Históoria odberov</a></li>
                             <li><a href="${pageContext.request.contextPath}/logged/profil/odber/pocitadlo">Počítadlo odberov</a></li>
                             <li><a href="${pageContext.request.contextPath}/logged/profil/odber/najblizsie">Kedy môžem znova darovať</a></li>
+                             <li><a href="#">Poznámky lekára</a></li>
                             <li><a href="${pageContext.request.contextPath}/logged/profil/passw_rst">Reset hesla</a></li>
                             <%--<cor:out value="${accountId}"/>--%>
                         </ul>

@@ -4,6 +4,7 @@ import com.sprhib.model.Kraj;
 import com.sprhib.model.Mesto;
 import com.sprhib.model.Nastavenie;
 import com.sprhib.model.Odber;
+import com.sprhib.model.Pouzivatelia;
 import com.sprhib.model.Stat;
 import com.sprhib.model.VyjazdovyOdber;
 import com.sprhib.service.EntityNastavenieService;
@@ -12,6 +13,7 @@ import com.sprhib.service.EntityService;
 import com.sprhib.service.EntityVyjazdovyOdberService;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -46,15 +48,37 @@ public class RestController {
     
     @RequestMapping(value = "/nastavenie/{nick}", method = RequestMethod.GET)
     @ResponseBody
-    public List<Nastavenie> getMojeNastavenie(
+    public List<Boolean> getMojeNastavenie(
             @PathVariable String nick ) {
         Integer userID = odberService.getUserIDfromNick(nick);
         
+        List<Pouzivatelia> userList = nastavenieService.getPouzivatelaList(userID);
+        int idNastavenia = 0;
+        for(Pouzivatelia s : userList){
+                idNastavenia = s.getIdNastavenie().getIdNastavenie();
+            }
         
-        System.out.println("userid" + userID);
-        return nastavenieService.getMojeSetings(userID);
+        List<Boolean> menakrajov = new ArrayList<Boolean>();
+        List<Boolean> list = new ArrayList<Boolean>();
+        List<Nastavenie> konkretneNastavenie = nastavenieService.getMojeSetings(idNastavenia);
+        
+        for (Nastavenie s : konkretneNastavenie) {
+            menakrajov.add(s.getMojeOdbery());
+            menakrajov.add(s.getVyjazdoveOdbery());
+            menakrajov.add(s.getUrgentnePripady());
+            menakrajov.add(s.getKraj());            
+        }
+        
+        for(Boolean s : menakrajov){
+                list.add(s);
+                System.out.println("PATO :: :" + s.toString());
+            }
+        
+        System.out.println("userid :" + userID);
+        return list;
     }
     
+   
     
     
         @RequestMapping(value = "/kalendar",method = RequestMethod.GET)

@@ -92,6 +92,10 @@
                 background-repeat: repeat-x, repeat;
                 background-position: top center, top center;
             }
+            
+            span{
+                color: #00B4FF;
+            }
 
 
         </style>
@@ -196,6 +200,15 @@
                                 <td>
                                     <button style="width: 100%" onclick="location.href = '${pageContext.request.contextPath}/rest/kalendar'">
                                         JSON Kalendar akcii od dnes++
+                                    </button>
+                                </td>
+                            </tr>
+                                        
+                            <tr>
+                                <td>Tu tiez tie nicky</td>
+                                <td>
+                                    <button style="width: 100%" onclick="location.href = '${pageContext.request.contextPath}/rest/nastavenie/darca'">
+                                        JSON Moje nastavenie
                                     </button>
                                 </td>
                             </tr>

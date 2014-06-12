@@ -57,7 +57,11 @@
         </cor:choose>
 
         <script src="${pageContext.request.contextPath}/resources/js/geoLocation.js" type="text/javascript"></script> 
-        
+        <style>
+           span{
+                color: #00B4FF;
+            }
+        </style>
         
     </head>
 
@@ -116,8 +120,8 @@
             <p>
                 <table border="1px" cellpadding="0" cellspacing="0" >
                     <thead>
-                        <tr>
-                            REST EXAMPLE
+                        <tr id="main">
+                            <span>REST EXAMPLE JSON OBJECTS</span>
                         </tr>
                     </thead>
                     <tbody align="left">                
@@ -153,6 +157,15 @@
                             <td>
                                 <button style="width: 100%" onclick="location.href = '${pageContext.request.contextPath}/rest/kalendar'">
                                     JSON Kalendar akcii od dnes++
+                                </button>
+                            </td>
+                        </tr>
+                                    
+                        <tr>
+                            <td>Tu tiez tie nicky</td>
+                            <td>
+                                <button style="width: 100%" onclick="location.href = '${pageContext.request.contextPath}/rest/nastavenie/darca'">
+                                    JSON Moje nastavenie
                                 </button>
                             </td>
                         </tr>
