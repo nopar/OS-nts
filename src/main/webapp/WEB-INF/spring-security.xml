@@ -18,6 +18,7 @@
         <intercept-url pattern="/" access="permitAll" />
         <intercept-url pattern="/info/**" access="permitAll" />
         <intercept-url pattern="favicon.ico" access="permitAll" />
+        <intercept-url pattern="/resources**" access="permitAll" />
         
         <intercept-url pattern="/logged/profil" access="isAuthenticated()" />
         <intercept-url pattern="/logged" access="isAuthenticated()" />
