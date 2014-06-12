@@ -112,7 +112,7 @@
                 <cor:choose>
                     <cor:when test="${not empty pageContext.request.userPrincipal}">
                         <!--je-->
-                        <h2 style="color: red">${username}, počet tvojých odberov je: ${pocet}</h2>
+                        <h2 style="color: #d50f11"><span style="color: #00B4FF">${username}, </span><span style="color: #31708f">počet tvojých odberov je:</span> ${pocet}</h2>
                     </cor:when>
                     <cor:otherwise>
                         <h2 style="color: red">Počet tvojých odberov je: ${pocet}</h2>

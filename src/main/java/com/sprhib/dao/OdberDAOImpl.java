@@ -98,5 +98,20 @@ public class OdberDAOImpl implements OdberDAO {
 //        return getCurrentSession().createQuery(sqlo).list();
         return list;
     }
+    
+    @SuppressWarnings("unchecked")
+    public List<Odber> getLastOdber(Integer nickID) {
+        
+        Session session = getCurrentSession();
+        
+        Query query = session.createQuery("from Odber where id_darca = :xx order by datum desc ");
+        query.setParameter("xx", nickID);
+        query.setMaxResults(1);
+        List list = query.list();
+ 
+        String sqlo = "from Odber where id_darca = '" + nickID + "'";
+//        return getCurrentSession().createQuery(sqlo).list();
+        return list;
+    }
 
 }

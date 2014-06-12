@@ -12,6 +12,7 @@ public interface OdberDAO {
 	Odber getEntity(int id);
 	void deleteEntity(int id);
 	List<Odber> getEntites();
+        List<Odber> getLastOdber(Integer nickID);
 //      public List getListJSON();
 
 }

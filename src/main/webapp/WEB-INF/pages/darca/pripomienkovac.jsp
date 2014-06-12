@@ -106,6 +106,35 @@
         <div class="container">
 
             <h1>Pripomienkovač</h1>
+            
+            
+            <cor:if  test="${!empty daysBetween}">
+                <cor:if  test="${daysBetween <= 0}">
+                    <span style="color: #00B4FF">Už dávno môžete darovať.</span>
+                </cor:if>
+                
+                    <cor:if  test="${daysBetween > 0}">
+                        <h2 style="color: #00B4FF">
+                            Môžete darovať o:
+                            <span style="color: red">
+                                <cor:if  test="${daysBetween == 1}">${daysBetween} deň</cor:if>
+                                <cor:if  test="${daysBetween > 1}">${daysBetween} dní</cor:if>
+                                </span>
+                                .
+                        </cor:if>
+                </h2>
+                
+                <h2 style="color: #00B4FF">Dátum ďalšieho možného odberu je:<span style="color: red"> ${datumd}. ${mesiac+1}. 
+                    <cor:if  test="${den == 1}">v Pondelok</cor:if>
+                    <cor:if  test="${den == 2}">v Utorok</cor:if>
+                    <cor:if  test="${den == 3}">v Streda</cor:if>
+                    <cor:if  test="${den == 4}">v Štvrtok</cor:if>
+                    <cor:if  test="${den == 5}">v Piatok</cor:if>
+                    <cor:if  test="${den == 6}">Sobota (takže o 2 dni v Pondelok)</cor:if>
+                    <cor:if  test="${den == 0}">Nedeľa (takže o 1 den v Pondelok)</cor:if>
+                    </span>.
+                </h2>
+            </cor:if>
 
 
 

@@ -12,6 +12,7 @@ public interface EntityOdberService<T> {
        public Integer getKonkretny(String hladanyNick);
        public Integer getUserIDfromNick(String logNick);
        public List<T> getMojeOdberyHistory(int nickID);
+       public List<T> getLastOdber(Integer nickID);
 //        public List getListJSON();
 
 }

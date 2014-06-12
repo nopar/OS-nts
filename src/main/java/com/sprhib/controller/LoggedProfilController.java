@@ -8,18 +8,21 @@ import com.sprhib.service.EntityNastavenieService;
 import com.sprhib.service.EntityOdberService;
 import com.sprhib.service.EntityService;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.LinkedList;
 import java.util.List;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import java.util.Date;
 
 @Controller
 @RequestMapping(value="/logged/profil")
@@ -173,10 +176,66 @@ public class LoggedProfilController {
     
     @RequestMapping(value = "/odber/najblizsie", method = RequestMethod.GET)
     public ModelAndView odberPripomienkovacPage() {
-
         ModelAndView model = new ModelAndView();
-        model.setViewName("darca/pripomienkovac");
+        
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (!(auth instanceof AnonymousAuthenticationToken)) {
+            UserDetails userDetail = (UserDetails) auth.getPrincipal();
+//            System.out.println(userDetail);
+            model.addObject("username", userDetail.getUsername());
+        }
 
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().
+                getAuthentication().getPrincipal();
+
+        String logNickSend = userDetails.getUsername();
+        Integer userID = odberService.getUserIDfromNick(logNickSend);
+        
+        List<Odber> mojeOdbery = odberService.getLastOdber(userID);
+        Date timestamp, povodny;
+        Date currentDate = new Date();
+        timestamp = mojeOdbery.get(0).getDatum();
+        
+        
+        System.out.println("timestamp moj: " + timestamp);
+        povodny = timestamp;
+        
+        int daysPause = 0;
+        if(pouzivateliaService.getEntity(userID).getPohlavie() == 'M'){
+            daysPause = 30+31+30;
+            System.out.println("si muz");
+        }
+        else{
+            daysPause = 30+31+30+31;
+            System.out.println("si zena");
+        }
+        
+   
+        Calendar c = Calendar.getInstance();
+        c.setTime(timestamp);
+        c.add(Calendar.DATE, daysPause);
+        timestamp = c.getTime();
+        
+//        System.out.println("NEXT : " + timestamp);
+//        System.out.println("DATE : " + timestamp.getDate());
+//        System.out.println("MESIAC : " + timestamp.getMonth());
+//        System.out.println("DEN : " + timestamp.getDay());
+        
+        model.addObject("datumd", timestamp.getDate());
+        model.addObject("mesiac", timestamp.getMonth());
+        model.addObject("den", timestamp.getDay());
+        
+        final long DAY_IN_MILLIS = 1000 * 60 * 60 * 24;
+                
+     
+       Calendar cal = Calendar.getInstance();
+        Calendar date = (Calendar) cal.clone();
+        long daysBetween = 0;
+        int rozdielDni = (int)((timestamp.getTime() - currentDate.getTime()) / (1000*60*60*24l));
+        model.addObject("daysBetween", rozdielDni);
+        System.out.println("moj pocet: " + rozdielDni);
+        
+        model.setViewName("darca/pripomienkovac");
         return model;
     }
     

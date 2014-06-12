@@ -47,4 +47,9 @@ public class OdberService implements EntityOdberService<Odber> {
         return odberDAO.getOdberHistory(nickID);
     }
 
+    @Override
+    public List<Odber> getLastOdber(Integer nickID) {
+        return odberDAO.getLastOdber(nickID);
+    }
+
 }

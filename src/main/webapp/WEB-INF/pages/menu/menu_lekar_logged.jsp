@@ -85,7 +85,7 @@
                     </ul>
                 </li>
                   
-                <li><a href="#">-!- Kalendár akcií</a>
+                <li><a href="${pageContext.request.contextPath}/info/kalendar-akcii">Kalendár akcií</a>
                 </li>
                 
                 <li><a href="#">Informácie</a>
