@@ -111,7 +111,7 @@ public class RestController {
 
                     //DATUM
                     output.append("\"");
-                        output.append("objem");
+                        output.append("datum");
                     output.append("\"");
                             output.append(":");
                     output.append("\"");
@@ -124,7 +124,7 @@ public class RestController {
 
                     //ADRESA
                     output.append("\"");
-                        output.append("poznamka");
+                        output.append("adresa");
                     output.append("\"");
                             output.append(":");
                     output.append("\"");
@@ -137,7 +137,7 @@ public class RestController {
                 
                     //ZACIATOK
                     output.append("\"");
-                        output.append("datum");
+                        output.append("cas_zaciatok");
                     output.append("\"");
                             output.append(":");                        
                     output.append("\"");
@@ -150,7 +150,7 @@ public class RestController {
 
                     //KONIEC
                     output.append("\"");
-                        output.append("datum");
+                        output.append("cas_koniec");
                     output.append("\"");
                             output.append(":");                        
                     output.append("\"");
@@ -163,7 +163,7 @@ public class RestController {
 
                     //POPIS
                     output.append("\"");
-                        output.append("datum");
+                        output.append("popis");
                     output.append("\"");
                             output.append(":");                        
                     output.append("\"");
@@ -176,7 +176,7 @@ public class RestController {
 
                     //KRAJ
                     output.append("\"");
-                        output.append("datum");
+                        output.append("kraj");
                     output.append("\"");
                             output.append(":");                        
                     output.append("\"");

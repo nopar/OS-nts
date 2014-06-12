@@ -72,7 +72,7 @@
                 <li><a class="hsubs"
                        id="2"
                        onclick="posun(2)"
-                       href="${pageContext.request.contextPath}/logged/admin/skupiny/list.html">Skupiny</a>
+                       href="${pageContext.request.contextPath}/logged/admin/skupiny/list.html">Rola</a>
                     <ul class="subs">
                         <li><a href="${pageContext.request.contextPath}/logged/admin/skupiny/add.html">Pridať skupinu</a></li>
                         <li><a href="${pageContext.request.contextPath}/logged/admin/skupiny/list.html">Zoznam skupín</a></li>
@@ -88,12 +88,7 @@
                     </ul>
                 </li>
                 
-                <li><a class="hsubs" href="#">Rola</a>
-                    <ul class="subs">
-                        <li><a href="#">Zmena roly</a>
-                        </li>
-                    </ul>
-                </li>
+              
 
                 <li><a href="${pageContext.request.contextPath}/info/kalendar-akcii">Kalendár akcií</a></li>
 

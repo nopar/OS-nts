@@ -182,11 +182,44 @@ public class LoggedProfilController {
     
     @RequestMapping(value = "/passw_rst", method = RequestMethod.GET)
     public ModelAndView passwResetPage() {
-
         ModelAndView model = new ModelAndView();
-        model.setViewName("darca/reset_hesla");
+        
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (!(auth instanceof AnonymousAuthenticationToken)) {
+            UserDetails userDetail = (UserDetails) auth.getPrincipal();
+//            System.out.println(userDetail);
+            model.addObject("username", userDetail.getUsername());
+        }
 
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().
+                getAuthentication().getPrincipal();
+
+        String logNickSend = userDetails.getUsername();
+        Integer userID = odberService.getUserIDfromNick(logNickSend);
+        
+        
+        Pouzivatelia user = pouzivateliaService.getEntity(userID);
+        model.addObject("user", user);
+        
+        model.setViewName("darca/reset_hesla");
         return model;
-    }        
+    }  
+    
+     @RequestMapping(value = "/passw_rst/{id}", method = RequestMethod.POST)
+    public ModelAndView passwResetChangedPage(
+            @ModelAttribute Pouzivatelia user,
+            @PathVariable Integer id) {
+        ModelAndView model = new ModelAndView();
+         System.out.println("++++ :" + model.getViewName());
+        //pouzivateliaService.updateEntity(user);
+        
+        // Pouzivatelia changed_user = pouzivateliaService.getEntity(id);
+        //model.addObject("user", changed_user);
+       // model.addObject("message", "Zmenené");
+        model.setViewName("home");
+        return model;
+    }  
+    
+
 
 }

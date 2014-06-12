@@ -159,6 +159,11 @@
             </script>
             
             
+           
+            
+            
+            
+            
             <cor:if  test="${!empty object}">
             <form:form method="POST" commandName="object" action="${pageContext.request.contextPath}/logged/profil/${object.idNastavenie}">
                 <table  border="1px" cellpadding="0" cellspacing="0" >
