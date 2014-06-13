@@ -106,13 +106,12 @@
         
         <button onclick="location.href = '${pageContext.request.contextPath}/logged/admin/stat/add.html'">
             Pridať štát
-        </button>
+        </button></br></br>
 
     <cor:if  test="${!empty stats}">
     <table border="1px" cellpadding="0" cellspacing="0" >
     <thead>
         <tr>
-            <th width="10%">id</th>
             <th width="15%">STAT</th>
             <th width="10%">SKRATKA</th>
             <th width="10%"></th>
@@ -121,7 +120,6 @@
     <tbody align="center">
         <cor:forEach var="statik" items="${stats}">
             <tr>
-                <td>${statik.idStat}</td>
                 <td style="padding-left: 10px;" align="left">${statik.stat}</td>
                 <td>${statik.skratka}</td>
                 <td>

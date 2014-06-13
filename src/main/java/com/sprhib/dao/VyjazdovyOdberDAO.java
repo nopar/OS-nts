@@ -1,5 +1,6 @@
 package com.sprhib.dao;
 
+import com.sprhib.model.Pouzivatelia;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.sprhib.model.VyjazdovyOdber;
+import com.sprhib.model.ZaznamDarcu;
+import org.hibernate.Query;
 
 @Repository
 public class VyjazdovyOdberDAO implements EntityVyjazdovyOdberDAO<VyjazdovyOdber> {
@@ -59,5 +62,19 @@ public class VyjazdovyOdberDAO implements EntityVyjazdovyOdberDAO<VyjazdovyOdber
 	public List<VyjazdovyOdber> getVyjazdyOdDnes() {
 		return getCurrentSession().createQuery("from VyjazdovyOdber where datum >= current_date() order by datum asc").list();
 	}
+        
+        @SuppressWarnings("unchecked")
+        public List<Pouzivatelia> checkUser(String nick, String pass) {
+         Session session = getCurrentSession();
+        
+        Query query = session.createQuery("from Pouzivatelia where nick = :nick and password = :pass");
+        query.setParameter("nick", nick);
+        query.setParameter("pass", pass);
+        List list = query.list();
+ 
+        return list;
+    }
+
+  
 
 }

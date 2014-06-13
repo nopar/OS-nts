@@ -96,14 +96,14 @@
             <div class="container">
                 <h1>Editácia štátu</h1>
 
-                <p>${message}</p>
+                <span style="color: #d50f11"><p>${message}</p></span>
 
             <form:form method="POST" commandName="stat" action="${pageContext.request.contextPath}/logged/admin/stat/edit/${stat.idStat}.html">
                 <table>
                     <tbody>
                         <tr>
-                            <td>ID_</td>
-                            <td><form:input path="idStat" /></td>
+                            <td></td>
+                            <td><form:input type="hidden" path="idStat" /></td>
                         </tr>
 
                         <tr>

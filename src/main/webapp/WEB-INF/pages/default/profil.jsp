@@ -16,7 +16,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Môj profil</title>
+        <title>Notifikácie</title>
 
         <link rel="shortcut icon" type="image/x-icon" href="<cor:url value='/resources/img/favicon.ico'/>" />
         <link href="${pageContext.request.contextPath}/resources/css/layout.css" rel="stylesheet" type="text/css"/>
@@ -113,7 +113,7 @@
 
         <div class="container">
 
-            <h1>Môj profil</h1>
+            <h1>Notifikácie</h1>
             <div id="tmp"></div>
             
 

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : moje_odbery
-    Created on : 28-Apr-2014, 16:18:35
+    Document   : poznamky
+    Created on : 28-Apr-2014, 16:19:00
     Author     : nox
 --%>
 
@@ -14,7 +14,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Moje odbery</title>
+        <title>Poznámky</title>
 
         <link rel="shortcut icon" type="image/x-icon" href="<cor:url value='/resources/img/favicon.ico'/>" />
         <link href="${pageContext.request.contextPath}/resources/css/layout.css" rel="stylesheet" type="text/css"/>
@@ -105,41 +105,43 @@
 
         <div class="container">
 
-            <h1>Moje odbery</h1>
-            
-            <!--este neprerobene-->
-            <cor:if  test="${!empty pocet}">     
-                <cor:choose>
-                    <cor:when test="${not empty pageContext.request.userPrincipal}">
-                        <!--je-->
-                        <h2 style="color: #d50f11"><span style="color: #00B4FF">${username}, </span><span style="color: #31708f">počet tvojých odberov je:</span> ${pocet}</h2>
-                    </cor:when>
-                    <cor:otherwise>
-                        <h2 style="color: red">Počet tvojých odberov je: ${pocet}</h2>
-                    </cor:otherwise>
-                </cor:choose>   
-            </cor:if>   
-                        
-    <cor:if  test="${!empty mojeOdbery}">
-        <table border="1px" cellpadding="0" cellspacing="0" >
-            <thead>
-                <tr>
-                    <th width="15%">DATUM</th>
-                    <th width="10%">OBJEM</th>
-                    <th width="10%">POZNAMKA</th>
-                </tr>
-            </thead>
-            <tbody align="center">
-                <cor:forEach var="odber" items="${mojeOdbery}">
-                    <tr>
-                        <td>${odber.datum}</td>
-                        <td>${odber.objem}</td>
-                        <td>${odber.poznamka}</td>
-                    </tr>
-                </cor:forEach>
-            </tbody>
-        </table>
-    </cor:if>
+            <h1>Poznámky</h1>
+
+         
+            <cor:if  test="${!empty zaznamy}">               
+                <table border="1px" cellpadding="0" cellspacing="0" >
+                    <thead>
+                        <tr>
+                            <th width="15%">DATUM</th>
+                            <th width="15%">POZNAMKA</th>
+                            <th width="10%">LEKAR</th>                            
+                            <th width="10%">DARCA</th>                           
+                        </tr>
+                    </thead>
+                    <tbody align="center">
+                        <cor:forEach var="zaznam" items="${zaznamy}">
+                            <tr>
+                                <td >
+                                    ${zaznam.datum}
+                                </td>
+
+                                <td style="padding-left: 10px;" align="left">
+                                    ${zaznam.poznamka}
+                                </td>
+
+                                <td style="padding-left: 100px;"  align="left">
+                                    ${zaznam.idLekar.priezvisko}
+                                </td>
+
+                                <td style="padding-left: 10px;">
+                                    ${zaznam.idDarca.priezvisko}
+                                </td>                                 
+                            </tr>
+                        </cor:forEach>
+                    </tbody>
+                </table>
+            </cor:if>
+
 
 
 

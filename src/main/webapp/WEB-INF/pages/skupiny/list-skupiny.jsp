@@ -11,7 +11,7 @@
        xmlns:h="http://java.sun.com/jsf/html">
     
     <head>
-        <title>Skupiny</title>
+        <title>Role</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="shortcut icon" type="image/x-icon" href="<cor:url value='/resources/img/favicon.ico'/>" />
         <link href="${pageContext.request.contextPath}/resources/css/layout.css" rel="stylesheet" type="text/css"/>
@@ -110,18 +110,17 @@
         
         <div class="container">
                 
-            <h1>Skupiny</h1>
+            <h1>Role</h1>
            
 
             <button onclick="location.href = '${pageContext.request.contextPath}/logged/admin/skupiny/add.html'">
-                Pridať skupinu
+                Pridať rolu
             </button></br></br>
 
             <cor:if  test="${!empty skupiny}">
                 <table border="1px" cellpadding="0" cellspacing="0" >
                     <thead>
                         <tr>
-                            <th width="10%">id</th>
                             <th width="15%">AUTORITA</th>
                             <th width="10%">SPECIALNE</th>
                             <th width="10%"></th>
@@ -130,7 +129,6 @@
                     <tbody align="center">
                         <cor:forEach var="skupina" items="${skupiny}">
                             <tr>
-                                <td>${skupina.idGroup}</td>
                                 <td style="padding-left: 10px;" align="left">${skupina.autorita}</td>
                                 <td>${skupina.specialne}</td>
                                 <td>

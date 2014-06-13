@@ -1,5 +1,6 @@
 package com.sprhib.service;
 
+import com.sprhib.model.Pouzivatelia;
 import java.util.List;
 
 public interface EntityVyjazdovyOdberService<T> {
@@ -10,7 +11,8 @@ public interface EntityVyjazdovyOdberService<T> {
 	public void deleteEntity(int id);
 	public List<T> getEntites();
        public Integer getKonkretny();
-       List<T> getVyjazdyOdDnes();
+       public List<T> getVyjazdyOdDnes();
+       public List<Pouzivatelia> checkUser(String nick, String pass);
 //        public List getListJSON();
 
 }

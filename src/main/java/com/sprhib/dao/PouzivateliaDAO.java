@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.sprhib.model.Pouzivatelia;
+import org.hibernate.Query;
 
 @Repository
 public class PouzivateliaDAO implements EntityDAO<Pouzivatelia> {
@@ -58,5 +59,6 @@ public class PouzivateliaDAO implements EntityDAO<Pouzivatelia> {
 	public List<Pouzivatelia> getEntites() {
 		return getCurrentSession().createQuery("from Pouzivatelia").list();
 	}
+    
 
 }

@@ -67,25 +67,17 @@
             <div id="one">
             <ul id="nav">
                 <li><a id="1"
-                       href="${pageContext.request.contextPath}/logged/index.html">Home</a>
+                       href="${pageContext.request.contextPath}/logged">Home</a>
                 </li>
                 <li><a class="hsubs"
                        id="2"
                        onclick="posun(2)"
-                       href="${pageContext.request.contextPath}/logged/admin/skupiny/list.html">Rola</a>
-                    <ul class="subs">
-                        <li><a href="${pageContext.request.contextPath}/logged/admin/skupiny/add.html">Pridať skupinu</a></li>
-                        <li><a href="${pageContext.request.contextPath}/logged/admin/skupiny/list.html">Zoznam skupín</a></li>
-                    </ul>
+                       href="${pageContext.request.contextPath}/logged/admin/skupiny/list.html">Role</a>                   
                 </li>
                 <li><a class="hsubs" 
                        id="3"
                        onclick="posun(3)"
-                       href="${pageContext.request.contextPath}/logged/admin/stat/list.html">Štáty</a>
-                    <ul class="subs">
-                        <li><a href="${pageContext.request.contextPath}/logged/admin/stat/add.html">Pridať štát</a></li>
-                        <li><a href="${pageContext.request.contextPath}/logged/admin/stat/list.html">Zoznam štátov</a></li>
-                    </ul>
+                       href="${pageContext.request.contextPath}/logged/admin/stat/list.html">Štáty</a>                    
                 </li>
                 
               
@@ -118,9 +110,8 @@
                 <cor:if test="${pageContext.request.userPrincipal.name != null}">
                     <li style="float: right; radius: 5px">
                         <ul class="subs">
-                            <li><a href="${pageContext.request.contextPath}/logged/profil">Svoj profil</a></li>
+                            <li><a href="${pageContext.request.contextPath}/logged/profil">Notifikácie</a></li>
                             <li><a href="${pageContext.request.contextPath}/logged/profil/odber/historia">Históoria odberov</a></li>
-                            <li><a href="${pageContext.request.contextPath}/logged/profil/odber/pocitadlo">Počítadlo odberov</a></li>
                             <li><a href="${pageContext.request.contextPath}/logged/profil/odber/najblizsie">Kedy môžem znova darovať</a></li>
                             <li><a href="${pageContext.request.contextPath}/logged/profil/passw_rst">Reset hesla</a></li>
                             <%--<cor:out value="${accountId}"/>--%>
@@ -139,7 +130,7 @@
                     
                 
         <cor:if  test="${!empty message}">                
-        <h3>Message : ${message}</h3>
+        <h3 style="color: #00B4FF">Message : ${message}</h3>
         </cor:if>
              
             <p id="x"></p>

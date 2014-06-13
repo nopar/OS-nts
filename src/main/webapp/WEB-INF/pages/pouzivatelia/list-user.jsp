@@ -114,7 +114,12 @@
 
         <div class="container">
 
-            <h1>Zoznam Používateľov</h1>
+            <h1>Zoznam používateľov</h1>
+            
+            <button onclick="location.href = '${pageContext.request.contextPath}/logged/lekar/user/add'">
+                Pridaj používateľa
+            </button></br></br>
+            
             
             <cor:if  test="${!empty users}">
                 <table border="1px" cellpadding="0" cellspacing="0" >
@@ -133,6 +138,7 @@
                             <th width="3%">SETT.</th>
                             <th width="5%">KRV</th>
                             <th width="10%">MESTO</th>
+                            <th width="8%"></th>
                         </tr>
                     </thead>
                     <tbody align="center">

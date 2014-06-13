@@ -1,7 +1,6 @@
 package com.sprhib.controller;
 
 import com.sprhib.model.Kraj;
-import com.sprhib.model.Mesto;
 import com.sprhib.model.Nastavenie;
 import com.sprhib.model.Odber;
 import com.sprhib.model.Pouzivatelia;
@@ -9,15 +8,13 @@ import com.sprhib.model.Stat;
 import com.sprhib.model.VyjazdovyOdber;
 import com.sprhib.service.EntityNastavenieService;
 import com.sprhib.service.EntityOdberService;
+import com.sprhib.service.EntityPouzivateliaService;
 import com.sprhib.service.EntityService;
 import com.sprhib.service.EntityVyjazdovyOdberService;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,7 +41,32 @@ public class RestController {
     
     @Autowired
     private EntityNastavenieService<Nastavenie> nastavenieService;
+    
+    
 //profil
+    
+    
+      @RequestMapping(value = "/check/{nick}/{pass}", method = RequestMethod.GET)
+        @ResponseBody
+	public  Boolean restOverUsera(
+                @PathVariable String nick,
+                @PathVariable String pass ) {            
+            ModelAndView model = new ModelAndView();  
+            
+            List<Pouzivatelia> zaznam = vyjazdovyOdberService.checkUser(nick, pass);
+            System.out.println("1 " + zaznam);
+            
+            if (zaznam.isEmpty()) {
+                return false;
+            }
+            else{
+                return true;                
+            }
+          
+	}
+    
+    
+    
     
     @RequestMapping(value = "/nastavenie/{nick}", method = RequestMethod.GET)
     @ResponseBody

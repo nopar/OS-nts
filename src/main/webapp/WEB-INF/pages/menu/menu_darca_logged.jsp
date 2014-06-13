@@ -90,7 +90,7 @@
                 <li><a href="${pageContext.request.contextPath}/info/faq">FAQ</a></li>
                 
                 <li><a  onclick="posun(6)"
-                        href="#">Nástroje</a>
+                        href="${pageContext.request.contextPath}/mapa">Nástroje</a>
                     <ul class="subs">
                         <li><a href="${pageContext.request.contextPath}/mapa">Nájdi najbližšiu stanicu</a></li>
                     </ul>
@@ -99,11 +99,10 @@
                 <cor:if test="${pageContext.request.userPrincipal.name != null}">
                     <li style="float: right; radius: 5px">
                         <ul class="subs">
-                            <li><a href="${pageContext.request.contextPath}/logged/profil">Svoj profil</a></li>
+                            <li><a href="${pageContext.request.contextPath}/logged/profil">Notifikácie</a></li>
                             <li><a href="${pageContext.request.contextPath}/logged/profil/odber/historia">Históoria odberov</a></li>
-                            <li><a href="${pageContext.request.contextPath}/logged/profil/odber/pocitadlo">Počítadlo odberov</a></li>
                             <li><a href="${pageContext.request.contextPath}/logged/profil/odber/najblizsie">Kedy môžem znova darovať</a></li>
-                             <li><a href="#">Poznámky lekára</a></li>
+                             <li><a href="${pageContext.request.contextPath}/logged/darca/poznamky">Poznámky lekára</a></li>
                             <li><a href="${pageContext.request.contextPath}/logged/profil/passw_rst">Reset hesla</a></li>
                             <%--<cor:out value="${accountId}"/>--%>
                         </ul>
@@ -120,7 +119,7 @@
                     
                 
         <cor:if  test="${!empty message}">                
-        <h3>Message : ${message}</h3>
+        <h3 style="color: #00B4FF">Message : ${message}</h3>
         </cor:if>
              
             <p id="x"></p>

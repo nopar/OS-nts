@@ -1,13 +1,13 @@
 package com.sprhib.service;
 
+import com.sprhib.dao.PouzivateliaDAO;
+import com.sprhib.dao.VyjazdovyOdberDAO;
+import com.sprhib.model.Pouzivatelia;
+import com.sprhib.model.VyjazdovyOdber;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.sprhib.dao.VyjazdovyOdberDAO;
-import com.sprhib.model.VyjazdovyOdber;
 
 @Service
 @Transactional
@@ -15,6 +15,9 @@ public class VyjazdovyOdberService implements EntityVyjazdovyOdberService<Vyjazd
 	
 	@Autowired
 	private VyjazdovyOdberDAO vyjazdovyOdberDAO;
+        
+        @Autowired
+	private PouzivateliaDAO pouzivateliaDAO;
 
 	public void addEntity(VyjazdovyOdber vyjazdovyOdber) {
 		vyjazdovyOdberDAO.addEntity(vyjazdovyOdber);		
@@ -44,6 +47,11 @@ public class VyjazdovyOdberService implements EntityVyjazdovyOdberService<Vyjazd
     @Override
     public List<VyjazdovyOdber> getVyjazdyOdDnes() {
         return vyjazdovyOdberDAO.getVyjazdyOdDnes();
+    }
+    
+    @Override
+    public List<Pouzivatelia> checkUser(String nick, String pass) {
+        return vyjazdovyOdberDAO.checkUser(nick, pass);
     }
 
 }

@@ -104,8 +104,8 @@
                 <table>
                     <tbody>
                         <tr>
-                            <td>ID:</td>
-                            <td><form:input path="idGroup" /></td>
+                            <td></td>
+                            <td><form:input type="hidden" path="idGroup" /></td>
                         </tr>
 
                         <tr>

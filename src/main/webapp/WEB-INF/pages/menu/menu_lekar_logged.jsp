@@ -71,18 +71,10 @@
                 </li>
                 
                 
-                <li><a href="#">-!-Darca</a>
-                    <ul class="subs">
-                        <li><a href="#">Pridaj používatľa</a></li>
-                        <li><a href="${pageContext.request.contextPath}/logged/lekar/user/list">Zoznam používateľov</a></li>
-                    </ul>
+                <li><a href="${pageContext.request.contextPath}/logged/lekar/user/list">-!-Používatelia</a>                    
                 </li>
                 
-                <li><a href="#">-!-Odberové miesto</a>
-                    <ul class="subs">
-                        <li><a href="${pageContext.request.contextPath}/logged/lekar/vyjazd/add">Pridaj výjazd</a></li>
-                        <li><a href="${pageContext.request.contextPath}/logged/lekar/vyjazd/list">Zoznam výjazdov</a></li>
-                    </ul>
+                <li><a href="${pageContext.request.contextPath}/logged/lekar/vyjazd/list">-!-Odberové miesta</a>                    
                 </li>
                   
                 <li><a href="${pageContext.request.contextPath}/info/kalendar-akcii">Kalendár akcií</a>
@@ -111,9 +103,8 @@
                 <cor:if test="${pageContext.request.userPrincipal.name != null}">
                     <li style="float: right; radius: 5px">
                         <ul class="subs">
-                            <li><a href="${pageContext.request.contextPath}/logged/profil">Svoj profil</a></li>
+                            <li><a href="${pageContext.request.contextPath}/logged/profil">Notifikácie</a></li>
                             <li><a href="${pageContext.request.contextPath}/logged/profil/odber/historia">Históoria odberov</a></li>
-                            <li><a href="${pageContext.request.contextPath}/logged/profil/odber/pocitadlo">Počítadlo odberov</a></li>
                             <li><a href="${pageContext.request.contextPath}/logged/profil/odber/najblizsie">Kedy môžem znova darovať</a></li>
                             <li><a href="${pageContext.request.contextPath}/logged/profil/passw_rst">Reset hesla</a></li>
                             <%--<cor:out value="${accountId}"/>--%>
@@ -132,7 +123,7 @@
                     
                 
         <cor:if  test="${!empty message}">                
-        <h3>Message : ${message}</h3>
+        <h3 style="color: #00B4FF">Message : ${message}</h3>
         </cor:if>
              
             <p id="x"></p>

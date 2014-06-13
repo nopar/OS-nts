@@ -116,6 +116,10 @@
 
             <h1>Zoznam Výjazdov</h1>
             
+            <button onclick="location.href = '${pageContext.request.contextPath}/logged/lekar/vyjazd/add'">
+                Pridaj výjazd
+            </button></br></br>
+            
             <cor:set var="li" value="${list}" /> 
 
             <cor:if  test="${!empty vyjazdy}">

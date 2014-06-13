@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+
+    
+        <persistence-unit name="com.mvchib_Bakalarka-NTS_war_0.0.2-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>com.sprhib.model.Skupiny</class>
+        <class>com.sprhib.model.Odber</class>
+        <class>com.sprhib.model.Mesto</class>
+        <class>com.sprhib.model.KrvnaSkupina</class>
+        <class>com.sprhib.model.Nts</class>
+        <class>com.sprhib.model.Adresa</class>
+        <class>com.sprhib.model.Stat</class>
+        <class>com.sprhib.model.Pouzivatelia</class>
+        <class>com.sprhib.model.Kraj</class>
+        <class>com.sprhib.model.ZaznamDarcu</class>
+        <class>com.sprhib.model.VyjazdovyOdber</class>
+        <class>com.sprhib.model.Nastavenie</class>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://${OPENSHIFT_MARIADB_DB_HOST}:${OPENSHIFT_MARIADB_DB_PORT}/nts_bakalarka"/>
+            <property name="javax.persistence.jdbc.password" value="${OPENSHIFT_MYSQL_DB_PASSWORD}"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="${OPENSHIFT_MYSQL_DB_USERNAME}"/>
+        </properties>
+    </persistence-unit>
+    
+    
+<!--    <persistence-unit name="com.mvchib_Bakalarka-NTS_war_0.0.2-SNAPSHOTPU">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>com.sprhib.model.Skupiny</class>
+        <class>com.sprhib.model.Odber</class>
+        <class>com.sprhib.model.Mesto</class>
+        <class>com.sprhib.model.KrvnaSkupina</class>
+        <class>com.sprhib.model.Nts</class>
+        <class>com.sprhib.model.Adresa</class>
+        <class>com.sprhib.model.Stat</class>
+        <class>com.sprhib.model.Pouzivatelia</class>
+        <class>com.sprhib.model.Kraj</class>
+        <class>com.sprhib.model.ZaznamDarcu</class>
+        <class>com.sprhib.model.VyjazdovyOdber</class>
+        <class>com.sprhib.model.Nastavenie</class>
+        <class>com.sprhib.restfull.Mesto</class>
+        <class>com.sprhib.restfull.Kraj</class>
+        <class>com.sprhib.restfull.VyjazdovyOdber</class>
+        <class>com.sprhib.restfull.Nastavenie</class>
+        <class>com.sprhib.restfull.Stat</class>
+        <class>com.sprhib.restfull.Pouzivatelia</class>
+        <class>com.sprhib.restfull.KrvnaSkupina</class>
+        <class>com.sprhib.restfull.Odber</class>
+        <class>com.sprhib.restfull.Adresa</class>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/nts_bakalarka"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+        </properties>
+    </persistence-unit>-->
+</persistence>
