@@ -1,6 +1,7 @@
 package com.sprhib.controller;
 
 import com.sprhib.model.Kraj;
+import com.sprhib.model.Pouzivatelia;
 
 import com.sprhib.model.Stat;
 import com.sprhib.model.VyjazdovyOdber;
@@ -23,9 +24,12 @@ public class LoggedLekarController {
     private EntityService<Kraj> krajService;
     
     @Autowired
+    private EntityService<Pouzivatelia> pouzivateliaService;
+    
+    @Autowired
     private EntityVyjazdovyOdberService<VyjazdovyOdber> vyjazdovyOdberService;
 
-    //STATY    
+    //ODBEROVE MIESTA        
     @RequestMapping(value = "/vyjazd/add", method = RequestMethod.GET)
     public ModelAndView addVyjazdPage() {
         ModelAndView modelAndView = new ModelAndView("vyjazd/add-vyjazd");
@@ -78,8 +82,10 @@ public class LoggedLekarController {
     
     
     @RequestMapping(value = "/vyjazd/edit/{id}", method = RequestMethod.POST)
-    public ModelAndView edditingVyjazd(@ModelAttribute VyjazdovyOdber vyjazd, @PathVariable Integer id) {
-        ModelAndView modelAndView = new ModelAndView("vyjazd/list-vyjazd");
+    public ModelAndView edditingVyjazd(
+            @ModelAttribute VyjazdovyOdber vyjazd, 
+            @PathVariable Integer id) {
+        ModelAndView modelAndView = new ModelAndView("home");
 
         vyjazdovyOdberService.updateEntity(vyjazd);
         
@@ -106,11 +112,97 @@ public class LoggedLekarController {
         modelAndView.addObject("message", message);
         
         return modelAndView;
+    }   
+    //END ODBEROVE MIESTA
+    
+    
+    
+    
+    
+    
+    //ODBEROVE MIESTA        
+    @RequestMapping(value = "/user/add", method = RequestMethod.GET)
+    public ModelAndView addUserPage() {
+        ModelAndView modelAndView = new ModelAndView("pouzivatelia/add-user");
+        
+        modelAndView.addObject("vyjazd", new VyjazdovyOdber());
+        return modelAndView;
     }
 
-   
-    //END STATY
+    @RequestMapping(value = "/user/add", method = RequestMethod.POST)
+    public ModelAndView addingUser(@ModelAttribute VyjazdovyOdber vyjazd) {
+        ModelAndView modelAndView = new ModelAndView("pouzivatelia/list-user");
+        
+        vyjazdovyOdberService.addEntity(vyjazd);
+        
+        
+        List<VyjazdovyOdber> vyjazdy = vyjazdovyOdberService.getEntites();
+        modelAndView.addObject("vyjazdy", vyjazdy);
+
+        String message = "Vyjazd pridaný.";
+        modelAndView.addObject("message", message);
+
+        return modelAndView;
+    }
+
     
     
+    @RequestMapping(value = "/user/list")
+    public ModelAndView listOfUsers() {
+        ModelAndView modelAndView = new ModelAndView("pouzivatelia/list-user");
+
+        
+        
+        List<Pouzivatelia> users = pouzivateliaService.getEntites();
+        modelAndView.addObject("users", users);
+
+        return modelAndView;
+    }
+
+    
+    
+    @RequestMapping(value = "/user/edit/{id}", method = RequestMethod.GET)
+    public ModelAndView editUserPage(@PathVariable Integer id) {
+        ModelAndView modelAndView = new ModelAndView("pouzivatelia/edit-user");
+        
+        VyjazdovyOdber vyjazd = vyjazdovyOdberService.getEntity(id);
+        
+        modelAndView.addObject("vyjazd", vyjazd);
+        return modelAndView;
+    }
+
+    
+    
+    @RequestMapping(value = "/user/edit/{id}", method = RequestMethod.POST)
+    public ModelAndView edditingUser(@ModelAttribute VyjazdovyOdber vyjazd, @PathVariable Integer id) {
+        ModelAndView modelAndView = new ModelAndView("pouzivatelia/list-user");
+
+        vyjazdovyOdberService.updateEntity(vyjazd);
+        
+        List<VyjazdovyOdber> vyjazdy = vyjazdovyOdberService.getEntites();
+        modelAndView.addObject("vyjazdy", vyjazdy);
+
+        String message = "Stat was successfully edited.";
+        modelAndView.addObject("message", message);
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/user/delete/{id}", method = RequestMethod.GET)
+    public ModelAndView deleteUser(@PathVariable Integer id) {
+        ModelAndView modelAndView = new ModelAndView("pouzivatelia/list-user");
+        
+        vyjazdovyOdberService.deleteEntity(id);
+        
+        List<VyjazdovyOdber> vyjazdy = vyjazdovyOdberService.getEntites();
+        modelAndView.addObject("vyjazdy", vyjazdy);
+        System.out.println("dfdfgbf");
+        
+        String message = "Stat was successfully deleted.";
+        modelAndView.addObject("message", message);
+        
+        return modelAndView;
+    }   
+    //END ODBEROVE MIESTA
     
 }

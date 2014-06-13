@@ -74,7 +74,7 @@
                 <li><a href="#">-!-Darca</a>
                     <ul class="subs">
                         <li><a href="#">Pridaj používatľa</a></li>
-                        <li><a href="#">Zoznam používateľov</a></li>
+                        <li><a href="${pageContext.request.contextPath}/logged/lekar/user/list">Zoznam používateľov</a></li>
                     </ul>
                 </li>
                 

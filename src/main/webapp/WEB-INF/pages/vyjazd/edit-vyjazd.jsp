@@ -98,7 +98,7 @@
 
                 <p>${message}</p>
  <!--type="hidden"-->
-            <form:form method="POST" commandName="vyjazd" action="${pageContext.request.contextPath}/logged/lekar/vyjazd/edit/${vyjazd.idVyjazdovyOdber}.html">
+            <form:form method="POST" commandName="vyjazd" action="${pageContext.request.contextPath}/logged/lekar/vyjazd/edit/${vyjazd.idVyjazdovyOdber}">
                 <table>
                     <tbody>
                         <tr>
