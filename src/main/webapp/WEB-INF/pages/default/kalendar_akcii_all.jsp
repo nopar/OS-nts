@@ -108,25 +108,13 @@
 
             <h1>Kalendár Akcií</h1>
             
-            <script>
-                function switch(){
-                    if(document.getElementByName('all').style.display == 'none'){
-                        document.getElementByName('all').style.display='block';
-                        getElementByName('one').style.display='none';                        
-                    }else{
-                        document.getElementByName('all').style.display='none';
-                        document.getElementByName('one').style.display='block'; 
-                    }
-                }
-            </script>
+         
             
-            <button onmouseup="switch();" 
-                    name="one"
-                    onclick="location.href = '${pageContext.request.contextPath}/info/kalendar-akcii'">
+            <button onclick="location.href = '${pageContext.request.contextPath}/info/kalendar-akcii'">
                 Od dnes
             </button></br></br>
                 
-                
+            <h2 style="color: #00B4FF">Zobrazujú sa Vám výsledky max mesiac staré:</h2>
             
             <cor:set var="li" value="${list}" /> 
             

@@ -56,7 +56,19 @@ public class VyjazdovyOdberDAO implements EntityVyjazdovyOdberDAO<VyjazdovyOdber
 	public List<VyjazdovyOdber> getEntites() {
             // + "datum >= (current_date()-30) order by datum asc"
             //(day(current_date()) - day(datum)) < 10
-		return getCurrentSession().createQuery("from VyjazdovyOdber where datum >= (current_date()-30) order by datum asc").list();
+            Session session = getCurrentSession();
+            
+            Calendar cal = Calendar.getInstance();
+            cal.add(Calendar.HOUR_OF_DAY, -30*24);
+            
+            Query q = session.createQuery("from VyjazdovyOdber where :date <= datum order by datum asc");
+            q.setCalendarDate("date", cal);
+            q.list();
+
+            return q.list();
+            
+
+		//return getCurrentSession().createQuery("from VyjazdovyOdber where datum >= (current_date()-30) order by datum asc").list();
 	}
         
         @SuppressWarnings("unchecked")
@@ -64,9 +76,9 @@ public class VyjazdovyOdberDAO implements EntityVyjazdovyOdberDAO<VyjazdovyOdber
             Session session = getCurrentSession();
             
             Calendar cal = Calendar.getInstance();
-            cal.add(Calendar.HOUR_OF_DAY, 3);
+            cal.add(Calendar.HOUR_OF_DAY, 0);
             
-            Query q = session.createQuery("from VyjazdovyOdber where datum > :date order by datum asc");
+            Query q = session.createQuery("from VyjazdovyOdber where datum >= :date order by datum asc");
             q.setCalendarDate("date", cal);
             q.list();
 

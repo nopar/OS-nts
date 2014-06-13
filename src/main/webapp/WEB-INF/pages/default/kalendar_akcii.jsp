@@ -112,10 +112,7 @@
             
                 
                 
-            <button onmouseup="switch();" 
-                    name="all"
-                    
-                    onclick="location.href = '${pageContext.request.contextPath}/info/kalendar-akcii/vsetky'">
+            <button onclick="location.href = '${pageContext.request.contextPath}/info/kalendar-akcii/vsetky'">
                 Všetky odberové miesta
             </button></br></br>
 
