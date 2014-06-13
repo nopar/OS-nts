@@ -108,30 +108,32 @@
        
 
         
-        <div class="container">
-                
-            <h1>Role</h1>
-           
+    <div class="container">
 
-            <button onclick="location.href = '${pageContext.request.contextPath}/logged/admin/skupiny/add.html'">
-                Pridať rolu
-            </button></br></br>
+        <h1>Role</h1>
 
-            <cor:if  test="${!empty skupiny}">
-                <table border="1px" cellpadding="0" cellspacing="0" >
-                    <thead>
+
+        <button onclick="location.href = '${pageContext.request.contextPath}/logged/admin/skupiny/add.html'">
+            Pridať rolu
+        </button></br></br>
+
+        <cor:if  test="${!empty skupiny}">
+            <table border="1px" cellpadding="0" cellspacing="0" >
+                <thead>
+                    <tr>
+                        <th width="15%">AUTORITA</th>
+                        <th width="10%">SPECIALNE</th>
+                        <th width="10%"></th>
+                    </tr>
+                </thead>
+                <tbody align="center">
+                    <cor:forEach items="${skupiny}" varStatus="i">
+                        <cor:set var="skupina" value="${skupiny[i.index]}"/>
                         <tr>
-                            <th width="15%">AUTORITA</th>
-                            <th width="10%">SPECIALNE</th>
-                            <th width="10%"></th>
-                        </tr>
-                    </thead>
-                    <tbody align="center">
-                        <cor:forEach var="skupina" items="${skupiny}">
-                            <tr>
-                                <td style="padding-left: 10px;" align="left">${skupina.autorita}</td>
-                                <td>${skupina.specialne}</td>
-                                <td>
+                            <td style="padding-left: 10px;" align="left">${skupina.autorita}</td>
+                            <td>${skupina.specialne}</td>
+                            <td>
+                                <cor:if  test="${i.index >= 3}">
                                     <div id="crud_icon_block">
                                         <input type="image"
                                                src="${pageContext.request.contextPath}/resources/img/edit.png"
@@ -140,43 +142,43 @@
                                                onclick="location.href = '${pageContext.request.contextPath}/logged/admin/skupiny/edit/${skupina.idGroup}.html'">
 
 
-                                            <input type="image"
-                                                   src="${pageContext.request.contextPath}/resources/img/delete.png"
-                                                   alt="Zmaž skupinu"
-                                                   class="crud_icon"
-                                                   onclick="location.href ='${pageContext.request.contextPath}/logged/admin/skupiny/delete/${skupina.idGroup}.html'">
-                                                </div>
+                                        <input type="image"
+                                               src="${pageContext.request.contextPath}/resources/img/delete.png"
+                                               alt="Zmaž skupinu"
+                                               class="crud_icon"
+                                               onclick="location.href ='${pageContext.request.contextPath}/logged/admin/skupiny/delete/${skupina.idGroup}.html'">
+                                    </div>
+                                </cor:if>
+                            </td>
+                                            </tr>
+                                        </cor:forEach>
+                </tbody>
+            </table>
+        </cor:if>
 
-                                                </td>
-                                                </tr>
-                                            </cor:forEach>
-                    </tbody>
-                </table>
-            </cor:if>
+        <p>
+            <button onclick="location.href = '${pageContext.request.contextPath}/index.html'">
+                Domov
+            </button>
 
-            <p>
-                <button onclick="location.href = '${pageContext.request.contextPath}/index.html'">
-                    Domov
-                </button>
+            <INPUT Type="button" VALUE="Naspäť" onClick="history.go(-1);
+                return true;"></INPUT>
+        </p>
 
-                <INPUT Type="button" VALUE="Naspäť" onClick="history.go(-1);
-                    return true;"></INPUT>
-            </p>
-                    
-                  
-                    
-                 
-      
-<!--                    <cor:choose>
-                    <cor:when test="${pageContext.request.userPrincipal.name == null}">
-                        <h1>Prosím prihláste sa.</h1>
-                    </cor:when>
-                        <cor:otherwise>
-                            <h1></h1>
-                        </cor:otherwise>
-                </cor:choose>
-                    -->
-                 
-        </div>
-    </body>
+
+
+
+
+    <!--                    <cor:choose>
+                <cor:when test="${pageContext.request.userPrincipal.name == null}">
+                    <h1>Prosím prihláste sa.</h1>
+                </cor:when>
+                    <cor:otherwise>
+                        <h1></h1>
+                    </cor:otherwise>
+            </cor:choose>
+                -->
+
+    </div>
+</body>
 </html>

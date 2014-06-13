@@ -110,11 +110,16 @@
 
                         <tr>
                             <td>Autorita:</td>
-                            <td><form:input path="autorita" /></td>
+                            <td><form:input path="autorita"                                         
+                                        
+                                        /></td>
                         </tr>
                         <tr>
                             <td>Specialne:</td>
-                            <td><form:input path="specialne" /></td>
+                            <td><form:input path="specialne" 
+                                        type="number"
+                                        maxlength="4"
+                                        /></td>
                         </tr>
                         <tr>
                             <td><input type="submit" value="Edit" /></td>

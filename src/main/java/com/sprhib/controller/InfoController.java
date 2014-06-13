@@ -58,6 +58,35 @@ public class InfoController {
 
     }
 
+    
+    @RequestMapping(value = "/kalendar-akcii/vsetky", method = RequestMethod.GET)
+    public ModelAndView kalendarAkciiAllPage() {
+        ModelAndView model = new ModelAndView();
+        
+        List<VyjazdovyOdber> akcie = vyjazdovyOdberService.getEntites();
+       List<String> menakrajov = new ArrayList<String>();
+       List<String> list = new ArrayList<String>();
+        
+            for(VyjazdovyOdber i : akcie){
+                Kraj krajID = i.getIdKraj();
+                menakrajov.add(krajID.getKraj());
+            }
+          
+            System.out.println("menakrajov" + menakrajov);
+            for(String s : menakrajov){
+                list.add(s);
+                System.out.println("s :" + s.toString());
+            }
+                      
+            model.addObject("list", list);
+            model.addObject("akcie", akcie);
+        
+        model.setViewName("default/kalendar_akcii_all");
+        return model;
+
+    }
+    
+
     @RequestMapping(value = "/pred-darovanim", method = RequestMethod.GET)
     public ModelAndView predDarovanimPage() {
 

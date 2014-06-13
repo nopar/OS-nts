@@ -43,7 +43,6 @@ public class RestController {
     private EntityNastavenieService<Nastavenie> nastavenieService;
     
     
-//profil
     
     
       @RequestMapping(value = "/check/{nick}/{pass}", method = RequestMethod.GET)
@@ -54,15 +53,13 @@ public class RestController {
             ModelAndView model = new ModelAndView();  
             
             List<Pouzivatelia> zaznam = vyjazdovyOdberService.checkUser(nick, pass);
-            System.out.println("1 " + zaznam);
             
             if (zaznam.isEmpty()) {
                 return false;
             }
             else{
                 return true;                
-            }
-          
+            }          
 	}
     
     

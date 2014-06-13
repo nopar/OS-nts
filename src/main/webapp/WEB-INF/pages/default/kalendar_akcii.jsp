@@ -108,18 +108,30 @@
 
             <h1>Kalendár Akcií</h1>
             
+          
+            
+                
+                
+            <button onmouseup="switch();" 
+                    name="all"
+                    
+                    onclick="location.href = '${pageContext.request.contextPath}/info/kalendar-akcii/vsetky'">
+                Všetky odberové miesta
+            </button></br></br>
+
+            
             <cor:set var="li" value="${list}" /> 
             
             <cor:if  test="${!empty akcie}">
                 <table border="1px" cellpadding="0" cellspacing="0" >
                     <thead>
                         <tr>
-                            <th width="10%">NÁZOV</th>
-                            <th width="15%">DÁTUM</th>
-                            <th width="10%">ADRESA</th>
-                            <th width="10%">ZAČIATOK</th>
-                            <th width="10%">KONIEC</th>
-                            <th width="10%">POPIS</th>
+                            <th width="15%">NÁZOV</th>
+                            <th width="10%">DÁTUM</th>
+                            <th width="15%">ADRESA</th>
+                            <th width="6%">ZAČIATOK</th>
+                            <th width="6%">KONIEC</th>
+                            <th width="15%">POPIS</th>
                             <th width="10%">KRAJ</th>
                         </tr>
                     </thead>
@@ -127,13 +139,13 @@
                         <cor:forEach items="${akcie}" varStatus="i">
                             <cor:set var="akcia" value="${akcie[i.index]}"/>
                             <tr>
-                                <td>${akcia.nazov}</td>
+                                <td style="padding-left: 10px;" align="left">${akcia.nazov}</td>
                                 <td>${akcia.datum}</td>
-                                <td>${akcia.adresa}</td>
+                                <td style="padding-left: 10px;" align="left">${akcia.adresa}</td>
                                 <td>${akcia.casZaciatku}</td>
                                 <td>${akcia.casKonca}</td>
-                                <td>${akcia.blizsiPopis}</td>                                
-                                <td>${li[i.index]}</td>
+                                <td style="padding-left: 10px;" align="left">${akcia.blizsiPopis}</td>                                
+                                <td style="padding-left: 10px;" align="left">${li[i.index]}</td>
                             </tr>
                         </cor:forEach>  
                     </tbody>

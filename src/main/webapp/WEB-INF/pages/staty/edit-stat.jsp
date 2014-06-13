@@ -108,11 +108,14 @@
 
                         <tr>
                             <td>Stat:</td>
-                            <td><form:input path="stat" /></td>
+                            <td><form:input path="stat" placeholder="Meno Štátu"/></td>
                         </tr>
                         <tr>
                             <td>Skratka:</td>
-                            <td><form:input path="skratka" /></td>
+                            <td><form:input path="skratka" 
+                                        placeholder="Oficiálna skratka" 
+                                        maxlength="4"
+                                        onblur="this.value=this.value.toUpperCase()"/></td>
                         </tr>
                         <tr>
                             <td><input type="submit" value="Uložiť" /></td>
