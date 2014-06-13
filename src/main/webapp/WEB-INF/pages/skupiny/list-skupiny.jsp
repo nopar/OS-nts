@@ -55,6 +55,12 @@
         </cor:choose>
 
         <script src="${pageContext.request.contextPath}/resources/js/posuvacmenu.js" type="text/javascript"></script>
+        <style>
+            th{
+                color: #00B4FF;
+            }
+        </style>
+        
     </head>
     
     <body onload="posun(2)">

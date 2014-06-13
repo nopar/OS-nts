@@ -80,8 +80,8 @@
                 
                 <li><a href="#">-!-Odberové miesto</a>
                     <ul class="subs">
-                        <li><a href="#">Pridaj výjazd</a></li>
-                        <li><a href="#">Zoznam výjazdov</a></li>
+                        <li><a href="${pageContext.request.contextPath}/logged/lekar/vyjazd/add">Pridaj výjazd</a></li>
+                        <li><a href="${pageContext.request.contextPath}/logged/lekar/vyjazd/list">Zoznam výjazdov</a></li>
                     </ul>
                 </li>
                   
