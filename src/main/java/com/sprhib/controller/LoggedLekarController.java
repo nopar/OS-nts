@@ -56,32 +56,58 @@ public class LoggedLekarController {
     
    
      @RequestMapping(value = "/user/add", method = RequestMethod.POST)
-    public ModelAndView addingUser(@ModelAttribute Pouzivatelia user) {
+    public ModelAndView addingUser(
+            @ModelAttribute Pouzivatelia user) {
         ModelAndView modelAndView = new ModelAndView("pouzivatelia/list-user");
-        
-        Map<String, Object> model = new HashMap<String, Object>();
-        
-        List<Nastavenie> nast = nastavenieService.getEntites();
-        List<KrvnaSkupina> krv = krvnaSkupinaService.getEntites();
-        List<Mesto> mesto = mestoService.getEntites();
-        modelAndView.addObject("nast", nast);
-        modelAndView.addObject("krv", krv);
-        modelAndView.addObject("mesto", mesto);
-        
         
         pouzivateliaService.addEntity(user);
         
-        
+                  
+       List<Nastavenie> nast = nastavenieService.getEntites();
+        List<KrvnaSkupina> krv = krvnaSkupinaService.getEntites();
+        List<Mesto> mesto = mestoService.getEntites();
         List<Pouzivatelia> users = pouzivateliaService.getEntites();
-       // List<Pouzivatelia> vyjazdy = vyjazdovyOdberService.getEntites();
-        
+        modelAndView.addObject("nast", nast);
+        modelAndView.addObject("krv", krv);
+        modelAndView.addObject("mesto", mesto);
         modelAndView.addObject("users", users);
-
-        String message = "Vyjazd pridaný.";
+        
+        
+        String message = "Používatľ bol pridaný.";
         modelAndView.addObject("message", message);
 
         return modelAndView;
     }
+    
+    
+      @RequestMapping(value = "/user/add", method = RequestMethod.GET)
+    public ModelAndView addUserPage() {
+        ModelAndView modelAndView = new ModelAndView("pouzivatelia/add-user");
+        
+        List<Nastavenie> nast = nastavenieService.getEntites();
+        List<KrvnaSkupina> krv = krvnaSkupinaService.getEntites();
+        List<Mesto> mesta = mestoService.getEntites();
+        List<Adresa> adresy = adresaService.getEntites();
+        
+        Nastavenie nove = new Nastavenie();
+         nove.setKraj(true);
+        nove.setMojeOdbery(true);
+        nove.setUrgentnePripady(true);
+        nove.setVyjazdoveOdbery(true);        
+        nastavenieService.addEntity(nove);
+        
+        
+        modelAndView.addObject("nast", nast);
+        modelAndView.addObject("krv", krv);
+        modelAndView.addObject("mesta", mesta);
+        modelAndView.addObject("adresy", adresy);
+        
+        modelAndView.addObject("nove", nove);
+        modelAndView.addObject("user", new Pouzivatelia());
+        
+        return modelAndView;
+    }
+    
     
     
     
@@ -107,6 +133,7 @@ public class LoggedLekarController {
     @RequestMapping(value = "/vyjazd/add", method = RequestMethod.POST)
     public ModelAndView addingVyjazd(@ModelAttribute VyjazdovyOdber vyjazd) {
         ModelAndView modelAndView = new ModelAndView("home");
+        
         
         System.out.println(vyjazd.getDatum());
         vyjazdovyOdberService.addEntity(vyjazd);
@@ -188,13 +215,7 @@ public class LoggedLekarController {
     
     
     //ODBEROVE MIESTA        
-    @RequestMapping(value = "/user/add", method = RequestMethod.GET)
-    public ModelAndView addUserPage() {
-        ModelAndView modelAndView = new ModelAndView("pouzivatelia/add-user");
-        
-        modelAndView.addObject("user", new Pouzivatelia());
-        return modelAndView;
-    }
+  
 
    
 

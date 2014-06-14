@@ -1,13 +1,19 @@
 package com.sprhib.controller;
 
 
+import com.sprhib.model.Adresa;
+import com.sprhib.model.Kraj;
+import com.sprhib.model.KrvnaSkupina;
+import com.sprhib.model.Mesto;
 import com.sprhib.model.Nastavenie;
 import com.sprhib.model.Odber;
 import com.sprhib.model.Pouzivatelia;
+import com.sprhib.model.VyjazdovyOdber;
 import com.sprhib.service.EntityNastavenieService;
 import com.sprhib.service.EntityOdberService;
 import com.sprhib.service.EntityPouzivateliaService;
 import com.sprhib.service.EntityService;
+import com.sprhib.service.EntityVyjazdovyOdberService;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -40,6 +46,23 @@ public class LoggedProfilController {
      
      @Autowired
      private EntityNastavenieService<Nastavenie> nastavenieService;
+     
+      @Autowired
+    private EntityService<Kraj> krajService;
+    
+    @Autowired
+    private EntityService<KrvnaSkupina> krvnaSkupinaService;
+    
+    @Autowired
+    private EntityService<Mesto> mestoService;
+    
+    @Autowired
+    private EntityService<Adresa> adresaService;
+    
+    
+    @Autowired
+    private EntityVyjazdovyOdberService<VyjazdovyOdber> vyjazdovyOdberService;
+    
 
 
     @RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
@@ -259,6 +282,26 @@ public class LoggedProfilController {
         
         
         Pouzivatelia user = pouzivateliaService.getEntity(userID);
+        List<Nastavenie> nast = nastavenieService.getEntites();
+        List<KrvnaSkupina> krv = krvnaSkupinaService.getEntites();
+        List<Mesto> mesta = mestoService.getEntites();
+        List<Adresa> adresy = adresaService.getEntites();
+        
+        
+        String finall, output = user.getDatumNarodenia().toString();
+        
+        
+        finall = output.substring(8, 10) + "/" + output.substring(5, 7) + "/" + output.substring(0, 4);
+        
+        
+       // System.out.println("finall " + finall);
+        
+        model.addObject("finall", finall);
+        model.addObject("nast", nast);
+        model.addObject("krv", krv);
+        model.addObject("mesta", mesta);
+        model.addObject("adresy", adresy);
+        
         model.addObject("user", user);
         
         model.setViewName("darca/reset_hesla");
@@ -270,12 +313,16 @@ public class LoggedProfilController {
             @ModelAttribute Pouzivatelia user,
             @PathVariable Integer id) {
         ModelAndView model = new ModelAndView();
-         System.out.println("respass :" + user.getResetPasswd());
+        
         pouzivateliaService.updateEntity(user);
         
-        // Pouzivatelia changed_user = pouzivateliaService.getEntity(id);
-        //model.addObject("user", changed_user);
-       // model.addObject("message", "Zmenené");
+        List<Pouzivatelia> users = pouzivateliaService.getEntites();
+        model.addObject("users", users);
+        
+        String message = "Heslo zmenené.";
+        
+     
+        model.addObject("message", message);
         model.setViewName("home");
         return model;
     }  

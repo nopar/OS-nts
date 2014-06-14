@@ -110,7 +110,7 @@
                             <%--<cor:out value="${accountId}"/>--%>
                         </ul>
                         <a  class="backbutton"
-                            href="#">-!-Prihlásení: ${pageContext.request.userPrincipal.name}</a>
+                            href="#">  Prihlásení: ${pageContext.request.userPrincipal.name}</a>
 
                     </li>
                 </cor:if>

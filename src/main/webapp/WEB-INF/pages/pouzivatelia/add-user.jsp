@@ -8,7 +8,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Pridaj štát</title>
+        <title>Pridaj používateľa</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="shortcut icon" type="image/x-icon" href="<cor:url value='/resources/img/favicon.ico'/>" />
         <link href="${pageContext.request.contextPath}/resources/css/layout.css" rel="stylesheet" type="text/css"/>
@@ -98,69 +98,79 @@
                 <table>
                     <tbody>
                         <tr>
-                            <td>idUser</td>
-                            <td><form:input path="idUser" /></td>
+                            <td><form:input type="hidden" path="idUser" /></td>
                         </tr>
                         <tr>
                             <td>email</td>
-                            <td><form:input path="email" /></td>
+                            <td><form:input path="email" type="email" required="true" maxlength="45"/></td>
                         </tr>
                         <tr>
                             <td>nick</td>
-                            <td><form:input path="nick" /></td>
+                            <td><form:input path="nick" required="true" maxlength="45"/></td>
                         </tr>
                         <tr>
                             <td>password</td>
-                            <td><form:input path="password" /></td>
+                            <td><form:input path="password" type="password" required="true" maxlength="15"/></td>
                         </tr>
                         <tr>
                             <td>meno</td>
-                            <td><form:input path="meno" /></td>
+                            <td><form:input path="meno" required="true" maxlength="15"/></td>
                         </tr>
                         <tr>
                             <td>priezvisko</td>
-                            <td><form:input path="priezvisko" /></td>
+                            <td><form:input path="priezvisko" required="true" maxlength="20"/></td>
                         </tr>
                         
                         
                         <tr>
                             <td>datumNarodenia</td>
-                            <td><form:input path="datumNarodenia" /></td>
+                            <td><form:input path="datumNarodenia" 
+                                        maxlength="10"
+                                        placeholder="03/05/1975"
+                                        value="03/05/1975"/></td>
                         </tr>
                         <tr>
                             <td>telKontakt</td>
-                            <td><form:input path="telKontakt" /></td>
+                            <td><form:input path="telKontakt"
+                                        maxlength="30"
+                                         placeholder="napriklad: 0902987987"/></td>
                         </tr>
                         <tr>
                             <td>pohlavie</td>
-                            <td><form:input path="pohlavie" /></td>
+                            <td><form:input path="pohlavie"
+                                        maxlength="1"
+                                        placeholder="M/F"
+                                        onblur="this.value=this.value.toUpperCase()"/></td>
                         </tr>
                         <tr>
-                            <td>enabed</td>
-                            <td><form:input path="enabled" /></td>
+                            <td><form:input path="enabled" type="hidden" value="true" maxlength="5"/></td>
                         </tr>
                         <tr>
-                            <td>resetPasswd</td>
-                            <td><form:input path="resetPasswd" /></td>
+                            <td><form:input type="hidden" path="resetPasswd" type="password"/></td>
                         </tr>
                         <tr>
                             <td>idNastavenie.idNastavenie</td>
-                            <td><form:input path="idNastavenie.idNastavenie" /></td>
+                            <td><form:input path="idNastavenie.idNastavenie" value="${nove.idNastavenie}"/></td>
                         </tr>
                         
                         <tr>
-                            <td>idKrvnaSkupina.typKrvi</td>
-                            <td><form:input path="idKrvnaSkupina.idKrvnaSkupina"/></td>
+                            <td>Typ Krvi</td>
+                            <td>
+                                <form:select path="idKrvnaSkupina.idKrvnaSkupina" >
+                                    <cor:forEach items="${krv}" var="k">
+                                        <option label="${k.typKrvi}">${k.idKrvnaSkupina}</option>
+                                    </cor:forEach>
+                                </form:select>   
+                            </td>
                         </tr>
                         <tr>
-                            <td>idAdresa.idMesto.mesto</td>
+                            <td>Mesto</td>
                             <td>
-                                <form:input path="idAdresa.idAdresa"/>
-                                <c:bind path="idAdresa">
-                                    <cor:if test="${status.error}">
-                                        <img src="<c:url value="/resources/images/warning1.png"/>"  class="trojuholnik"  title="Musí byť zadané číslo!" />
-                                    </cor:if>
-                                </c:bind>
+                                <form:select path="idAdresa.idAdresa" >
+                                    <cor:forEach items="${adresy}" var="a">
+                                        <option label="${a.idMesto.mesto}">${a.idAdresa}</option>
+                                     </cor:forEach>
+                                </form:select> 
                             </td>
                         </tr>
                         

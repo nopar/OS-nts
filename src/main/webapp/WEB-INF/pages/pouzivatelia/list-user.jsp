@@ -116,9 +116,9 @@
 
             <h1>Zoznam používateľov</h1>
             
-            <!--<button onclick="location.href = '${pageContext.request.contextPath}/logged/lekar/user/add'">
+            <button onclick="location.href = '${pageContext.request.contextPath}/logged/lekar/user/add'">
                 Pridaj používateľa
-            </button>--></br></br>
+            </button></br></br>
             
             
             <cor:if  test="${!empty users}">
@@ -133,12 +133,10 @@
                             <th width="10%">DAT. NAR.</th>
                             <th width="10%">MOBIL</th>
                             <th width="5%">SEX</th>
-                            <th width="5%">RST</th>
                             <th width="3%">SETT.</th>
                             <th width="5%">KRV</th>
                             <th width="10%">MESTO</th>
-                            <th width="10%"></th>
-                            
+                            <th width="10%">EDIT</th>                            
                         </tr>
                     </thead>
                     <tbody align="center">
@@ -155,7 +153,10 @@
                                 </td>
                                 
                                 <td>
-                                    ${user.password}
+                                    <input type='password' 
+                                           readonly="true"
+                                           value="${user.password}"
+                                           size="10"/>
                                 </td>
                                 
                                 <td>
@@ -177,10 +178,7 @@
                                 <td>
                                     ${user.pohlavie}
                                 </td>
-                                
-                                <td>
-                                    ${user.resetPasswd}
-                                </td>
+                             
                                 
                                 <td>
                                     ${user.idNastavenie.idNastavenie}

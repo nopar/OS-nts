@@ -128,86 +128,74 @@
         }
     </script>
 
-
-            
-            
-            <form:form method="POST" 
-                       commandName="user"
-                       name="ValidationForm"
-                       >
+    
+    <form:form method="POST" commandName="user" action="${pageContext.request.contextPath}/logged/profil/passw_rst/${user.idUser}.html">
                 <table>
                     <tbody>
                         <tr>
-                            <td></td>
-                            <td><form:input type="hidden" path="idUser" /></td>
+                            <td><form:input type="hidden" path="idUser" readonly="true"/></td>
                         </tr>
-
                         <tr>
-                            <td></td>
                             <td><form:input type="hidden" path="email" /></td>
                         </tr>
                         <tr>
                             <td>nick</td>
-                            <td><form:input path="nick" disabled="true" /></td>
+                            <td><form:input readonly="true" path="nick" /></td>
                         </tr>
                         <tr>
-                            <td>Heslo:</td>
-                            <td><form:input path="password"  id="password1"/></td>
+                            <td>password</td>
+                            <td><form:input path="password" type="password" id="password1" required="true"/></td>
                         </tr>
                         <tr>
-                            <td>Overte heslo:</td>
-                            <td><form:input path="resetPasswd"  id="password2"/></td>
+                            <td>Overte heslo: </td>
+                            <td><form:input path="resetPasswd" type="password" id="password2"/></td>
                         </tr>
-                     
                         <tr>
-                            <td></td>
                             <td><form:input type="hidden" path="meno" /></td>
                         </tr>
                         <tr>
-                            <td></td>
                             <td><form:input type="hidden" path="priezvisko" /></td>
                         </tr>
+                        
                         <tr>
-                            <td></td>
-                            <td><form:input type="hidden" path="datumNarodenia" /></td>
+                            <td><form:input path="datumNarodenia"  type="hidden" value="${finall}" /></td>
                         </tr>
                         <tr>
-                            <td></td>
-                            <td><form:input type="hidden" path="telKontakt" /></td>
+                            <td><form:input  type="hidden" path="telKontakt" /></td>
                         </tr>
                         <tr>
-                            <td></td>
                             <td><form:input type="hidden" path="pohlavie" /></td>
                         </tr>
-                        
-                         <tr>
-                            <td></td>
-                            <td><form:input type="hidden" path="idNastavenie" /></td>
+                        <tr>
+                            <td><form:input type="hidden" path="enabled" /></td>
                         </tr>
-                         <tr>
-                            <td></td>
-                            <td><form:input type="hidden" path="idKrvnaSkupina" /></td>
-                        </tr>
-                         <tr>
-                            <td></td>
-                            <td><form:input path="idAdresa" /></td>
-                        </tr>
-                        
                         
                         <tr>
-                            <td><input type="submit" value="Uložiť" onsumbit="return myFunction();"/></td>
+                            <td><form:input path="idNastavenie.idNastavenie" type="hidden" readonly="true"/>
+                            </td>                           
+                        </tr>
+                        
+                        <tr>
+                            <td><form:input path="idAdresa.idAdresa" type="hidden" readonly="true"/>
+                            </td>                           
+                        </tr>
+                        
+                        <tr>
+                            <td><form:input path="idKrvnaSkupina.idKrvnaSkupina" type="hidden" readonly="true"/>
+                            </td>                           
+                        </tr>
+                        
+                       
+                          
+                        
+                        <tr>
+                            <td><input type="submit" value="Uložiť"/></td>
                             <td></td>
                         </tr>
                     </tbody>
                 </table>
             </form:form>
-
-
-
-            
-
-
-
+    
 
             <p id="x"></p>                
             <br>

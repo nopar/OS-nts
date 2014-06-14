@@ -107,45 +107,49 @@
                         </tr>
                         <tr>
                             <td>email</td>
-                            <td><form:input path="email" /></td>
+                            <td><form:input path="email" required="true" maxlength="45"/></td>
                         </tr>
                         <tr>
                             <td>nick</td>
-                            <td><form:input path="nick" /></td>
+                            <td><form:input path="nick"  required="true" maxlength="45" /></td>
                         </tr>
                         <tr>
                             <td>password</td>
-                            <td><form:input path="password" /></td>
+                            <td><form:input path="password" type="password" required="true" maxlength="15" /></td>
                         </tr>
                         <tr>
                             <td>meno</td>
-                            <td><form:input path="meno" /></td>
+                            <td><form:input path="meno" required="true" maxlength="15"/></td>
                         </tr>
                         <tr>
                             <td>priezvisko</td>
-                            <td><form:input path="priezvisko" /></td>
+                            <td><form:input path="priezvisko" required="true" maxlength="20"/></td>
                         </tr>
                         
                         
                         <tr>
                             <td>datumNarodenia</td>
-                            <td><form:input path="datumNarodenia" /></td>
+                            <td><form:input path="datumNarodenia" maxlength="10"
+                                        placeholder="03/05/1975"
+                                        /></td>
                         </tr>
                         <tr>
                             <td>telKontakt</td>
-                            <td><form:input path="telKontakt" /></td>
+                            <td><form:input path="telKontakt" maxlength="30"/></td>
                         </tr>
                         <tr>
                             <td>pohlavie</td>
-                            <td><form:input path="pohlavie" /></td>
+                            <td><form:input path="pohlavie" maxlength="1"
+                                        placeholder="M/F"
+                                        onblur="this.value=this.value.toUpperCase()"/></td>
                         </tr>
                         <tr>
                             <td>enabed</td>
-                            <td><form:input path="enabled" /></td>
+                            <td><form:input path="enabled"  value="true" maxlength="5"/></td>
                         </tr>
                         <tr>
                             <td>resetPasswd</td>
-                            <td><form:input path="resetPasswd" /></td>
+                            <td><form:input path="resetPasswd" type="password" /></td>
                         </tr>
                         <tr>
                             
