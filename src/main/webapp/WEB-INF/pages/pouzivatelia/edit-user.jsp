@@ -113,7 +113,8 @@
                     }
                 </script>
 
-                <p>${message}</p>
+              <span style="color: #00B4FF">${message}</span>	
+        
  <!--type="hidden"-->
             <form:form method="POST" commandName="user" action="${pageContext.request.contextPath}/logged/lekar/user/edit/${user.idUser}.html">
                 <table>

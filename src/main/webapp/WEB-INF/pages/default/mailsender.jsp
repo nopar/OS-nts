@@ -8,6 +8,7 @@
 <%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="cor" %>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@page session="true"%>
 
 <!DOCTYPE html>
@@ -106,8 +107,49 @@
         <div class="container">
 
             <h1>Zaslanie notifikácie</h1>
+            <script>
+                function off(){
+                    document.getElementById('zoznam').style.visibility="hidden";
+                }
+                
+                function on(){
+                    document.getElementById('zoznam').style.visibility="visible";
+                }
+            
+                    
+                function nastav_blood(cislo){
+                    
+                }
+                
+            </script>
+
+         <fieldset id="krv_radio" style="color: white">
+             <legend style="color: #00B4FF">Krvná skupina - všeobecný stav zásob na Slovensku</legend>
+             <button onclick="location.href = '${pageContext.request.contextPath}/logged/lekar/notify/1'">AB+</button>
+             <button onclick="location.href = '${pageContext.request.contextPath}/logged/lekar/notify/2'">AB1</button>
+             <button onclick="location.href = '${pageContext.request.contextPath}/logged/lekar/notify/3'">A+</button>
+             <button onclick="location.href = '${pageContext.request.contextPath}/logged/lekar/notify/4'">A-</button>
+             <button onclick="location.href = '${pageContext.request.contextPath}/logged/lekar/notify/5'">B+</button>
+             <button onclick="location.href = '${pageContext.request.contextPath}/logged/lekar/notify/6'">B-</button>
+             <button onclick="location.href = '${pageContext.request.contextPath}/logged/lekar/notify/7'">0+</button>             
+             <button onclick="location.href = '${pageContext.request.contextPath}/logged/lekar/notify/8'">0-</button>
+
+             <fieldset>
+                 <button onclick="location.href = '${pageContext.request.contextPath}/logged/lekar/notify/9'">Bez ohľadu na krvnú skupiny a lokalitu</button>
+             </fieldset>
 
 
+         </fieldset></br></br>
+
+
+
+         <fieldset id="kraj_radio" style="color: white">
+             <legend style="color: #00B4FF">Lokalita</legend>
+                 <button onclick="location.href = '${pageContext.request.contextPath}/logged/lekar/notify/10'">Len môj kraj</button>   
+
+            
+         </fieldset>
+         </br></br>
 
 
             <p id="x"></p>                

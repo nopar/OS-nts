@@ -5,11 +5,13 @@ import com.sprhib.model.Kraj;
 import com.sprhib.model.KrvnaSkupina;
 import com.sprhib.model.Mesto;
 import com.sprhib.model.Nastavenie;
+import com.sprhib.model.Odber;
 import com.sprhib.model.Pouzivatelia;
 
 import com.sprhib.model.Stat;
 import com.sprhib.model.VyjazdovyOdber;
 import com.sprhib.service.EntityNastavenieService;
+import com.sprhib.service.EntityOdberService;
 import com.sprhib.service.EntityService;
 import com.sprhib.service.EntityVyjazdovyOdberService;
 import static java.lang.ProcessBuilder.Redirect.to;
@@ -30,6 +32,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -63,6 +69,9 @@ public class LoggedLekarController {
 
     @Autowired
     private EntityVyjazdovyOdberService<VyjazdovyOdber> vyjazdovyOdberService;
+    
+    @Autowired
+    private EntityOdberService<Odber> odberService;
 
 //    
 //    @Autowired
@@ -70,15 +79,42 @@ public class LoggedLekarController {
     @RequestMapping(value = "/notify", method = RequestMethod.GET)
     public ModelAndView mailSender() {
         ModelAndView model = new ModelAndView("default/mailsender");
-
+        
+        List<Kraj> kraje = krajService.getEntites();
+        model.addObject("kraje", kraje);
+        
+        Integer identif_blood = 99, identif_kraj = 99;
+        model.addObject("identif_blood", identif_blood);
+        
         
 
         return model;
     }
 
-    @RequestMapping(value = "/notify", method = RequestMethod.POST)
-    public ModelAndView mailSendering() {
-        ModelAndView model = new ModelAndView("default/mailsender");
+    
+    
+    @RequestMapping(value = "/notify/{identif}", method = RequestMethod.GET)
+    public ModelAndView mailSendering(
+            @PathVariable Integer identif ) {
+        //1 == AB+  2==AB-  3==A+   4==A-   5==B+   6==B-   7==0+   8==0-
+        //9==blood_all
+        
+        //11==9 lokalia_all
+        //10==region
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (!(auth instanceof AnonymousAuthenticationToken)) {
+            UserDetails userDetail = (UserDetails) auth.getPrincipal();
+//            System.out.println(userDetail);
+        }
+
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().
+                getAuthentication().getPrincipal();
+
+        String logNickSend = userDetails.getUsername();
+        Integer userID = odberService.getUserIDfromNick(logNickSend);
+        
+        
+        ModelAndView model = new ModelAndView("home");
         
         final String username = "novotny.patrick@gmail.com";
         final String password = "Loginon77";
@@ -97,41 +133,90 @@ public class LoggedLekarController {
                 });
         
         List<Pouzivatelia> users = pouzivateliaService.getEntites();
-        String msg = "Potrebujeme vašu krv. Prídte prosím na najbližšie odberové miesto. \n\nĎakujeme", 
+        String msg2="",
+                msg = "Potrebujeme vašu krv. Prídte prosím na najbližšie odberové miesto. \n\nĎakujeme", 
                 status = "", 
                 komu = "";
+        Pouzivatelia current_lekar = pouzivateliaService.getEntity(userID);
+        
         
         for (Pouzivatelia s : users) {
+            msg2 = "Drahý "+ s.getMeno() + " " + s.getPriezvisko() + " ,\n\n" + msg;
                 
-            if (s.getIdKrvnaSkupina().getTypKrvi().matches("B-")) {
-                komu = s.getEmail();
-               
-                try {
-                    System.out.println("komu posielam " + komu);
-                    System.out.println("krv" + s.getIdKrvnaSkupina().getTypKrvi());
-
-                    Message message = new MimeMessage(session);
-                    message.setFrom(new InternetAddress("novotny.patrick@gmail.com"));
-                    message.setRecipients(Message.RecipientType.TO,
-                            InternetAddress.parse(komu));
-                    message.setSubject("Notifikácia darcovského systému");
-                    message.setText(msg);
-
-                    Transport.send(message);
-
-                    System.out.println("Done");
-                    model.addObject("status", "Odoslané");
-
-                } catch (MessagingException e) {
-                    model.addObject("status", "Nedoslané");
-                    throw new RuntimeException(e);
+            if (identif >=1 && identif <=8) {
+                
+                if(identif == 1){
+                    if(s.getIdKrvnaSkupina().getTypKrvi() == "AB+") komu = s.getEmail();                    
                 }
+                else if(identif == 2){
+                     if(s.getIdKrvnaSkupina().getTypKrvi() == "AB-") komu = s.getEmail();
+                }
+                else if(identif == 3){
+                     if(s.getIdKrvnaSkupina().getTypKrvi() == "A+") komu = s.getEmail();
+                }
+                else if(identif == 4){
+                     if(s.getIdKrvnaSkupina().getTypKrvi() == "A-") komu = s.getEmail();
+                }
+                else if(identif == 5){
+                     if(s.getIdKrvnaSkupina().getTypKrvi() == "B+") komu = s.getEmail();
+                }
+                else if(identif == 6){
+                     if(s.getIdKrvnaSkupina().getTypKrvi() == "B-") komu = s.getEmail();
+                }
+                else if(identif == 7){
+                     if(s.getIdKrvnaSkupina().getTypKrvi() == "0+") komu = s.getEmail();
+                }
+                else if(identif == 8){
+                     if(s.getIdKrvnaSkupina().getTypKrvi() == "0-") komu = s.getEmail();
+                }             
             }
-        }
+            else if(identif == 9){
+                //all
+                komu = s.getEmail();                
+            }
+            else if(identif == 10){
+                //moj kraj
+                if(s.getIdAdresa().getIdMesto().getIdKraj().getKraj() == current_lekar.getIdAdresa().getIdMesto().getIdKraj().getKraj()) komu = s.getEmail();
+            }
+         
+            boolean statusQ = sender(komu, msg2, session);
+            if(statusQ == true){
+                model.addObject("message", "Odoslané");
+            }else{
+                model.addObject("message", "Nedoslané");
+            }
+            msg2="";
+        }//konec FOR
 
         return model;
     }
 
+    
+    
+     boolean sender(String komu, String msg, Session session) {
+        try {
+
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("novotny.patrick@gmail.com"));
+            message.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse(komu));
+            message.setSubject("Notifikácia darcovského systému");
+            message.setText(msg);
+
+            Transport.send(message);
+
+            System.out.println("Done");
+            return true;//model.addObject("status", "Odoslané");
+
+        } catch (MessagingException e) {
+            return false;//model.addObject("status", "Nedoslané");
+            //throw new RuntimeException(e);
+        }
+
+    }
+    
+    
+    
     @RequestMapping(value = "/user/add", method = RequestMethod.POST)
     public ModelAndView addingUser(
             @ModelAttribute Pouzivatelia user) {

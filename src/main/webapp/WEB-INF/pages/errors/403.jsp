@@ -107,13 +107,14 @@
 
             <cor:choose>
                 <cor:when test="${empty username}">
-                    <h2>Nemáte oprávnenie pristupovať na túto stránku!</h2>
+                    <h2 style="color: #00B4FF">Stránka nenájdená!</h2>
                 </cor:when>
                 <cor:otherwise>
-                    <h2>Používateľ : ${username} 
-                        <br/>Nemáte oprávnenie pristupovať na túto stránku!</h2>
-                </cor:otherwise>
-            </cor:choose>
+                    <h2 style="color: #00B4FF">Používateľ : <span style="color: #d50f11">${username}</span>
+                        <br/>Stránka nenájdená!</h2>
+                    </cor:otherwise>
+                </cor:choose>
+
 
 
 

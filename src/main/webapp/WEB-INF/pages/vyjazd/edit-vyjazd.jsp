@@ -96,7 +96,7 @@
             <div class="container">
                 <h1>Editácia</h1>
 
-                <p>${message}</p>
+                <p style="color: #d50f11">${message}</p>
  <!--type="hidden"-->
             <form:form method="POST" commandName="vyjazd" action="${pageContext.request.contextPath}/logged/lekar/vyjazd/edit/${vyjazd.idVyjazdovyOdber}">
                 <table>

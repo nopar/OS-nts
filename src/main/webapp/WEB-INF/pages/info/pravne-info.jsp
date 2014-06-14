@@ -108,7 +108,7 @@
             
             
         <cor:if  test="${!empty message}">                
-            <h2>Message : ${message}</h2>	
+            <h3 style="color: #00B4FF">Používateľ : <span style="color: #d50f11">${message}</span></h3>	
         </cor:if>
 
         <br />

@@ -107,13 +107,14 @@
 
             <cor:choose>
                 <cor:when test="${empty username}">
-                    <h2>Stránka nenájdená!</h2>
+                    <h2 style="color: #00B4FF">Stránka nenájdená!</h2>
                 </cor:when>
                 <cor:otherwise>
-                    <h2>Username : ${username} 
+                    <h2 style="color: #00B4FF">Používateľ : <span style="color: #d50f11">${username}</span>
                         <br/>Stránka nenájdená!</h2>
                     </cor:otherwise>
                 </cor:choose>
+
             <p id="x"></p>
             <br>
             <div id="mapholder"></div>

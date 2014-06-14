@@ -96,7 +96,7 @@
             <div class="container">
                 <h1>Editácia skupiny</h1>
 
-                <p>${message}</p>
+                <p style="color: #d50f11">${message}</p>
 
             <%--<form:form method="POST" commandName="skupiny" action="${pageContext.request.contextPath}/logged/admin/skupiny/list.html">--%>
             <form:form method="POST" commandName="skupiny" action="${pageContext.request.contextPath}/logged/admin/skupiny/edit/${skupiny.idGroup}">
