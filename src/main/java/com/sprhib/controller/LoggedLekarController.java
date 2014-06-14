@@ -134,7 +134,7 @@ public class LoggedLekarController {
         
         List<Pouzivatelia> users = pouzivateliaService.getEntites();
         String msg2="",
-                msg = "Potrebujeme vašu krv. Prídte prosím na najbližšie odberové miesto. \n\nĎakujeme", 
+                msg = "Potrebujeme vašu krv. Prídte prosím na najbližšie odberové miesto. \n\nTento email bol vygenerovaný automaticky, prosím neodpovedajte naň.\n\nĎakujeme", 
                 status = "";
                 
         Pouzivatelia current_lekar = pouzivateliaService.getEntity(userID);
