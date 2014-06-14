@@ -96,7 +96,7 @@
                         href="#">Nástroje</a>
                     <ul class="subs">
                         <li><a href="${pageContext.request.contextPath}/mapa">Nájdi najbližšiu stanicu</a></li>
-                        <li><a href="#">Poslať notifikáciu</a></li>
+                        <li><a href="${pageContext.request.contextPath}/logged/lekar/notify">Poslať notifikáciu</a></li>
                     </ul>
                 </li>
                 

@@ -54,7 +54,35 @@ public class LoggedLekarController {
     @Autowired
     private EntityVyjazdovyOdberService<VyjazdovyOdber> vyjazdovyOdberService;
     
+    @Autowired
+    private SendEmailController emailController;
+    
+    
+     @RequestMapping(value = "/notify", method = RequestMethod.GET)
+    public ModelAndView mailSender() {
+        ModelAndView modelAndView = new ModelAndView("default/mailsender");
+        
+         
+         emailController.sendMail("novotny.patrick@gmail.com", "Test Subject", "Testing body");
+        
+        
+
+        return modelAndView;
+    }
+    
+    
+    
+    @RequestMapping(value = "/notify", method = RequestMethod.POST)
+    public ModelAndView mailSendering() {
+        ModelAndView modelAndView = new ModelAndView("default/mailsender");
+        
+        
+
+        return modelAndView;
+    }
    
+    
+    
      @RequestMapping(value = "/user/add", method = RequestMethod.POST)
     public ModelAndView addingUser(
             @ModelAttribute Pouzivatelia user) {
@@ -268,7 +296,7 @@ public class LoggedLekarController {
         List<Pouzivatelia> users = pouzivateliaService.getEntites();
         modelAndView.addObject("users", users);
 
-        String message = "Pouťívateľ úspešne upravený.";
+        String message = "Používateľ úspešne upravený.";
         modelAndView.addObject("message", message);
 
         return modelAndView;

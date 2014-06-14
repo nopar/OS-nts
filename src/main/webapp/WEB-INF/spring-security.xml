@@ -104,4 +104,6 @@ users-by-username-query="
         from POUZIVATELIA us, SKUPINY ur   
         where us.id_user = ur.id_group and us.nick =?"
                                     -->
+                                    
+    
 </beans:beans>

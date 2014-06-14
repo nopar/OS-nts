@@ -19,7 +19,7 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 @Configuration
 @ComponentScan("com.sprhib.*")
-@ImportResource(value = { "/WEB-INF/spring-security.xml" })
+@ImportResource(value = { "/WEB-INF/spring-security.xml", "/WEB-INF/mail.xml"})
 @EnableWebMvc
 @EnableTransactionManagement
 @PropertySource("classpath:application.properties")
