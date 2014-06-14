@@ -144,11 +144,11 @@
                         </tr>
                         <tr>
                             <td>password</td>
-                            <td><form:input path="password" type="password" id="password1" required="true"/></td>
+                            <td><form:input path="password" type="password" maxlength="15" id="password1" required="true"/></td>
                         </tr>
                         <tr>
                             <td>Overte heslo: </td>
-                            <td><form:input path="resetPasswd" type="password" id="password2"/></td>
+                            <td><form:input path="resetPasswd" type="password" maxlength="15"id="password2"/></td>
                         </tr>
                         <tr>
                             <td><form:input type="hidden" path="meno" /></td>

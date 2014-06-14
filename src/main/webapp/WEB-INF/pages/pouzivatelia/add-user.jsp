@@ -92,6 +92,23 @@
         </cor:choose>
         <div class="container">
             <h1>Pridaj používateľa</h1>
+            
+                             <script type="text/javascript">
+                    window.onload = function () {
+                        document.getElementById("password1").onchange = validatePassword;
+                        document.getElementById("password2").onchange = validatePassword;
+                    }
+
+                    function validatePassword(){
+                    var pass2=document.getElementById("password2").value;
+                    var pass1=document.getElementById("password1").value;
+                    if(pass1!=pass2)
+                        document.getElementById("password2").setCustomValidity("Heslá musia byť rovnaké!");
+                    else
+                        document.getElementById("password2").setCustomValidity('');  
+                    //empty string means no validation error
+                    }
+                </script>
 
             <cor:if  test="${!empty user}">
             <form:form method="POST" commandName="user" action="${pageContext.request.contextPath}/logged/lekar/user/add">
@@ -110,7 +127,7 @@
                         </tr>
                         <tr>
                             <td>password</td>
-                            <td><form:input path="password" type="password" required="true" maxlength="15"/></td>
+                            <td><form:input path="password" type="password" id="password1" required="true" maxlength="15"/></td>
                         </tr>
                         <tr>
                             <td>meno</td>
@@ -146,7 +163,7 @@
                             <td><form:input path="enabled" type="hidden" value="true" maxlength="5"/></td>
                         </tr>
                         <tr>
-                            <td><form:input type="hidden" path="resetPasswd" type="password"/></td>
+                            <td><form:input type="hidden" path="resetPasswd" maxlength="15" id="password2" type="password"/></td>
                         </tr>
                         <tr>
                             <td>idNastavenie.idNastavenie</td>

@@ -95,6 +95,23 @@
                 
             <div class="container">
                 <h1>Editácia</h1>
+                
+                 <script type="text/javascript">
+                    window.onload = function () {
+                        document.getElementById("password1").onchange = validatePassword;
+                        document.getElementById("password2").onchange = validatePassword;
+                    }
+
+                    function validatePassword(){
+                    var pass2=document.getElementById("password2").value;
+                    var pass1=document.getElementById("password1").value;
+                    if(pass1!=pass2)
+                        document.getElementById("password2").setCustomValidity("Heslá musia byť rovnaké!");
+                    else
+                        document.getElementById("password2").setCustomValidity('');  
+                    //empty string means no validation error
+                    }
+                </script>
 
                 <p>${message}</p>
  <!--type="hidden"-->
@@ -115,7 +132,7 @@
                         </tr>
                         <tr>
                             <td>password</td>
-                            <td><form:input path="password" type="password" required="true" maxlength="15" /></td>
+                            <td><form:input path="password" type="password" required="true" maxlength="15" id="password1"/></td>
                         </tr>
                         <tr>
                             <td>meno</td>
@@ -148,8 +165,8 @@
                             <td><form:input path="enabled"  value="true" maxlength="5"/></td>
                         </tr>
                         <tr>
-                            <td>resetPasswd</td>
-                            <td><form:input path="resetPasswd" type="password" /></td>
+                            <td>Overte heslo:</td>
+                            <td><form:input path="resetPasswd" type="password" maxlength="15" id="password2"/></td>
                         </tr>
                         <tr>
                             

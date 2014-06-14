@@ -29,7 +29,7 @@ public class MainController {
 
 		ModelAndView model = new ModelAndView();
 		model.addObject("title", "Spring Security Login Formular - Databázová Autentifikácia");
-		model.addObject("message", "Toto je hlavná stránks!");
+		model.addObject("message", "Toto je hlavná stránka!");
                 
                  if (error != null) {
 			model.addObject("error", "Nesprávne meno alebo heslo!");
