@@ -66,9 +66,11 @@ public class VyjazdovyOdber implements Serializable {
     private Date casKonca;
     @Column(name = "blizsi_popis", length = 255)
     private String blizsiPopis;
+    
     @JoinColumn(name = "id_kraj", referencedColumnName = "id_kraj", nullable = false)
     @ManyToOne(optional = false)
     private Kraj idKraj;
+    
     @JoinColumn(name = "id_lekar", referencedColumnName = "id_user", nullable = false)
     @ManyToOne(optional = false)
     private Pouzivatelia idLekar;

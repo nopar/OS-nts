@@ -89,6 +89,12 @@ public class Pouzivatelia implements Serializable {
     @Column(name = "reset_passwd", length = 50)
     private String resetPasswd;
     
+    @Basic(optional = true)
+    @Column(name = "enabled", nullable = false)
+    private boolean enabled;
+    
+    
+    
     
     
     @ManyToMany(mappedBy = "pouzivateliaList")
@@ -131,15 +137,24 @@ public class Pouzivatelia implements Serializable {
         this.idUser = idUser;
     }
 
-    public Pouzivatelia(Integer idUser, String password, String meno, String priezvisko, Date datumNarodenia, Character pohlavie) {
+    public Pouzivatelia(Integer idUser, String password, String meno, String priezvisko, Date datumNarodenia, Character pohlavie, boolean enabled) {
         this.idUser = idUser;
         this.password = password;
         this.meno = meno;
         this.priezvisko = priezvisko;
         this.datumNarodenia = datumNarodenia;
         this.pohlavie = pohlavie;
+        this.enabled = enabled;
     }
 
+     public boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+    
     public Integer getIdUser() {
         return idUser;
     }

@@ -91,38 +91,83 @@
             </cor:otherwise>
         </cor:choose>
         <div class="container">
-            <h1>Pridaj štát</h1>
+            <h1>Pridaj používateľa</h1>
 
-            <cor:if  test="${!empty vyjazd}">
-            <form:form method="POST" commandName="vyjazd" action="${pageContext.request.contextPath}/logged/lekar/vyjazd/add">
+            <cor:if  test="${!empty user}">
+            <form:form method="POST" commandName="user" action="${pageContext.request.contextPath}/logged/lekar/user/add">
                 <table>
                     <tbody>
                         <tr>
-                            <td>Nazov:</td>
-                            <td><form:input path="idVyjazdovyOdber" /></td>
+                            <td>idUser</td>
+                            <td><form:input path="idUser" /></td>
                         </tr>
                         <tr>
-                            <td>NÁZOV:</td>
-                            <td><form:input path="nazov" /></td>
+                            <td>email</td>
+                            <td><form:input path="email" /></td>
                         </tr>
                         <tr>
-                            <td>DÁTUM:</td>
-                            <td><form:input path="datum" /></td>
+                            <td>nick</td>
+                            <td><form:input path="nick" /></td>
                         </tr>
                         <tr>
-                            <td>ADRESA:</td>
-                            <td><form:input path="adresa" /></td>
+                            <td>password</td>
+                            <td><form:input path="password" /></td>
                         </tr>
                         <tr>
-                            <td>ZAČIATOK:</td>
-                            <td><form:input path="casZaciatku" /></td>
+                            <td>meno</td>
+                            <td><form:input path="meno" /></td>
                         </tr>
                         <tr>
-                            <td>KONIEC:</td>
-                            <td><form:input path="casKonca" /></td>
+                            <td>priezvisko</td>
+                            <td><form:input path="priezvisko" /></td>
                         </tr>
                         
                         
+                        <tr>
+                            <td>datumNarodenia</td>
+                            <td><form:input path="datumNarodenia" /></td>
+                        </tr>
+                        <tr>
+                            <td>telKontakt</td>
+                            <td><form:input path="telKontakt" /></td>
+                        </tr>
+                        <tr>
+                            <td>pohlavie</td>
+                            <td><form:input path="pohlavie" /></td>
+                        </tr>
+                        <tr>
+                            <td>enabed</td>
+                            <td><form:input path="enabled" /></td>
+                        </tr>
+                        <tr>
+                            <td>resetPasswd</td>
+                            <td><form:input path="resetPasswd" /></td>
+                        </tr>
+                        <tr>
+                            <td>idNastavenie.idNastavenie</td>
+                            <td><form:input path="idNastavenie.idNastavenie" /></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>idKrvnaSkupina.typKrvi</td>
+                            <td><form:input path="idKrvnaSkupina.idKrvnaSkupina"/></td>
+                        </tr>
+                        <tr>
+                            <td>idAdresa.idMesto.mesto</td>
+                            <td>
+                                <form:input path="idAdresa.idAdresa"/>
+                                <c:bind path="idAdresa">
+                                    <cor:if test="${status.error}">
+                                        <img src="<c:url value="/resources/images/warning1.png"/>"  class="trojuholnik"  title="Musí byť zadané číslo!" />
+                                    </cor:if>
+                                </c:bind>
+                            </td>
+                        </tr>
+                        
+                        
+                
+                                                
+                                                
                         <tr>
                             <td><input type="submit" value="Add" /></td>
                             <td></td>

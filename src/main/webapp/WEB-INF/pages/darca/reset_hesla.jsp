@@ -118,72 +118,89 @@
         }
 
         function validatePassword(){
-            var pass2=document.getElementById("password2").value;
-            var pass1=document.getElementById("password1").value;
-            if(pass1!=pass2)
-                document.getElementById("password2").setCustomValidity("Heslá musia byť rovnaké!");
-            else
-                document.getElementById("password2").setCustomValidity('');  
-            //empty string means no validation error
+        var pass2=document.getElementById("password2").value;
+        var pass1=document.getElementById("password1").value;
+        if(pass1!=pass2)
+            document.getElementById("password2").setCustomValidity("Heslá musia byť rovnaké!");
+        else
+            document.getElementById("password2").setCustomValidity('');  
+        //empty string means no validation error
         }
     </script>
 
 
             
-    <cor:if  test="${!empty user}">
-            <form:form method="POST" commandName="user" action="${pageContext.request.contextPath}/logged/profil/passw_rst/${user.idUser}.html">
+            
+            <form:form method="POST" 
+                       commandName="user"
+                       name="ValidationForm"
+                       >
                 <table>
                     <tbody>
                         <tr>
-                            <td>ID_</td>
-                            <td><form:input path="idUser" /></td>
+                            <td></td>
+                            <td><form:input type="hidden" path="idUser" /></td>
                         </tr>
 
                         <tr>
-                            <td>Stat:</td>
+                            <td></td>
                             <td><form:input type="hidden" path="email" /></td>
                         </tr>
                         <tr>
-                            <td>:</td>
-                            <td><form:input path="nick" /></td>
+                            <td>nick</td>
+                            <td><form:input path="nick" disabled="true" /></td>
                         </tr>
                         <tr>
-                            <td>:</td>
-                            <td><form:input path="password" id="password1" required="required"/></td>
+                            <td>Heslo:</td>
+                            <td><form:input path="password"  id="password1"/></td>
                         </tr>
                         <tr>
-                            <td>:</td>
-                            <td><form:input path="meno" /></td>
+                            <td>Overte heslo:</td>
+                            <td><form:input path="resetPasswd"  id="password2"/></td>
+                        </tr>
+                     
+                        <tr>
+                            <td></td>
+                            <td><form:input type="hidden" path="meno" /></td>
                         </tr>
                         <tr>
-                            <td>:</td>
-                            <td><form:input path="priezvisko" /></td>
+                            <td></td>
+                            <td><form:input type="hidden" path="priezvisko" /></td>
                         </tr>
                         <tr>
-                            <td>:</td>
-                            <td><form:input path="datumNarodenia" /></td>
+                            <td></td>
+                            <td><form:input type="hidden" path="datumNarodenia" /></td>
                         </tr>
                         <tr>
-                            <td>:</td>
-                            <td><form:input path="telKontakt" /></td>
+                            <td></td>
+                            <td><form:input type="hidden" path="telKontakt" /></td>
                         </tr>
                         <tr>
-                            <td>:</td>
-                            <td><form:input path="pohlavie" /></td>
-                        </tr>
-                        <tr>
-                            <td>rst:</td>
-                            <td><form:input path="resetPasswd" id="password2" required="required"/></td>
+                            <td></td>
+                            <td><form:input type="hidden" path="pohlavie" /></td>
                         </tr>
                         
+                         <tr>
+                            <td></td>
+                            <td><form:input type="hidden" path="idNastavenie" /></td>
+                        </tr>
+                         <tr>
+                            <td></td>
+                            <td><form:input type="hidden" path="idKrvnaSkupina" /></td>
+                        </tr>
+                         <tr>
+                            <td></td>
+                            <td><form:input path="idAdresa" /></td>
+                        </tr>
+                        
+                        
                         <tr>
-                            <td><input type="submit" value="Uložiť" /></td>
+                            <td><input type="submit" value="Uložiť" onsumbit="return myFunction();"/></td>
                             <td></td>
                         </tr>
                     </tbody>
                 </table>
             </form:form>
-        </cor:if>
 
 
 

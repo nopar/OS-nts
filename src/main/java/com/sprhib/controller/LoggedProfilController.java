@@ -270,8 +270,8 @@ public class LoggedProfilController {
             @ModelAttribute Pouzivatelia user,
             @PathVariable Integer id) {
         ModelAndView model = new ModelAndView();
-         System.out.println("++++ :" + model.getViewName());
-        //pouzivateliaService.updateEntity(user);
+         System.out.println("respass :" + user.getResetPasswd());
+        pouzivateliaService.updateEntity(user);
         
         // Pouzivatelia changed_user = pouzivateliaService.getEntity(id);
         //model.addObject("user", changed_user);

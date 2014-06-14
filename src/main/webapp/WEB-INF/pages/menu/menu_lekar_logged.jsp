@@ -71,10 +71,10 @@
                 </li>
                 
                 
-                <li><a href="${pageContext.request.contextPath}/logged/lekar/user/list">-!-Používatelia</a>                    
+                <li><a href="${pageContext.request.contextPath}/logged/lekar/user/list">Používatelia</a>                    
                 </li>
                 
-                <li><a href="${pageContext.request.contextPath}/logged/lekar/vyjazd/list">-!-Odberové miesta</a>                    
+                <li><a href="${pageContext.request.contextPath}/logged/lekar/vyjazd/list">Odberové miesta</a>                    
                 </li>
                   
                 <li><a href="${pageContext.request.contextPath}/info/kalendar-akcii">Kalendár akcií</a>
@@ -93,7 +93,7 @@
                 
                 
                 <li><a  onclick="posun(6)"
-                        href="#">-!-Nástroje</a>
+                        href="#">Nástroje</a>
                     <ul class="subs">
                         <li><a href="${pageContext.request.contextPath}/mapa">Nájdi najbližšiu stanicu</a></li>
                         <li><a href="#">Poslať notifikáciu</a></li>

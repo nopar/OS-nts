@@ -149,6 +149,9 @@
                                 <td align="left">${vyjazd.blizsiPopis}</td>
                                 <td  align="left">${vyjazd.idKraj.kraj}</td> 
                                 <td align="left">${vyjazd.idLekar.priezvisko}</td>
+<!--                            
+                                <td  align="left">${vyjazd.idKraj.kraj}</td> 
+                                <td align="left">${vyjazd.idLekar.priezvisko}</td>-->
                                 <td>
                                     <div id="crud_icon_block">
                                         <input type="image"

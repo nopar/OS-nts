@@ -1,15 +1,27 @@
 package com.sprhib.controller;
 
+import com.sprhib.model.Adresa;
 import com.sprhib.model.Kraj;
+import com.sprhib.model.KrvnaSkupina;
+import com.sprhib.model.Mesto;
+import com.sprhib.model.Nastavenie;
 import com.sprhib.model.Pouzivatelia;
 
 import com.sprhib.model.Stat;
 import com.sprhib.model.VyjazdovyOdber;
+import com.sprhib.service.EntityNastavenieService;
 import com.sprhib.service.EntityService;
 import com.sprhib.service.EntityVyjazdovyOdberService;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,8 +39,62 @@ public class LoggedLekarController {
     private EntityService<Pouzivatelia> pouzivateliaService;
     
     @Autowired
+    private EntityNastavenieService<Nastavenie> nastavenieService;
+    
+    @Autowired
+    private EntityService<KrvnaSkupina> krvnaSkupinaService;
+    
+    @Autowired
+    private EntityService<Mesto> mestoService;
+    
+    @Autowired
+    private EntityService<Adresa> adresaService;
+    
+    
+    @Autowired
     private EntityVyjazdovyOdberService<VyjazdovyOdber> vyjazdovyOdberService;
+    
+   
+     @RequestMapping(value = "/user/add", method = RequestMethod.POST)
+    public ModelAndView addingUser(@ModelAttribute Pouzivatelia user) {
+        ModelAndView modelAndView = new ModelAndView("pouzivatelia/list-user");
+        
+        Map<String, Object> model = new HashMap<String, Object>();
+        
+        List<Nastavenie> nast = nastavenieService.getEntites();
+        List<KrvnaSkupina> krv = krvnaSkupinaService.getEntites();
+        List<Mesto> mesto = mestoService.getEntites();
+        modelAndView.addObject("nast", nast);
+        modelAndView.addObject("krv", krv);
+        modelAndView.addObject("mesto", mesto);
+        
+        
+        pouzivateliaService.addEntity(user);
+        
+        
+        List<Pouzivatelia> users = pouzivateliaService.getEntites();
+       // List<Pouzivatelia> vyjazdy = vyjazdovyOdberService.getEntites();
+        
+        modelAndView.addObject("users", users);
 
+        String message = "Vyjazd pridaný.";
+        modelAndView.addObject("message", message);
+
+        return modelAndView;
+    }
+    
+    
+    
+    
+     @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        sdf.setLenient(true);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
+    }
+    
+    
+    
     //ODBEROVE MIESTA        
     @RequestMapping(value = "/vyjazd/add", method = RequestMethod.GET)
     public ModelAndView addVyjazdPage() {
@@ -40,16 +106,17 @@ public class LoggedLekarController {
 
     @RequestMapping(value = "/vyjazd/add", method = RequestMethod.POST)
     public ModelAndView addingVyjazd(@ModelAttribute VyjazdovyOdber vyjazd) {
-        ModelAndView modelAndView = new ModelAndView("vyjazd/list-vyjazd");
+        ModelAndView modelAndView = new ModelAndView("home");
         
+        System.out.println(vyjazd.getDatum());
         vyjazdovyOdberService.addEntity(vyjazd);
         
         
-        List<VyjazdovyOdber> vyjazdy = vyjazdovyOdberService.getEntites();
-        modelAndView.addObject("vyjazdy", vyjazdy);
+       // List<VyjazdovyOdber> vyjazdy = vyjazdovyOdberService.getEntites();
+        //modelAndView.addObject("vyjazdy", vyjazdy);
 
         String message = "Vyjazd pridaný.";
-        modelAndView.addObject("message", message);
+        //modelAndView.addObject("message", message);
 
         return modelAndView;
     }
@@ -125,25 +192,11 @@ public class LoggedLekarController {
     public ModelAndView addUserPage() {
         ModelAndView modelAndView = new ModelAndView("pouzivatelia/add-user");
         
-        modelAndView.addObject("vyjazd", new VyjazdovyOdber());
+        modelAndView.addObject("user", new Pouzivatelia());
         return modelAndView;
     }
 
-    @RequestMapping(value = "/user/add", method = RequestMethod.POST)
-    public ModelAndView addingUser(@ModelAttribute VyjazdovyOdber vyjazd) {
-        ModelAndView modelAndView = new ModelAndView("pouzivatelia/list-user");
-        
-        vyjazdovyOdberService.addEntity(vyjazd);
-        
-        
-        List<VyjazdovyOdber> vyjazdy = vyjazdovyOdberService.getEntites();
-        modelAndView.addObject("vyjazdy", vyjazdy);
-
-        String message = "Vyjazd pridaný.";
-        modelAndView.addObject("message", message);
-
-        return modelAndView;
-    }
+   
 
     
     
@@ -165,24 +218,36 @@ public class LoggedLekarController {
     public ModelAndView editUserPage(@PathVariable Integer id) {
         ModelAndView modelAndView = new ModelAndView("pouzivatelia/edit-user");
         
-        VyjazdovyOdber vyjazd = vyjazdovyOdberService.getEntity(id);
+        Pouzivatelia user = pouzivateliaService.getEntity(id);
+        List<Nastavenie> nast = nastavenieService.getEntites();
+        List<KrvnaSkupina> krv = krvnaSkupinaService.getEntites();
+        List<Mesto> mesta = mestoService.getEntites();
+        List<Adresa> adresy = adresaService.getEntites();
         
-        modelAndView.addObject("vyjazd", vyjazd);
+        
+        modelAndView.addObject("nast", nast);
+        modelAndView.addObject("krv", krv);
+        modelAndView.addObject("mesta", mesta);
+        modelAndView.addObject("adresy", adresy);
+        
+        
+        
+        modelAndView.addObject("user", user);
         return modelAndView;
     }
 
     
     
     @RequestMapping(value = "/user/edit/{id}", method = RequestMethod.POST)
-    public ModelAndView edditingUser(@ModelAttribute VyjazdovyOdber vyjazd, @PathVariable Integer id) {
+    public ModelAndView edditingUser(@ModelAttribute Pouzivatelia user, @PathVariable Integer id) {
         ModelAndView modelAndView = new ModelAndView("pouzivatelia/list-user");
 
-        vyjazdovyOdberService.updateEntity(vyjazd);
+        pouzivateliaService.updateEntity(user);
         
-        List<VyjazdovyOdber> vyjazdy = vyjazdovyOdberService.getEntites();
-        modelAndView.addObject("vyjazdy", vyjazdy);
+        List<Pouzivatelia> users = pouzivateliaService.getEntites();
+        modelAndView.addObject("users", users);
 
-        String message = "Stat was successfully edited.";
+        String message = "Pouťívateľ úspešne upravený.";
         modelAndView.addObject("message", message);
 
         return modelAndView;

@@ -122,23 +122,23 @@
     left: 13px;
 }
 #nav li:nth-of-type(2):hover ~ #lavalamp {
-    left: 90px;
+    left: 85px;
 }
 #nav li:nth-of-type(3):hover ~ #lavalamp {
-    left: 170px;
+    left: 150px;
 }
 #nav li:nth-of-type(4):hover ~ #lavalamp {
-    left: 250px;
+    left: 243px;
 }
 #nav li:nth-of-type(5):hover ~ #lavalamp {
-    left: 330px;
+    left: 348px;
 }
 #nav li:nth-of-type(6):hover ~ #lavalamp {
-    left: 410px;
+    left: 432px;
 }
 #nav li:nth-of-type(7):hover ~ #lavalamp {
-    left: 490px;
+    left: 505px;
 }
 #nav li:nth-of-type(8):hover ~ #lavalamp {
-    left: 685px;
+    left: 695px;
 }

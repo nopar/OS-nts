@@ -98,52 +98,87 @@
 
                 <p>${message}</p>
  <!--type="hidden"-->
-            <form:form method="POST" commandName="vyjazd" action="${pageContext.request.contextPath}/logged/lekar/vyjazd/edit/${vyjazd.idVyjazdovyOdber}.html">
+            <form:form method="POST" commandName="user" action="${pageContext.request.contextPath}/logged/lekar/user/edit/${user.idUser}.html">
                 <table>
                     <tbody>
                         <tr>
-                            <td>ID_</td>
-                            <td><form:input path="idVyjazdovyOdber" /></td>
-                        </tr>
-
-                        <tr>
-                            <td>NÁZOV:</td>
-                            <td><form:input path="nazov" /></td>
+                            <td>idUser</td>
+                            <td><form:input path="idUser" readonly="true"/></td>
                         </tr>
                         <tr>
-                            <td>DÁTUM:</td>
-                            <td><form:input path="datum" /></td>
+                            <td>email</td>
+                            <td><form:input path="email" /></td>
                         </tr>
                         <tr>
-                            <td>ADRESA:</td>
-                            <td><form:input path="adresa" /></td>
+                            <td>nick</td>
+                            <td><form:input path="nick" /></td>
                         </tr>
                         <tr>
-                            <td>ZAČIATOK:</td>
-                            <td><form:input path="casZaciatku" /></td>
+                            <td>password</td>
+                            <td><form:input path="password" /></td>
                         </tr>
                         <tr>
-                            <td>KONIEC:</td>
-                            <td><form:input path="casKonca" /></td>
+                            <td>meno</td>
+                            <td><form:input path="meno" /></td>
                         </tr>
                         <tr>
-                            <td>POPIS:</td>
-                            <td><form:input path="blizsiPopis" /></td>
+                            <td>priezvisko</td>
+                            <td><form:input path="priezvisko" /></td>
+                        </tr>
+                        
+                        
+                        <tr>
+                            <td>datumNarodenia</td>
+                            <td><form:input path="datumNarodenia" /></td>
+                        </tr>
+                        <tr>
+                            <td>telKontakt</td>
+                            <td><form:input path="telKontakt" /></td>
+                        </tr>
+                        <tr>
+                            <td>pohlavie</td>
+                            <td><form:input path="pohlavie" /></td>
+                        </tr>
+                        <tr>
+                            <td>enabed</td>
+                            <td><form:input path="enabled" /></td>
+                        </tr>
+                        <tr>
+                            <td>resetPasswd</td>
+                            <td><form:input path="resetPasswd" /></td>
+                        </tr>
+                        <tr>
+                            
+                            <td><form:input path="idNastavenie.idNastavenie" type="hidden" readonly="true"/>
+                            </td>                           
                         </tr>
                         
                         <tr>
-                            <td>KRAJ:</td>
-                            <td><form:input path="idKraj"/></td>
+                            <td>typKrvi</td>
+                             <td>
+                                <form:select path="idKrvnaSkupina.idKrvnaSkupina" >
+                                    <cor:forEach items="${krv}" var="k">
+                                        <option label="${k.typKrvi}">${k.idKrvnaSkupina}</option>
+                                     </cor:forEach>
+                                </form:select>                                
+                            </td>
                         </tr>
-                        <tr>
-                            <td>LEKAR:</td>
-                            <td><form:input path="idLekar" /></td>
+                            
+                         <tr>
+                            <td>mesto </td>
+                            <td>
+                                 <form:select path="idAdresa.idAdresa" >
+                                    <cor:forEach items="${adresy}" var="a">
+                                        <option label="${a.idMesto.mesto}">${a.idAdresa}</option>
+                                     </cor:forEach>
+                                </form:select> 
+                               
+                                   
+                            </td>
                         </tr>
                         
-                      
-                       
                         <tr>
-                            <td><input type="submit" value="Uložiť" /></td>
+                            <td><input type="submit" value="Uložiť"/></td>
                             <td></td>
                         </tr>
                     </tbody>

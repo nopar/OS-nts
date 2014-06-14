@@ -91,15 +91,15 @@
             </cor:otherwise>
         </cor:choose>
         <div class="container">
-            <h1>Pridaj štát</h1>
+            <h1>Pridaj odberové miesto</h1>
 
             <cor:if  test="${!empty vyjazd}">
             <form:form method="POST" commandName="vyjazd" action="${pageContext.request.contextPath}/logged/lekar/vyjazd/add">
                 <table>
                     <tbody>
                         <tr>
-                            <td>Nazov:</td>
-                            <td><form:input path="idVyjazdovyOdber" /></td>
+                            <td>ID:</td>
+                            <td><form:input path="idVyjazdovyOdber"/></td>
                         </tr>
                         <tr>
                             <td>NÁZOV:</td>
@@ -113,13 +113,25 @@
                             <td>ADRESA:</td>
                             <td><form:input path="adresa" /></td>
                         </tr>
-                        <tr>
+                        <tr name="tstest">
                             <td>ZAČIATOK:</td>
                             <td><form:input path="casZaciatku" /></td>
                         </tr>
                         <tr>
                             <td>KONIEC:</td>
                             <td><form:input path="casKonca" /></td>
+                        </tr>
+                        <tr>
+                            <td>POPIS:</td>
+                            <td><form:input path="blizsiPopis" /></td>
+                        </tr>
+                        <tr>
+                            <td>KRAJ:</td>
+                            <td><form:input path="idKraj" /></td>
+                        </tr>
+                        <tr>
+                            <td>LEKAR:</td>
+                            <td><form:input path="idLekar" /></td>
                         </tr>
                         
                         

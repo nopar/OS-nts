@@ -22,6 +22,26 @@ public class VyjazdovyOdberDAO implements EntityVyjazdovyOdberDAO<VyjazdovyOdber
 	}
 
 	public void addEntity(VyjazdovyOdber vyjazdovyOdber) {
+            Session session = getCurrentSession();
+            
+           /* Query query = session.createQuery("insert into VyjazdovyOdber(nazov, datum, adresa, cas_zaciatku, cas_konca, blizsi_popis, id_kraj, id_lekar)"+
+                    " VALUES (:nazov, :datum, :adresa, :cas_zaciatku, :cas_konca, :blizsi_popis, :id_kraj, :id_lekar, (SELECT nazov from VyjazdovyOdber))");
+            query.setParameter("nazov", "Lorem");
+            query.setParameter("datum", "2014-11-11");
+            query.setParameter("adresa", "lorem");
+            query.setParameter("cas_zaciatku", "08:00:00");
+            query.setParameter("cas_konca", "13:00:00");
+            query.setParameter("blizsi_popis", "TEST");
+            query.setParameter("id_kraj", "8");
+            query.setParameter("id_lekar", "3");
+           
+            
+            int result = query.executeUpdate();
+            System.out.println("Rows affected: " + result);*/
+       // session.getTransaction().commit();
+
+            
+            
 		getCurrentSession().save(vyjazdovyOdber);
 	}
 

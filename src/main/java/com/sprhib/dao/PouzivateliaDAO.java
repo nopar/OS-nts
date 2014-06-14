@@ -36,6 +36,7 @@ public class PouzivateliaDAO implements EntityDAO<Pouzivatelia> {
                 pouzivatelToUpdate.setTelKontakt(pouzivatelia.getTelKontakt());
                 pouzivatelToUpdate.setPohlavie(pouzivatelia.getPohlavie());
                 pouzivatelToUpdate.setResetPasswd(pouzivatelia.getResetPasswd());
+                pouzivatelToUpdate.setEnabled(pouzivatelia.getEnabled());
                 
                 pouzivatelToUpdate.setIdNastavenie(pouzivatelia.getIdNastavenie());
                 pouzivatelToUpdate.setIdKrvnaSkupina(pouzivatelia.getIdKrvnaSkupina());

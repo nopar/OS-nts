@@ -116,16 +116,15 @@
 
             <h1>Zoznam používateľov</h1>
             
-            <button onclick="location.href = '${pageContext.request.contextPath}/logged/lekar/user/add'">
+            <!--<button onclick="location.href = '${pageContext.request.contextPath}/logged/lekar/user/add'">
                 Pridaj používateľa
-            </button></br></br>
+            </button>--></br></br>
             
             
             <cor:if  test="${!empty users}">
                 <table border="1px" cellpadding="0" cellspacing="0" >
                     <thead>
                         <tr>
-                            <th width="2%">ID</th>
                             <th width="15%">MAIL</th>
                             <th width="8%">NICK</th>                            
                             <th width="5%">PASS</th>
@@ -138,15 +137,14 @@
                             <th width="3%">SETT.</th>
                             <th width="5%">KRV</th>
                             <th width="10%">MESTO</th>
-                            <th width="8%"></th>
+                            <th width="10%"></th>
+                            
                         </tr>
                     </thead>
                     <tbody align="center">
                         <cor:forEach var="user" items="${users}">
                             <tr>
-                                <td>
-                                    ${user.idUser}
-                                </td>
+                               
                                 
                                 <td style="padding-left: 10px;" align="left">
                                     ${user.email}
@@ -196,23 +194,23 @@
                                 </td>
                                 
                                 
-                                <td>
+                                 <td>
                                     <div id="crud_icon_block">
                                         <input type="image"
                                                src="${pageContext.request.contextPath}/resources/img/edit.png"
                                                alt="Edituj skupinu"
                                                class="crud_icon"
-                                               onclick="location.href = '${pageContext.request.contextPath}/logged/lekar/user/edit/${skupina.idGroup}.html'">
+                                               onclick="location.href = '${pageContext.request.contextPath}/logged/lekar/user/edit/${user.idUser}.html'">
 
 
                                             <input type="image"
                                                    src="${pageContext.request.contextPath}/resources/img/delete.png"
                                                    alt="Zmaž skupinu"
                                                    class="crud_icon"
-                                                   onclick="location.href ='${pageContext.request.contextPath}/logged/lekar/user/delete/${skupina.idGroup}.html'">
-                                                </div>
+                                                   onclick="location.href ='${pageContext.request.contextPath}/logged/lekar/user/delete/${user.idUser}.html'">
+                                    </div>
 
-                                                </td>
+                               </td>
                                                 </tr>
                                             </cor:forEach>
                     </tbody>
