@@ -135,39 +135,50 @@ public class LoggedLekarController {
         List<Pouzivatelia> users = pouzivateliaService.getEntites();
         String msg2="",
                 msg = "Potrebujeme vašu krv. Prídte prosím na najbližšie odberové miesto. \n\nĎakujeme", 
-                status = "", 
-                komu = "";
+                status = "";
+                
         Pouzivatelia current_lekar = pouzivateliaService.getEntity(userID);
         
         
         for (Pouzivatelia s : users) {
-            msg2 = "Drahý "+ s.getMeno() + " " + s.getPriezvisko() + " ,\n\n" + msg;
+            if(s.getPohlavie().toString().equalsIgnoreCase(Character.toString('M')) ){
+                msg2 = "Drahý "+ s.getMeno() + " " + s.getPriezvisko() + ",\n\n" + msg;
+            }else{
+                msg2 = "Drahá "+ s.getMeno() + " " + s.getPriezvisko() + ",\n\n" + msg;
+            }
+            
+            String komu = "";
                 
             if (identif >=1 && identif <=8) {
                 
                 if(identif == 1){
-                    if(s.getIdKrvnaSkupina().getTypKrvi() == "AB+") komu = s.getEmail();                    
+                    if(s.getIdKrvnaSkupina().getTypKrvi().equalsIgnoreCase("AB+")){ 
+                        komu = s.getEmail();
+                        System.out.println("jj");
+                    }else{
+                        System.out.println("ee");
+                    }                    
                 }
                 else if(identif == 2){
-                     if(s.getIdKrvnaSkupina().getTypKrvi() == "AB-") komu = s.getEmail();
+                     if(s.getIdKrvnaSkupina().getTypKrvi().equalsIgnoreCase("AB-") ){ komu = s.getEmail();}
                 }
                 else if(identif == 3){
-                     if(s.getIdKrvnaSkupina().getTypKrvi() == "A+") komu = s.getEmail();
+                     if(s.getIdKrvnaSkupina().getTypKrvi().equalsIgnoreCase("A+") ){ komu = s.getEmail();}
                 }
                 else if(identif == 4){
-                     if(s.getIdKrvnaSkupina().getTypKrvi() == "A-") komu = s.getEmail();
+                     if(s.getIdKrvnaSkupina().getTypKrvi().equalsIgnoreCase("A-") ){ komu = s.getEmail();}
                 }
                 else if(identif == 5){
-                     if(s.getIdKrvnaSkupina().getTypKrvi() == "B+") komu = s.getEmail();
+                     if(s.getIdKrvnaSkupina().getTypKrvi().equalsIgnoreCase("B+") ){ komu = s.getEmail();}
                 }
                 else if(identif == 6){
-                     if(s.getIdKrvnaSkupina().getTypKrvi() == "B-") komu = s.getEmail();
+                     if(s.getIdKrvnaSkupina().getTypKrvi().equalsIgnoreCase("B-") ){ komu = s.getEmail();}
                 }
                 else if(identif == 7){
-                     if(s.getIdKrvnaSkupina().getTypKrvi() == "0+") komu = s.getEmail();
+                     if(s.getIdKrvnaSkupina().getTypKrvi().equalsIgnoreCase("0+") ){ komu = s.getEmail();}
                 }
                 else if(identif == 8){
-                     if(s.getIdKrvnaSkupina().getTypKrvi() == "0-") komu = s.getEmail();
+                     if(s.getIdKrvnaSkupina().getTypKrvi().equalsIgnoreCase("0-") ){ komu = s.getEmail();}
                 }             
             }
             else if(identif == 9){
@@ -176,15 +187,13 @@ public class LoggedLekarController {
             }
             else if(identif == 10){
                 //moj kraj
-                if(s.getIdAdresa().getIdMesto().getIdKraj().getKraj() == current_lekar.getIdAdresa().getIdMesto().getIdKraj().getKraj()) komu = s.getEmail();
+                if(s.getIdAdresa().getIdMesto().getIdKraj().getKraj().equalsIgnoreCase(current_lekar.getIdAdresa().getIdMesto().getIdKraj().getKraj()) ){ komu = s.getEmail();}
             }
          
-            boolean statusQ = sender(komu, msg2, session);
-            if(statusQ == true){
-                model.addObject("message", "Odoslané");
-            }else{
-                model.addObject("message", "Nedoslané");
-            }
+            sender(komu, msg2, session);
+            
+                model.addObject("message", "Notifikácia darcov ukončená");
+           
             msg2="";
         }//konec FOR
 
