@@ -41,6 +41,9 @@ public class RestController {
     
     @Autowired
     private EntityNastavenieService<Nastavenie> nastavenieService;
+ 
+    @Autowired
+    private EntityService<Kraj> krajService;
     
     
     
@@ -98,6 +101,209 @@ public class RestController {
     }
     
    
+   // /rest/kalendar/{IDKRAJA} (zoznam odberov v danom kraji)
+     @RequestMapping(value = "/kalendar/{id}",method = RequestMethod.GET)
+        @ResponseBody
+        public String getRestkalendarAkciiKonkretnyKraj(
+                @PathVariable Integer id
+        ) throws JSONException, UnsupportedEncodingException, IOException{
+
+            List<VyjazdovyOdber> akcie = vyjazdovyOdberService.getVyjazdyOdDnes();
+            StringBuilder output = new StringBuilder();
+            int times = 0;
+            int size = akcie.size();
+            
+            
+            output.append("[");
+           for (VyjazdovyOdber i : akcie) {
+             if (i.getIdKraj().getIdKraj() == id) {
+                 if (size - 1 != times && times != 0) {
+                     output.append(",");
+                 }
+
+                 Kraj krajID = i.getIdKraj();
+
+                 output.append("{");
+                 //NAZOV
+                 output.append("\"");
+                 output.append("nazov");
+                 output.append("\"");
+                 output.append(":");
+                 output.append("\"");
+                 if (i.getNazov() != null) {
+                     output.append(i.getNazov());
+                 } else {
+                     output.append("");
+                 }
+                 output.append("\"");
+
+                 output.append(",");
+
+                 //DATUM
+                 output.append("\"");
+                 output.append("datum");
+                 output.append("\"");
+                 output.append(":");
+                 output.append("\"");
+                 if (i.getDatum().toString() != null) {
+                     output.append(i.getDatum().toString());
+                 } else {
+                     output.append("");
+                 }
+                 output.append("\"");
+
+                 output.append(",");
+
+                 //ADRESA
+                 output.append("\"");
+                 output.append("adresa");
+                 output.append("\"");
+                 output.append(":");
+                 output.append("\"");
+                 if (i.getAdresa() != null) {
+                     output.append(i.getAdresa());
+                 } else {
+                     output.append("");
+                 }
+                 output.append("\"");
+
+                 output.append(",");
+
+                 //ZACIATOK
+                 output.append("\"");
+                 output.append("cas_zaciatok");
+                 output.append("\"");
+                 output.append(":");
+                 output.append("\"");
+                 if (i.getCasZaciatku().toString() != null) {
+                     output.append(i.getCasZaciatku().toString());
+                 } else {
+                     output.append("");
+                 }
+                 output.append("\"");
+
+                 output.append(",");
+
+                 //KONIEC
+                 output.append("\"");
+                 output.append("cas_koniec");
+                 output.append("\"");
+                 output.append(":");
+                 output.append("\"");
+                 if (i.getCasKonca().toString() != null) {
+                     output.append(i.getCasKonca().toString());
+                 } else {
+                     output.append("");
+                 }
+                 output.append("\"");
+
+                 output.append(",");
+
+                 //POPIS
+                 output.append("\"");
+                 output.append("popis");
+                 output.append("\"");
+                 output.append(":");
+                 output.append("\"");
+                 if (i.getBlizsiPopis() != null) {
+                     output.append(i.getBlizsiPopis());
+                 } else {
+                     output.append("");
+                 }
+                 output.append("\"");
+
+                 output.append(",");
+
+                 //KRAJ
+                 output.append("\"");
+                 output.append("kraj");
+                 output.append("\"");
+                 output.append(":");
+                 output.append("\"");
+                 if (i.getIdKraj().getIdKraj() != null) {
+                     output.append(i.getIdKraj().getIdKraj());
+                 } else {
+                     output.append("");
+                 }
+                 output.append("\"");
+
+                 output.append("}");
+
+                
+                 times++;
+             }
+         }
+            output.append("]");
+
+        
+            System.out.println("Size of buffer: " + output.length());
+            StringBuilder res;
+            
+            long startTime = System.currentTimeMillis();
+            System.out.println("Conversion using String time (msec): " + (System.currentTimeMillis() - startTime));
+            if (!output.toString().equals(output.toString())) {
+                System.err.println("Conversion error");
+            }
+        
+            System.out.println("JSON KALENDAT MOJ :" + output.toString());
+                return output.toString();
+            }
+        
+    
+     // /rest/vratKraje   
+    @RequestMapping(value = "/vratKraje", method = RequestMethod.GET)
+    @ResponseBody
+    public String getZoznamKrajov() {
+        List<Kraj> kraje = krajService.getEntites();
+        
+        StringBuilder output = new StringBuilder();
+            int times = 0;
+            int size = kraje.size();
+            
+            
+            output.append("[");
+            for(Kraj i : kraje){
+                //Kraj krajID = i.getIdKraj();
+                
+                output.append("{");
+                    //ID Kraj
+                    output.append("\"");
+                        output.append("id");
+                    output.append("\"");
+                            output.append(":");                        
+                    output.append("\"");
+                        if(i.getIdKraj() != null){
+                            output.append(i.getIdKraj());
+                        }else output.append("");
+                    output.append("\"");
+
+                output.append(",");
+
+                    //Kraj
+                    output.append("\"");
+                        output.append("nazov");
+                    output.append("\"");
+                            output.append(":");
+                    output.append("\"");
+                        if(i.getKraj()!= null){
+                            output.append(i.getKraj());
+                        }else output.append("");
+                    output.append("\"");
+               
+                output.append("}");
+
+                if(size-1 != times){
+                    output.append(",");
+                }
+            times++;
+                        
+            }
+            output.append("]");
+        
+        
+        return output.toString();
+    }
+    
     
     
         @RequestMapping(value = "/kalendar",method = RequestMethod.GET)

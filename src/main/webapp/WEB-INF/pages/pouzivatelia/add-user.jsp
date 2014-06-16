@@ -130,6 +130,11 @@
                             <td><form:input path="password" type="password" id="password1" required="true" maxlength="15"/></td>
                         </tr>
                         <tr>
+                            <td>Zopakujte heslo:</td>
+                            <td><form:input path="resetPasswd" maxlength="15" id="password2" type="password" /></td>
+                        </tr>
+                        
+                        <tr>
                             <td>meno</td>
                             <td><form:input path="meno" required="true" maxlength="15"/></td>
                         </tr>
@@ -162,9 +167,7 @@
                         <tr>
                             <td><form:input path="enabled" type="hidden" value="true" maxlength="5"/></td>
                         </tr>
-                        <tr>
-                            <td><form:input type="hidden" path="resetPasswd" maxlength="15" id="password2" type="password"/></td>
-                        </tr>
+                        
                         <tr>
                             <td>idNastavenie.idNastavenie</td>
                             <td><form:input path="idNastavenie.idNastavenie" value="${nove.idNastavenie}"/></td>
