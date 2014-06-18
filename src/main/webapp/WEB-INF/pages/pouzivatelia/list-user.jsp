@@ -120,6 +120,24 @@
                 Pridaj používateľa
             </button></br></br>
             
+            <table border="1px" cellpadding="0" cellspacing="0" >
+                <thead>
+                    <tr>
+                        <th width="5%">
+                            <input type="image"
+                                   src="${pageContext.request.contextPath}/resources/img/add_btn.png"
+                                   alt="Edituj skupinu"
+                                   class="crud_icon"
+                                   onclick="location.href = '${pageContext.request.contextPath}/logged/lekar/user/add_odber/${user.idUser}.html'">
+
+                            ODBER</th>
+                    </tr>
+
+                </thead>
+                <tbody align="center">
+                </tbody>
+            </table>
+            
             
             <cor:if  test="${!empty users}">
                 <table border="1px" cellpadding="0" cellspacing="0" >
@@ -127,23 +145,21 @@
                         <tr>
                             <th width="15%">MAIL</th>
                             <th width="8%">NICK</th>                            
-                            <th width="5%">PASS</th>
+                            <th width="4%">PASS</th>
                             <th width="10%">MENO</th>
                             <th width="10%">PRIEZVISKO</th>
-                            <th width="10%">DAT. NAR.</th>
-                            <th width="10%">MOBIL</th>
-                            <th width="5%">SEX</th>
+                            <th width="9%">DAT. NAR.</th>
+                            <th width="9%">MOBIL</th>
+                            <th width="3%">SEX</th>
                             <th width="3%">SETT.</th>
                             <th width="5%">KRV</th>
                             <th width="10%">MESTO</th>
-                            <th width="10%">EDIT</th>                            
+                            <th width="5%">EDIT</th>                            
                         </tr>
                     </thead>
                     <tbody align="center">
                         <cor:forEach var="user" items="${users}">
                             <tr>
-                               
-                                
                                 <td style="padding-left: 10px;" align="left">
                                     ${user.email}
                                 </td>
@@ -193,20 +209,14 @@
                                 
                                 
                                  <td>
-                                    <div id="crud_icon_block">
-                                        <input type="image"
-                                               src="${pageContext.request.contextPath}/resources/img/edit.png"
-                                               alt="Edituj skupinu"
-                                               class="crud_icon"
-                                               onclick="location.href = '${pageContext.request.contextPath}/logged/lekar/user/edit/${user.idUser}.html'">
+                                     <div id="crud_icon_block">
+                                         <input type="image"
+                                                src="${pageContext.request.contextPath}/resources/img/edit.png"
+                                                alt="Edituj skupinu"
+                                                class="crud_icon"
+                                                onclick="location.href = '${pageContext.request.contextPath}/logged/lekar/user/edit/${user.idUser}.html'">
 
-
-                                            <input type="image"
-                                                   src="${pageContext.request.contextPath}/resources/img/delete.png"
-                                                   alt="Zmaž skupinu"
-                                                   class="crud_icon"
-                                                   onclick="location.href ='${pageContext.request.contextPath}/logged/lekar/user/delete/${user.idUser}.html'">
-                                    </div>
+                                     </div>
 
                                </td>
                                                 </tr>

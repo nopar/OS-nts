@@ -117,7 +117,7 @@ public class LoggedLekarController {
         ModelAndView model = new ModelAndView("home");
         
         final String username = "novotny.patrick@gmail.com";
-        final String password = "Loginon77";
+        final String password = "edenbeden33";
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
@@ -230,6 +230,22 @@ public class LoggedLekarController {
     public ModelAndView addingUser(
             @ModelAttribute Pouzivatelia user) {
         ModelAndView modelAndView = new ModelAndView("pouzivatelia/list-user");
+        
+        final String username = "novotny.patrick@gmail.com";
+        final String password = "edenbeden33";
+
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+
+        Session session = Session.getInstance(props,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(username, password);
+                    }
+                });
 
         pouzivateliaService.addEntity(user);
 
@@ -241,8 +257,20 @@ public class LoggedLekarController {
         modelAndView.addObject("krv", krv);
         modelAndView.addObject("mesto", mesto);
         modelAndView.addObject("users", users);
-
-        String message = "Používatľ bol pridaný.";
+        String msg2="";
+         if(user.getPohlavie().toString().equalsIgnoreCase(Character.toString('M')) ){
+                msg2 = "Drahý "+ user.getMeno() + " " + user.getPriezvisko() + ",\n\n";
+            }else{
+                msg2 = "Drahá "+ user.getMeno() + " " + user.getPriezvisko() + ",\n\n";
+            }
+         
+        
+        String sprava = msg2 + " bolo Vám úspešne vytvorené konto do darcovského informačného systému"+
+                " Vaše prihlasovacie údaje su:\n -login: " + user.getNick() + "\n -heslo: " + user.getPassword() +
+                "\n Ďakujeme za prejavenú dôveru. \n\nTento e-mail bol vygenerovaný automaticky. Prosím neodpovedajte naň. \nĎakujeme";
+        sender(user.getEmail(), sprava, session);
+        
+        String message = "Používateľ bol pridaný.";
         modelAndView.addObject("message", message);
 
         return modelAndView;
@@ -275,6 +303,36 @@ public class LoggedLekarController {
         return modelAndView;
     }
 
+    
+    
+    @RequestMapping(value = "/user/add_odber", method = RequestMethod.POST)
+    public ModelAndView addingUserOdber(
+            @ModelAttribute Odber odber) {
+        ModelAndView modelAndView = new ModelAndView("pouzivatelia/list-user");
+     
+        odberService.addEntity(odber);
+        List<Pouzivatelia> users = pouzivateliaService.getEntites();
+        modelAndView.addObject("users", users);
+        String message = "Odber bol pridaný.";
+        modelAndView.addObject("message", message);
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/user/add_odber/{id}", method = RequestMethod.GET)
+    public ModelAndView addUserOdberPage(
+            @PathVariable Integer id ) {
+        ModelAndView modelAndView = new ModelAndView("pouzivatelia/add-odber");
+
+        List<Pouzivatelia> pouzivatelia = pouzivateliaService.getEntites();
+        
+        modelAndView.addObject("pouzivatelia", pouzivatelia);
+        modelAndView.addObject("odber", new Odber());
+
+        return modelAndView;
+    }
+
+    
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
@@ -398,6 +456,7 @@ public class LoggedLekarController {
 
         List<Pouzivatelia> users = pouzivateliaService.getEntites();
         modelAndView.addObject("users", users);
+        
 
         String message = "Používateľ úspešne upravený.";
         modelAndView.addObject("message", message);
@@ -414,6 +473,8 @@ public class LoggedLekarController {
         List<VyjazdovyOdber> vyjazdy = vyjazdovyOdberService.getEntites();
         modelAndView.addObject("vyjazdy", vyjazdy);
         System.out.println("dfdfgbf");
+        List<Pouzivatelia> users = pouzivateliaService.getEntites();
+        modelAndView.addObject("users", users);
 
         String message = "Stat was successfully deleted.";
         modelAndView.addObject("message", message);

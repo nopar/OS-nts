@@ -102,7 +102,6 @@
                             <li><a href="${pageContext.request.contextPath}/logged/profil">Notifikácie</a></li>
                             <li><a href="${pageContext.request.contextPath}/logged/profil/odber/historia">Históoria odberov</a></li>
                             <li><a href="${pageContext.request.contextPath}/logged/profil/odber/najblizsie">Kedy môžem znova darovať</a></li>
-                             <li><a href="${pageContext.request.contextPath}/logged/darca/poznamky">Poznámky lekára</a></li>
                             <li><a href="${pageContext.request.contextPath}/logged/profil/passw_rst">Reset hesla</a></li>
                             <%--<cor:out value="${accountId}"/>--%>
                         </ul>

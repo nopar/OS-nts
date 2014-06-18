@@ -120,14 +120,12 @@ input[type="submit"]{
 					<td>Login:</td>
                                         <td><input type='text' 
                                                    name='username' 
-                                                   value="nopar"
                                                    placeholder="nick alebo email"></td>
 				</tr>
 				<tr>
 					<td>Heslo:</td>
                                         <td><input type='password' 
                                                    name='password' 
-                                                   value=""
                                                    placeholder="zadaj heslo"/></td>
 				</tr>
 				<tr>
