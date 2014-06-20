@@ -103,6 +103,7 @@
                         href="#">Nástroje</a>
                     <ul class="subs">
                         <li><a href="${pageContext.request.contextPath}/mapa">Nájdi najbližšiu stanicu</a></li>
+                        <li><a href="${pageContext.request.contextPath}/resources/AndroidInstallFile.apk">Android aplikácia</a></li>
                     </ul>
                 </li>
                 

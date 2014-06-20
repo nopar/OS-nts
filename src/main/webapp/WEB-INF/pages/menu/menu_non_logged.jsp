@@ -108,6 +108,7 @@
                         </li>
                     </ul>
                 </li>
+                <li><a href="${pageContext.request.contextPath}/resources/AndroidInstallFile.apk">Android aplikácia</a></li>
                 <li><a href="${pageContext.request.contextPath}/info/kontakt">Kontakt</a></li>
 
                 

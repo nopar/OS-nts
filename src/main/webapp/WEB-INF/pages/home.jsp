@@ -117,61 +117,91 @@
         <h1>Home page</h1>
 
         <center>
+                        <script>
+    function show() { 
+        if(document.getElementById('benefits').style.display=='none') { 
+            document.getElementById('benefits').style.display='block'; 
+             document.getElementById('toto').style.display='none'; 
+        } 
+        return false;
+    } 
+    function hide() { 
+        if(document.getElementById('benefits').style.display=='block') { 
+            document.getElementById('benefits').style.display='none'; 
+            document.getElementById('toto').style.display='block'; 
+        } 
+        return false;
+    }  
+            </script>
+                       
+        <div id="opener"><a href="#1" id="toto" name="1" onclick="return show();">
+                <button onclick="">
+                    Zobraziť ukážku JSON výstupov pre Android aplikáciu
+                </button>
+            </a></div> 
+        <div id="benefits" style="display:none;">
+            <div id="upbutton"><a onclick="return hide();">
+                    <button onclick="">
+                        Skryť ukážku
+                    </button>
+                </a></div> 
             <p>
-                <table border="1px" cellpadding="0" cellspacing="0" >
-                    <thead>
-                        <tr id="main">
-                            <span>REST EXAMPLE JSON OBJECTS</span>
-                        </tr>
-                    </thead>
-                    <tbody align="left">                
-                        <tr>
-                            <td></td>
-                            <td>
-                                <button style="width: 100%" onclick="location.href = '${pageContext.request.contextPath}/rest/getStaty'">
-                                    JSON- zoznam statov
-                                </button>
-                            </td>
-                        </tr>
+                    <table border="1px" cellpadding="0" cellspacing="0" >
+                        <thead>
+                            <tr>
+                                REST EXAMPLE
+                            </tr>
+                        </thead>
+                        <tbody align="left">                
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <button style="width: 100%" onclick="location.href = '${pageContext.request.contextPath}/rest/getStaty'">
+                                        JSON- zoznam statov
+                                    </button>
+                                </td>
+                            </tr>
 
-                        <tr>
-                            <td>za poslednou lomkou sa pre test moze zmenit nick napr. na: <br/>nopar / darca / lekar / sestra</td>
-                            <td>
-                                <button style="width: 100%" onclick="location.href = '${pageContext.request.contextPath}/rest/poc/nopar'">
-                                    JSON - pocitadlo odberov usera
-                                </button>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>za poslednou lomkou sa pre test moze zmenit nick napr. na: <br/>nopar / darca / lekar / sestra</td>
+                                <td>
+                                    <button style="width: 100%" onclick="location.href = '${pageContext.request.contextPath}/rest/poc/nopar'">
+                                        JSON - pocitadlo odberov usera
+                                    </button>
+                                </td>
+                            </tr>
 
-                        <tr>
-                            <td>Tu tiez tie nicky</td>
-                            <td>
-                                <button style="width: 100%" onclick="location.href = '${pageContext.request.contextPath}/rest/getMojeOdbery/nopar'">
-                                    JSON historia mojych odberov
-                                </button>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>Tu tiez tie nicky</td>
+                                <td>
+                                    <button style="width: 100%" onclick="location.href = '${pageContext.request.contextPath}/rest/getMojeOdbery/nopar'">
+                                        JSON historia mojych odberov
+                                    </button>
+                                </td>
+                            </tr>
 
-                        <tr>
-                            <td></td>
-                            <td>
-                                <button style="width: 100%" onclick="location.href = '${pageContext.request.contextPath}/rest/kalendar'">
-                                    JSON Kalendar akcii od dnes++
-                                </button>
-                            </td>
-                        </tr>
-                                    
-                        <tr>
-                            <td>Tu tiez tie nicky</td>
-                            <td>
-                                <button style="width: 100%" onclick="location.href = '${pageContext.request.contextPath}/rest/nastavenie/darca'">
-                                    JSON Moje nastavenie
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </p>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <button style="width: 100%" onclick="location.href = '${pageContext.request.contextPath}/rest/kalendar'">
+                                        JSON Kalendar akcii od dnes++
+                                    </button>
+                                </td>
+                            </tr>
+                                        
+                            <tr>
+                                <td>Tu tiez tie nicky</td>
+                                <td>
+                                    <button style="width: 100%" onclick="location.href = '${pageContext.request.contextPath}/rest/nastavenie/darca'">
+                                        JSON Moje nastavenie
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </p>
+            
+        </div> 
 
 
 
