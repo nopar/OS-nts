@@ -120,8 +120,7 @@
                 <table>
                     <tbody>
                         <tr>
-                            <td>idUser</td>
-                            <td><form:input path="idUser" readonly="true"/></td>
+                            <td><form:input path="idUser" type="hidden" readonly="true"/></td>
                         </tr>
                         <tr>
                             <td>email</td>
@@ -162,7 +161,7 @@
                                         onblur="this.value=this.value.toUpperCase()"/></td>
                         </tr>
                         <tr>
-                            <td>enabed</td>
+                            <td>aktívny</td>
                             <td><form:input path="enabled"  value="true" maxlength="5"/></td>
                         </tr>
                         <tr>

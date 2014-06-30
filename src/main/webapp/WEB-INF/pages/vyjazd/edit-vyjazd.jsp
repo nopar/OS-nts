@@ -102,42 +102,54 @@
                 <table>
                     <tbody>
                         <tr>
-                            <td>ID_</td>
-                            <td><form:input path="idVyjazdovyOdber" /></td>
+                            <td><form:input path="idVyjazdovyOdber" type="hidden" /></td>
                         </tr>
 
                         <tr>
-                            <td>NÁZOV:</td>
+                            <td>Názov:</td>
                             <td><form:input path="nazov" /></td>
                         </tr>
                         <tr>
-                            <td>DÁTUM:</td>
+                            <td>Dátum:</td>
                             <td><form:input path="datum" /></td>
                         </tr>
                         <tr>
-                            <td>ADRESA:</td>
+                            <td>Adresa:</td>
                             <td><form:input path="adresa" /></td>
                         </tr>
+                        
                         <tr>
-                            <td>ZAČIATOK:</td>
-                            <td><form:input path="casZaciatku" /></td>
-                        </tr>
-                        <tr>
-                            <td>KONIEC:</td>
-                            <td><form:input path="casKonca" /></td>
-                        </tr>
-                        <tr>
-                            <td>POPIS:</td>
+                            <td>Popis:</td>
                             <td><form:input path="blizsiPopis" /></td>
                         </tr>
                         
                         <tr>
-                            <td>KRAJ:</td>
-                            <td><form:input path="idKraj"/></td>
+                            <td>Kraj:</td>
+                            <td>
+                             <form:select path="idKraj.idKraj" >
+                                    <cor:forEach items="${kraje}" var="kr">
+                                        <option label="${kr.kraj}">${kr.idKraj}</option>
+                                    </cor:forEach>
+                                </form:select>
+                            </td>
                         </tr>
                         <tr>
-                            <td>LEKAR:</td>
-                            <td><form:input path="idLekar" /></td>
+                            <td>Lekár:</td>
+                            <td>
+                             <form:select path="idLekar.idUser" >
+                                    <cor:forEach items="${pouzivatelia}" var="k">
+                                        <option label="${k.priezvisko}">${k.idUser}</option>
+                                    </cor:forEach>
+                                </form:select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Čas začiatku:</td>
+                            <td><form:input path="casZaciatku" /></td>
+                        </tr>
+                        <tr>
+                            <td>Čas konca:</td>
+                            <td><form:input path="casKonca"/></td>
                         </tr>
                         
                       

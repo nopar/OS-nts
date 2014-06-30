@@ -345,21 +345,29 @@ public class LoggedLekarController {
     public ModelAndView addVyjazdPage() {
         ModelAndView modelAndView = new ModelAndView("vyjazd/add-vyjazd");
 
+        List<Pouzivatelia> pouzivatelia = pouzivateliaService.getEntites();
+        List<Kraj> kraje = krajService.getEntites();
+        
+        modelAndView.addObject("pouzivatelia", pouzivatelia);
+        modelAndView.addObject("kraje", kraje);
+        
         modelAndView.addObject("vyjazd", new VyjazdovyOdber());
         return modelAndView;
     }
 
     @RequestMapping(value = "/vyjazd/add", method = RequestMethod.POST)
     public ModelAndView addingVyjazd(@ModelAttribute VyjazdovyOdber vyjazd) {
-        ModelAndView modelAndView = new ModelAndView("home");
+        ModelAndView modelAndView = new ModelAndView("vyjazd/list-vyjazd");
 
         System.out.println(vyjazd.getDatum());
         vyjazdovyOdberService.addEntity(vyjazd);
-
-       // List<VyjazdovyOdber> vyjazdy = vyjazdovyOdberService.getEntites();
-        //modelAndView.addObject("vyjazdy", vyjazdy);
+        
+        List<VyjazdovyOdber> vyjazdy = vyjazdovyOdberService.getEntites();
+        modelAndView.addObject("vyjazdy", vyjazdy);
+        
+        
         String message = "Vyjazd pridaný.";
-        //modelAndView.addObject("message", message);
+        modelAndView.addObject("message", message);
 
         return modelAndView;
     }
@@ -379,8 +387,15 @@ public class LoggedLekarController {
         ModelAndView modelAndView = new ModelAndView("vyjazd/edit-vyjazd");
 
         VyjazdovyOdber vyjazd = vyjazdovyOdberService.getEntity(id);
+        
+        List<Pouzivatelia> pouzivatelia = pouzivateliaService.getEntites();
+        List<Kraj> kraje = krajService.getEntites();
+        
+        modelAndView.addObject("pouzivatelia", pouzivatelia);
+        modelAndView.addObject("kraje", kraje);
 
         modelAndView.addObject("vyjazd", vyjazd);
+        System.out.println("zac" + vyjazd.getCasKonca().toString());
         return modelAndView;
     }
 
@@ -388,15 +403,16 @@ public class LoggedLekarController {
     public ModelAndView edditingVyjazd(
             @ModelAttribute VyjazdovyOdber vyjazd,
             @PathVariable Integer id) {
-        ModelAndView modelAndView = new ModelAndView("home");
+        ModelAndView modelAndView = new ModelAndView("vyjazd/list-vyjazd");
 
         vyjazdovyOdberService.updateEntity(vyjazd);
 
         List<VyjazdovyOdber> vyjazdy = vyjazdovyOdberService.getEntites();
         modelAndView.addObject("vyjazdy", vyjazdy);
 
-        String message = "Stat was successfully edited.";
+        String message = "Výjazd upravený.";
         modelAndView.addObject("message", message);
+        
 
         return modelAndView;
     }

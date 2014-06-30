@@ -168,11 +168,7 @@
                             <td><form:input path="enabled" type="hidden" value="true" maxlength="5"/></td>
                         </tr>
                         
-                        <tr>
-                            <td>idNastavenie.idNastavenie</td>
-                            <td><form:input path="idNastavenie.idNastavenie" value="${nove.idNastavenie}"/></td>
-                        </tr>
-                        
+                       
                         <tr>
                             <td>Typ Krvi</td>
                             <td>
@@ -195,8 +191,11 @@
                         </tr>
                         
                         
-                
-                                                
+
+                            <tr>
+                                <td><form:input path="idNastavenie.idNastavenie" type="hidden" value="${nove.idNastavenie}"/></td>
+                            </tr>
+                                      
                                                 
                         <tr>
                             <td><input type="submit" value="Add" /></td>

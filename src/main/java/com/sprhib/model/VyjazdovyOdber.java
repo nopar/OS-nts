@@ -56,14 +56,15 @@ public class VyjazdovyOdber implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false, length = 35)
     private String adresa;
+    
     @Basic(optional = false)
     @Column(name = "cas_zaciatku", nullable = false)
-    @Temporal(TemporalType.TIME)
-    private Date casZaciatku;
+    private String casZaciatku;
+    
     @Basic(optional = false)
     @Column(name = "cas_konca", nullable = false)
-    @Temporal(TemporalType.TIME)
-    private Date casKonca;
+    private String casKonca;
+    
     @Column(name = "blizsi_popis", length = 255)
     private String blizsiPopis;
     
@@ -82,7 +83,7 @@ public class VyjazdovyOdber implements Serializable {
         this.idVyjazdovyOdber = idVyjazdovyOdber;
     }
 
-    public VyjazdovyOdber(Integer idVyjazdovyOdber, String nazov, Date datum, String adresa, Date casZaciatku, Date casKonca) {
+    public VyjazdovyOdber(Integer idVyjazdovyOdber, String nazov, Date datum, String adresa, String casZaciatku, String casKonca) {
         this.idVyjazdovyOdber = idVyjazdovyOdber;
         this.nazov = nazov;
         this.datum = datum;
@@ -123,19 +124,19 @@ public class VyjazdovyOdber implements Serializable {
         this.adresa = adresa;
     }
 
-    public Date getCasZaciatku() {
+    public String getCasZaciatku() {
         return casZaciatku;
     }
 
-    public void setCasZaciatku(Date casZaciatku) {
+    public void setCasZaciatku(String casZaciatku) {
         this.casZaciatku = casZaciatku;
     }
 
-    public Date getCasKonca() {
+    public String getCasKonca() {
         return casKonca;
     }
 
-    public void setCasKonca(Date casKonca) {
+    public void setCasKonca(String casKonca) {
         this.casKonca = casKonca;
     }
 

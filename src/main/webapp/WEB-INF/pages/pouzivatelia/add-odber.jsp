@@ -126,7 +126,7 @@ document.getElementById("dat").value=moj;
                         </tr>
                         <tr>
                             <td>Poznámka:</td>
-                            <td><form:input path="poznamka" /></td>
+                            <td><form:input path="poznamka" placeholder="nepovinné" /></td>
                         </tr>
                         <tr>
                             <td>Darca:</td>
