@@ -60,6 +60,18 @@ public class PouzivateliaDAO implements EntityDAO<Pouzivatelia> {
 	public List<Pouzivatelia> getEntites() {
 		return getCurrentSession().createQuery("from Pouzivatelia").list();
 	}
-    
+        
+        @SuppressWarnings("unchecked")
+	public List<Integer> getLekars() {
+		//return getCurrentSession().createQuery("").list();
+	           Session session = getCurrentSession();
 
+            Query query = session.createQuery("select id_user from ZOZNAM_POUZIVATEL_SKUPINA  where id_group = 2");
+           // query.setParameter("xx", nickID);
+           // query.setMaxResults(1);
+            List list = query.list();
+
+            return list;
+        }
+    
 }

@@ -35,6 +35,10 @@ public class PouzivateliaService implements EntityService<Pouzivatelia> {
 	public List<Pouzivatelia> getEntites() {
 		return pouzivateliaDAO.getEntites();
 	}
+        
+        public List<Integer> getLekars() {
+		return pouzivateliaDAO.getLekars();
+	}
 
     @Override
     public Integer getKonkretny() {

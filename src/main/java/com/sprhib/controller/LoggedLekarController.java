@@ -323,9 +323,23 @@ public class LoggedLekarController {
     public ModelAndView addUserOdberPage(
             @PathVariable Integer id ) {
         ModelAndView modelAndView = new ModelAndView("pouzivatelia/add-odber");
-
-        List<Pouzivatelia> pouzivatelia = pouzivateliaService.getEntites();
         
+         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (!(auth instanceof AnonymousAuthenticationToken)) {
+            UserDetails userDetail = (UserDetails) auth.getPrincipal();
+//            System.out.println(userDetail);
+        }
+
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().
+                getAuthentication().getPrincipal();
+
+        String logNickSend = userDetails.getUsername();
+        Integer userID = odberService.getUserIDfromNick(logNickSend);
+       
+        Pouzivatelia lekar = pouzivateliaService.getEntity(userID);
+        modelAndView.addObject("lekar", lekar);
+      
+        List<Pouzivatelia> pouzivatelia = pouzivateliaService.getEntites();
         modelAndView.addObject("pouzivatelia", pouzivatelia);
         modelAndView.addObject("odber", new Odber());
 
@@ -350,6 +364,21 @@ public class LoggedLekarController {
         
         modelAndView.addObject("pouzivatelia", pouzivatelia);
         modelAndView.addObject("kraje", kraje);
+        
+         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (!(auth instanceof AnonymousAuthenticationToken)) {
+            UserDetails userDetail = (UserDetails) auth.getPrincipal();
+//            System.out.println(userDetail);
+        }
+
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().
+                getAuthentication().getPrincipal();
+
+        String logNickSend = userDetails.getUsername();
+        Integer userID = odberService.getUserIDfromNick(logNickSend);
+       
+        Pouzivatelia lekar = pouzivateliaService.getEntity(userID);
+        modelAndView.addObject("lekar", lekar);
         
         modelAndView.addObject("vyjazd", new VyjazdovyOdber());
         return modelAndView;
@@ -385,6 +414,21 @@ public class LoggedLekarController {
     @RequestMapping(value = "/vyjazd/edit/{id}", method = RequestMethod.GET)
     public ModelAndView editVyjazdPage(@PathVariable Integer id) {
         ModelAndView modelAndView = new ModelAndView("vyjazd/edit-vyjazd");
+        
+         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (!(auth instanceof AnonymousAuthenticationToken)) {
+            UserDetails userDetail = (UserDetails) auth.getPrincipal();
+//            System.out.println(userDetail);
+        }
+
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().
+                getAuthentication().getPrincipal();
+
+        String logNickSend = userDetails.getUsername();
+        Integer userID = odberService.getUserIDfromNick(logNickSend);
+       
+        Pouzivatelia lekar = pouzivateliaService.getEntity(userID);
+        modelAndView.addObject("lekar", lekar);
 
         VyjazdovyOdber vyjazd = vyjazdovyOdberService.getEntity(id);
         

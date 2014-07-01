@@ -137,12 +137,14 @@
                         <tr>
                             <td>Lekár:</td>
                             <td>
-                                <form:select path="idLekar.idUser" >
-                                    <cor:forEach items="${pouzivatelia}" var="k">
-                                        <option label="${k.priezvisko}">${k.idUser}</option>
-                                    </cor:forEach>
-                                </form:select>
-                            </td>
+                                <form:input path="idLekar.idUser" 
+                                            required="true" 
+                                            value="${lekar.idUser}"
+                                            readonly="true"
+                                            type="hidden"
+                                            />
+                                ${lekar.priezvisko} ${lekar.meno}
+                            </td> 
                         </tr>
                         
                         

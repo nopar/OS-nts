@@ -10,5 +10,6 @@ public interface EntityService<T> {
 	public void deleteEntity(int id);
 	public List<T> getEntites();
        public Integer getKonkretny();
+       public List<Integer> getLekars();
 
 }

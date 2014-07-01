@@ -118,15 +118,15 @@
                             <td><form:input type="hidden" path="idUser" /></td>
                         </tr>
                         <tr>
-                            <td>email</td>
+                            <td>Email</td>
                             <td><form:input path="email" type="email" required="true" maxlength="45"/></td>
                         </tr>
                         <tr>
-                            <td>nick</td>
+                            <td>Nick</td>
                             <td><form:input path="nick" required="true" maxlength="45"/></td>
                         </tr>
                         <tr>
-                            <td>password</td>
+                            <td>Password</td>
                             <td><form:input path="password" type="password" id="password1" required="true" maxlength="15"/></td>
                         </tr>
                         <tr>
@@ -135,30 +135,30 @@
                         </tr>
                         
                         <tr>
-                            <td>meno</td>
+                            <td>Meno</td>
                             <td><form:input path="meno" required="true" maxlength="15"/></td>
                         </tr>
                         <tr>
-                            <td>priezvisko</td>
+                            <td>Priezvisko</td>
                             <td><form:input path="priezvisko" required="true" maxlength="20"/></td>
                         </tr>
                         
                         
                         <tr>
-                            <td>datumNarodenia</td>
+                            <td>Dátum narodenia</td>
                             <td><form:input path="datumNarodenia" 
                                         maxlength="10"
                                         placeholder="03/05/1975"
                                         value="03/05/1975"/></td>
                         </tr>
                         <tr>
-                            <td>telKontakt</td>
+                            <td>Tel. kontakt</td>
                             <td><form:input path="telKontakt"
                                         maxlength="30"
                                          placeholder="napriklad: 0902987987"/></td>
                         </tr>
                         <tr>
-                            <td>pohlavie</td>
+                            <td>Pohlavie</td>
                             <td><form:input path="pohlavie"
                                         maxlength="1"
                                         placeholder="M/F"
@@ -170,7 +170,7 @@
                         
                        
                         <tr>
-                            <td>Typ Krvi</td>
+                            <td>Typ krvi</td>
                             <td>
                                 <form:select path="idKrvnaSkupina.idKrvnaSkupina" >
                                     <cor:forEach items="${krv}" var="k">
